@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgjmsx40rpth0"]
+
+[ext_resource type="Script" path="res://arena/arena.gd" id="1_o8svp"]
+[ext_resource type="Texture2D" uid="uid://crwb3wrl36uso" path="res://arena/arena.png" id="2_a22fc"]
+[ext_resource type="PackedScene" uid="uid://dr8ssbcu7jksh" path="res://wall_bounce/wall_bounce.tscn" id="2_ko7xn"]
+[ext_resource type="PackedScene" uid="uid://5hrpxd7ci76s" path="res://wall_goal/wall_goal.tscn" id="3_7oeu6"]
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_o8svp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a22fc")
+
+[node name="WallBounceHigh" parent="." instance=ExtResource("2_ko7xn")]
+
+[node name="WallBounceLow" parent="." instance=ExtResource("2_ko7xn")]
+
+[node name="WallGoalLeft" parent="." instance=ExtResource("3_7oeu6")]
+
+[node name="WallGoalRight" parent="." instance=ExtResource("3_7oeu6")]
