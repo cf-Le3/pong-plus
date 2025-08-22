@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://dbv1atm3o3avv"]
+[gd_scene load_steps=3 format=3 uid="uid://dbv1atm3o3avv"]
+
+[ext_resource type="Script" path="res://main/main.gd" id="1_wtcpt"]
+[ext_resource type="PackedScene" uid="uid://dgjmsx40rpth0" path="res://arena/arena.tscn" id="2_0vflj"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_wtcpt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -9,3 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.082485, 0.231064, 0.299641, 1)
+
+[node name="Arena" parent="." instance=ExtResource("2_0vflj")]
+visible = false
