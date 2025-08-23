@@ -4,6 +4,7 @@
 size = Vector2(4, 512)
 
 [node name="WallGoal" type="Area2D"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_087jk")
