@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbsm1"]
 size = Vector2(1024, 4)
 
-[node name="WallBounce" type="StaticBody2D"]
+[node name="WallBounce" type="StaticBody2D" groups=["bounce_walls"]]
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
