@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw1mwqwas8l86"
-path="res://.godot/imported/paddle1.png-7815e03e1e9601fbb9b16be8d22c5c9a.ctex"
+uid="uid://djfvs8uih53ex"
+path="res://.godot/imported/paddle.png-4aba2187f48f9a351125c742ba746e91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://paddle/paddle1.png"
-dest_files=["res://.godot/imported/paddle1.png-7815e03e1e9601fbb9b16be8d22c5c9a.ctex"]
+source_file="res://paddle/paddle.png"
+dest_files=["res://.godot/imported/paddle.png-4aba2187f48f9a351125c742ba746e91.ctex"]
 
 [params]
 
