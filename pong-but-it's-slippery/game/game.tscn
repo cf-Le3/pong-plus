@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgjmsx40rpth0"]
+[gd_scene load_steps=8 format=3 uid="uid://dfodn8ia5n12i"]
 
-[ext_resource type="Script" path="res://arena/game.gd" id="1_cxpw7"]
-[ext_resource type="PackedScene" uid="uid://d3k2sxndgmaue" path="res://ball/ball.tscn" id="2_7uk1q"]
-[ext_resource type="Texture2D" uid="uid://crwb3wrl36uso" path="res://arena/game.png" id="3_jxpyf"]
+[ext_resource type="Script" path="res://game/game.gd" id="1_cxpw7"]
+[ext_resource type="PackedScene" uid="uid://d3k2sxndgmaue" path="res://ball/ball.tscn" id="2_bfhiw"]
+[ext_resource type="Texture2D" uid="uid://crwb3wrl36uso" path="res://game/arena.png" id="3_jxpyf"]
 [ext_resource type="PackedScene" uid="uid://dr8ssbcu7jksh" path="res://wall_bounce/wall_bounce.tscn" id="4_ks5le"]
 [ext_resource type="PackedScene" uid="uid://5hrpxd7ci76s" path="res://wall_goal/wall_goal.tscn" id="5_tp3gb"]
 [ext_resource type="PackedScene" uid="uid://cj3pwg27ip3fb" path="res://paddle/paddle.tscn" id="6_5cgph"]
@@ -10,7 +10,7 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_cxpw7")
-ball_scene = ExtResource("2_7uk1q")
+ball_scene = ExtResource("2_bfhiw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_jxpyf")
@@ -34,5 +34,3 @@ is_player_1 = true
 wait_time = 5.0
 
 [node name="HUD" parent="." instance=ExtResource("7_wr3ym")]
-
-[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]

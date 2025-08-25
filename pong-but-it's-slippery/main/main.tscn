@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbv1atm3o3avv"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_wtcpt"]
-[ext_resource type="PackedScene" uid="uid://dgjmsx40rpth0" path="res://arena/game.tscn" id="2_0vflj"]
+[ext_resource type="PackedScene" uid="uid://dfodn8ia5n12i" path="res://game/game.tscn" id="2_0vflj"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wtcpt")
@@ -14,5 +14,4 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.082485, 0.231064, 0.299641, 1)
 
-[node name="Arena" parent="." instance=ExtResource("2_0vflj")]
-visible = false
+[node name="Game" parent="." instance=ExtResource("2_0vflj")]
