@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcktngg6b8fyk"]
+
+[ext_resource type="Script" path="res://hud/hud.gd" id="1_n0o34"]
+[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://fonts/Jost-800-Heavy.ttf" id="2_7p07k"]
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://fonts/Jost-500-Medium.ttf" id="3_86vby"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_n0o34")
+
+[node name="ScoreLabel1" type="Label" parent="."]
+offset_left = 536.0
+offset_top = 56.0
+offset_right = 601.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_7p07k")
+theme_override_font_sizes/font_size = 96
+
+[node name="ScoreLabel2" type="Label" parent="."]
+offset_left = 680.0
+offset_top = 56.0
+offset_right = 745.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_7p07k")
+theme_override_font_sizes/font_size = 96
+
+[node name="GameOverMessage" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 208.0
+offset_top = 240.0
+offset_right = -208.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.024, 0.1716, 0.24, 1)
+
+[node name="WinnerLabel" type="Label" parent="GameOverMessage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -432.0
+offset_top = -69.5
+offset_right = 432.0
+offset_bottom = 69.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_7p07k")
+theme_override_font_sizes/font_size = 96
+text = "PLAYER X WINS"
+horizontal_alignment = 1
+
+[node name="ContinueLabel" type="Label" parent="GameOverMessage"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = 207.0
+offset_right = 157.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_86vby")
+theme_override_font_sizes/font_size = 32
+text = "— PRESS ANY KEY —"
