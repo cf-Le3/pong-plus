@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @export var is_player_1: bool
-const SPEED_MAX = 250
-const ACCELERATION = 5
+const SPEED_MAX = 300
+const ACCELERATION = 10
 
 func _ready() -> void:
 	pass
