@@ -4,6 +4,11 @@ func _ready() -> void:
 	$ScoreLabel1.text = str(0)
 	$ScoreLabel2.text = str(0)
 
+func show_score() -> void:
+	$ScoreLabel1.visible = true
+	$ScoreLabel2.visible = true
+	$ReadyMessage.visible = false
+
 func update_score(score: int, is_player_1: bool) -> void:
 	if is_player_1:
 		$ScoreLabel1.text = str(score)

@@ -27,6 +27,7 @@ func _ready() -> void:
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-ARENA_W)/2-32, viewport_h/2)
 	$BallSpawn.global_position = Vector2(viewport_w/2, viewport_h/2)
 	$Sprite2D.global_position = Vector2(viewport_w/2, viewport_h/2)
+	$StartGameTimer.start()
 
 func _input(event) -> void:
 	if event is InputEventKey && close_game_enabled:
@@ -42,12 +43,18 @@ func _on_wall_goal_right_ball_escaped() -> void:
 	$HUD.update_score(score_player_1, true)
 	do_stuff_after_scoring()
 
+func _on_start_game_timer_timeout() -> void:
+	start_game()
+
 func _on_ball_timer_timeout() -> void:
 	spawn_ball()
 	
 func _on_close_game_timer_timeout() -> void:
 	close_game_enabled = true
 
+func start_game() -> void:
+	$HUD.show_score()
+	spawn_ball()
 
 func spawn_ball() -> void:
 	if get_tree().get_nodes_in_group("balls").size() < BALLS_MAX:
