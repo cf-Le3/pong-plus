@@ -50,6 +50,7 @@ func _on_ball_timer_timeout() -> void:
 	spawn_ball()
 	
 func _on_close_game_timer_timeout() -> void:
+	$HUD.show_end_game()
 	close_game_enabled = true
 
 func start_game() -> void:

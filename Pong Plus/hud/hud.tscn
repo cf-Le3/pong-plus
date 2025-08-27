@@ -82,17 +82,17 @@ theme_override_font_sizes/font_size = 96
 text = "PLAYER X WINS"
 horizontal_alignment = 1
 
-[node name="ContinueLabel" type="Label" parent="GameOverMessage"]
-layout_mode = 1
+[node name="ContinueLabel" type="Label" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -156.0
-offset_top = 207.0
+offset_top = -57.0
 offset_right = 157.0
-offset_bottom = 254.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_86vby")

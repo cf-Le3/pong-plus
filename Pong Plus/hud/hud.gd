@@ -21,3 +21,6 @@ func show_game_over(score_player_1, score_player_2):
 	else:
 		$GameOverMessage/WinnerLabel.text = "PLAYER 2 WINS"
 	$GameOverMessage.visible = true
+	
+func show_end_game():
+	$ContinueLabel.visible = true
