@@ -3,7 +3,7 @@ signal close_game
 @export var ball_scene: PackedScene
 const ARENA_W = 1024
 const ARENA_H = 512
-const SCORE_MAX = 3
+const SCORE_MAX = 5
 const BALLS_MAX = 5
 var viewport_w
 var viewport_h

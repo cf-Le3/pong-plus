@@ -36,7 +36,6 @@ one_shot = true
 
 [node name="BallTimer" type="Timer" parent="."]
 wait_time = 5.0
-one_shot = true
 
 [node name="CloseGameTimer" type="Timer" parent="."]
 wait_time = 0.5
