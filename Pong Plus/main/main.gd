@@ -3,6 +3,10 @@ extends Node
 @export var help_scene: PackedScene
 var game
 var help
+var version = "v0.3.1"
+
+func _ready() -> void:
+	$Title.set_version(version)
 
 func _on_title_new_game_multiplayer() -> void:
 	enable_title(false)

@@ -17,3 +17,6 @@ func _on_help_button_pressed() -> void:
 
 func delay_input() -> void:
 	$WaitTimer.start()
+	
+func set_version(version: String) -> void:
+	$VersionLabel.text = version

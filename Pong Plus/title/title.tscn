@@ -49,13 +49,14 @@ text = "Same Pong. More balls."
 horizontal_alignment = 1
 
 [node name="VersionLabel" type="Label" parent="."]
-offset_left = 1200.0
+offset_left = 1024.0
 offset_top = 592.0
 offset_right = 1272.0
 offset_bottom = 639.0
 theme_override_fonts/font = ExtResource("1_7u21k")
 theme_override_font_sizes/font_size = 32
 text = "vX.X"
+horizontal_alignment = 2
 
 [node name="SinglePlayerButton" type="Button" parent="."]
 offset_left = 480.0
