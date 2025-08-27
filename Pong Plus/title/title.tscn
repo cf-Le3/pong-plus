@@ -123,6 +123,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tujvl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nbddu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_khm8l")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7vsni")
+disabled = true
 text = "CREDITS
 "
 icon_alignment = 1

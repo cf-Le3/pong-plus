@@ -28,4 +28,4 @@ func enable_title(status: bool) -> void:
 	$Title.visible = status
 	$Title.set_process_input(status)
 	if status == true:
-		$Title._ready()
+		$Title.delay_input()
