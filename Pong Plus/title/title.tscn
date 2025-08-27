@@ -128,6 +128,7 @@ text = "CREDITS
 icon_alignment = 1
 
 [node name="WaitTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="pressed" from="MultiPlayerButton" to="." method="_on_multi_player_button_pressed"]
