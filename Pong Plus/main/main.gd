@@ -1,9 +1,13 @@
 extends Node
+@export var game_scene: PackedScene
+var game
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_title_new_game_multiplayer() -> void:
+	enable_title(false)
+	game = game_scene.instantiate()
+	game.connect("close_game", _on_close_game)
+	add_child(game)
+	
+func enable_title(status: bool) -> void:
+	$Title.visible = status
+	$Title.set_process_input(status)
