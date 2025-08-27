@@ -1,0 +1,237 @@
+[gd_scene load_steps=9 format=3 uid="uid://twat68vd8dnc"]
+
+[ext_resource type="Script" path="res://help/help.gd" id="1_a4low"]
+[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://fonts/Jost-800-Heavy.ttf" id="1_jkucu"]
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://fonts/Jost-500-Medium.ttf" id="2_vkxn4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_507r0"]
+bg_color = Color(0.192157, 0.521569, 0.560784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6dby"]
+bg_color = Color(0.192157, 0.521569, 0.560784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhki3"]
+bg_color = Color(0.192157, 0.521569, 0.560784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gd5"]
+bg_color = Color(0.192157, 0.521569, 0.560784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llcyu"]
+bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
+
+[node name="Help" type="CanvasLayer"]
+script = ExtResource("1_a4low")
+
+[node name="How ToPlayLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 16.0
+offset_right = -135.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_jkucu")
+theme_override_font_sizes/font_size = 64
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 920.0
+offset_top = 32.0
+offset_right = 1240.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("2_vkxn4")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_507r0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_m6dby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yhki3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j1gd5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_llcyu")
+text = "BACK"
+
+[node name="Instructions" type="ColorRect" parent="."]
+offset_left = 40.0
+offset_top = 128.0
+offset_right = 728.0
+offset_bottom = 592.0
+color = Color(0.0235294, 0.172549, 0.239216, 1)
+
+[node name="PongLabel" type="Label" parent="Instructions"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.0
+offset_top = 16.0
+offset_right = 72.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_jkucu")
+theme_override_font_sizes/font_size = 40
+text = "It's plain old Pong!"
+vertical_alignment = 1
+
+[node name="Body1" type="Label" parent="Instructions/PongLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 32.0
+offset_right = 448.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_vkxn4")
+theme_override_font_sizes/font_size = 24
+text = "Move your paddle to repel the balls. Your score a point if a ball leaves the playing field from behind your opponent.
+Score five points first to win!"
+autowrap_mode = 3
+
+[node name="DifferenceLabel" type="Label" parent="Instructions"]
+offset_left = 32.0
+offset_top = 216.0
+offset_right = 416.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("1_jkucu")
+theme_override_font_sizes/font_size = 40
+text = "...Or is it?"
+vertical_alignment = 1
+
+[node name="Body2" type="Label" parent="Instructions/DifferenceLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 40.0
+offset_right = 448.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_vkxn4")
+theme_override_font_sizes/font_size = 24
+text = "Watch out! A new ball will spawn every five seconds. There can be up to five balls bouncing around at a time.
+There are no breaks to serve either. Balls will keep spawning until somebody wins. Stay on your toes!"
+autowrap_mode = 3
+
+[node name="Controls" type="ColorRect" parent="."]
+offset_left = 760.0
+offset_top = 128.0
+offset_right = 1240.0
+offset_bottom = 200.0
+color = Color(0.0235294, 0.172549, 0.239216, 1)
+
+[node name="ControlsLabel" type="Label" parent="Controls"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 66.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_jkucu")
+theme_override_font_sizes/font_size = 40
+text = "CONTROLS"
+vertical_alignment = 1
+
+[node name="Player1" type="ColorRect" parent="."]
+offset_left = 760.0
+offset_top = 224.0
+offset_right = 1240.0
+offset_bottom = 392.0
+color = Color(0.0235294, 0.172549, 0.239216, 1)
+
+[node name="Player1Label" type="Label" parent="Player1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -64.0
+offset_right = -80.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_jkucu")
+theme_override_font_sizes/font_size = 24
+text = "PLAYER 1
+"
+autowrap_mode = 3
+
+[node name="Body3" type="Label" parent="Player1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -16.0
+offset_right = 120.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_vkxn4")
+theme_override_font_sizes/font_size = 24
+text = "Move Up:       W key / A key
+Move Down:   S key / D key
+"
+autowrap_mode = 3
+
+[node name="Player 2" type="ColorRect" parent="."]
+offset_left = 760.0
+offset_top = 416.0
+offset_right = 1240.0
+offset_bottom = 584.0
+color = Color(0.0235294, 0.172549, 0.239216, 1)
+
+[node name="Player2Label" type="Label" parent="Player 2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -64.0
+offset_right = -80.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_jkucu")
+theme_override_font_sizes/font_size = 24
+text = "PLAYER 2
+"
+autowrap_mode = 3
+
+[node name="Body4" type="Label" parent="Player 2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -16.0
+offset_right = 224.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_vkxn4")
+theme_override_font_sizes/font_size = 24
+text = "Move Up:       UP key / LEFT key
+Move Down:   DOWN key / RIGHT key
+"
+autowrap_mode = 3
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
