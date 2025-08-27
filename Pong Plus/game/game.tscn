@@ -32,5 +32,16 @@ is_player_1 = true
 
 [node name="BallTimer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
+
+[node name="CloseGameTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("7_wr3ym")]
+
+[connection signal="ball_escaped" from="WallGoalLeft" to="." method="_on_wall_goal_left_ball_escaped"]
+[connection signal="ball_escaped" from="WallGoalRight" to="." method="_on_wall_goal_right_ball_escaped"]
+[connection signal="timeout" from="StartGameTimer" to="." method="_on_start_game_timer_timeout"]
+[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
+[connection signal="timeout" from="CloseGameTimer" to="." method="_on_close_game_timer_timeout"]

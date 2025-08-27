@@ -8,6 +8,10 @@ func _on_title_new_game_multiplayer() -> void:
 	game.connect("close_game", _on_close_game)
 	add_child(game)
 	
+func _on_close_game() -> void:
+	game.queue_free()
+	enable_title(true)
+	
 func enable_title(status: bool) -> void:
 	$Title.visible = status
 	$Title.set_process_input(status)
