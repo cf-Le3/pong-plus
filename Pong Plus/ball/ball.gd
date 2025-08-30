@@ -16,14 +16,14 @@ func _physics_process(delta: float) -> void:
 	if collision: 
 		if collision.get_collider().is_in_group("bounce_walls"):
 			velocity.y = -1*velocity.y
+			$WallHit.play()
 		elif collision.get_collider().is_in_group("paddles"):
-			velocity.x = -1*velocity.x
-			velocity = (velocity + ACCELERATION.rotated(velocity.angle())).rotated(randi_range(-5, 5)*PI/180)
 			if can_collide_with_paddle:
 				velocity.x = -1*velocity.x
 				velocity = (velocity + ACCELERATION.rotated(velocity.angle())).rotated(randi_range(-5, 5)*PI/180)
 				can_collide_with_paddle = false
 				$HitTimer.start()
+				$PaddleHit.play()
 
 func _on_hit_timer_timeout() -> void:
 	can_collide_with_paddle = true
