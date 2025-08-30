@@ -92,6 +92,7 @@ Score five points first to win!"
 autowrap_mode = 3
 
 [node name="DifferenceLabel" type="Label" parent="Instructions"]
+layout_mode = 1
 offset_left = 32.0
 offset_top = 216.0
 offset_right = 416.0
