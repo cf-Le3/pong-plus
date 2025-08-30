@@ -6,3 +6,4 @@ func _on_body_exited(body: Node2D) -> void:
 		get_parent().remove_child(body)
 		body.queue_free()
 	ball_escaped.emit()
+	$GoalSound.play()

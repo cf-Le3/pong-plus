@@ -28,6 +28,7 @@ func _ready() -> void:
 	$BallSpawn.global_position = Vector2(viewport_w/2, viewport_h/2)
 	$Sprite2D.global_position = Vector2(viewport_w/2, viewport_h/2)
 	$StartGameTimer.start()
+	$GameStartSound.play()
 
 func _input(event) -> void:
 	if event is InputEventKey && close_game_enabled:
@@ -79,3 +80,4 @@ func game_over() -> void:
 	get_tree().call_group("balls", "queue_free")
 	$HUD.show_game_over(score_player_1, score_player_2)
 	$CloseGameTimer.start()
+	$GameOverSound.play()
