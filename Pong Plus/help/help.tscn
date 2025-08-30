@@ -54,7 +54,7 @@ text = "BACK"
 offset_left = 40.0
 offset_top = 128.0
 offset_right = 728.0
-offset_bottom = 592.0
+offset_bottom = 584.0
 color = Color(0.0235294, 0.172549, 0.239216, 1)
 
 [node name="PongLabel" type="Label" parent="Instructions"]
@@ -92,11 +92,11 @@ Score five points first to win!"
 autowrap_mode = 3
 
 [node name="DifferenceLabel" type="Label" parent="Instructions"]
-layout_mode = 1
+layout_mode = 0
 offset_left = 32.0
-offset_top = 216.0
+offset_top = 208.0
 offset_right = 416.0
-offset_bottom = 280.0
+offset_bottom = 272.0
 theme_override_fonts/font = ExtResource("1_jkucu")
 theme_override_font_sizes/font_size = 40
 text = "...Or is it?"
