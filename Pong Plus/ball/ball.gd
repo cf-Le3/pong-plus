@@ -2,6 +2,7 @@ extends CharacterBody2D
 var init_pos: Vector2
 var init_dir: float
 var texture: Texture
+var can_collide_with_paddle = true
 const INIT_SPEED = 200.0
 const ACCELERATION = Vector2(10.0, 10.0)
 
@@ -18,3 +19,11 @@ func _physics_process(delta: float) -> void:
 		elif collision.get_collider().is_in_group("paddles"):
 			velocity.x = -1*velocity.x
 			velocity = (velocity + ACCELERATION.rotated(velocity.angle())).rotated(randi_range(-5, 5)*PI/180)
+			if can_collide_with_paddle:
+				velocity.x = -1*velocity.x
+				velocity = (velocity + ACCELERATION.rotated(velocity.angle())).rotated(randi_range(-5, 5)*PI/180)
+				can_collide_with_paddle = false
+				$HitTimer.start()
+
+func _on_hit_timer_timeout() -> void:
+	can_collide_with_paddle = true
