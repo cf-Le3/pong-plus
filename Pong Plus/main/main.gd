@@ -1,9 +1,11 @@
 extends Node
 @export var game_scene: PackedScene
 @export var help_scene: PackedScene
+@export var credits_scene: PackedScene
 var game
 var help
-var version = "v0.3.1"
+var credits
+var version = "v0.3.3"
 
 func _ready() -> void:
 	$Title.set_version(version)
@@ -27,6 +29,16 @@ func _on_title_view_help() -> void:
 
 func _on_close_help() -> void:
 	help.queue_free()
+	enable_title(true)
+	
+func _on_title_view_credits() -> void:
+	enable_title(false)
+	credits = credits_scene.instantiate()
+	credits.connect("close_credits", _on_close_credits)
+	add_child(credits)
+	
+func _on_close_credits() -> void:
+	credits.queue_free()
 	enable_title(true)
 	
 func enable_title(status: bool) -> void:

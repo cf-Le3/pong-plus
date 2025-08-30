@@ -124,7 +124,6 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tujvl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nbddu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_khm8l")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7vsni")
-disabled = true
 text = "CREDITS
 "
 icon_alignment = 1
@@ -135,4 +134,5 @@ one_shot = true
 
 [connection signal="pressed" from="MultiPlayerButton" to="." method="_on_multi_player_button_pressed"]
 [connection signal="pressed" from="HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

@@ -1,6 +1,7 @@
 extends CanvasLayer
 signal new_game_multiplayer
 signal view_help
+signal view_credits
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,9 @@ func _on_multi_player_button_pressed() -> void:
 
 func _on_help_button_pressed() -> void:
 	view_help.emit()
+
+func _on_credits_button_pressed() -> void:
+	view_credits.emit()
 
 func delay_input() -> void:
 	$WaitTimer.start()
