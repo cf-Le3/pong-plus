@@ -5,7 +5,7 @@ extends Node
 var game
 var help
 var credits
-var version = "v0.3.3"
+var version = "v1.0.0"
 
 func _ready() -> void:
 	$Title.set_version(version)
