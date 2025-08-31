@@ -36,5 +36,6 @@ stream = SubResource("AudioStreamOggVorbis_4jibc")
 volume_db = -15.0
 
 [connection signal="new_game_multiplayer" from="Title" to="." method="_on_title_new_game_multiplayer"]
+[connection signal="new_game_singleplayer" from="Title" to="." method="_on_title_new_game_singleplayer"]
 [connection signal="view_credits" from="Title" to="." method="_on_title_view_credits"]
 [connection signal="view_help" from="Title" to="." method="_on_title_view_help"]

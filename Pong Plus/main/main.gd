@@ -11,6 +11,13 @@ func _ready() -> void:
 	$Title.set_version(version)
 	$Music.play()
 
+func _on_title_new_game_singleplayer() -> void:
+	enable_title(false)
+	game = game_scene.instantiate()
+	game.is_multiplayer = false
+	game.connect("close_game", _on_close_game)
+	add_child(game)
+
 func _on_title_new_game_multiplayer() -> void:
 	enable_title(false)
 	game = game_scene.instantiate()
