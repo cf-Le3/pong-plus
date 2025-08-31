@@ -35,8 +35,8 @@ func set_velocity_ai() -> void:
 		var nearest_ball: CharacterBody2D = null
 		var nearest_distance: float = INF
 		for b in balls:
-			if b.velocity.x > 0:
-				var distance: float = global_position.distance_squared_to(b.global_position)
+			if b.velocity.x > 0 && b.global_position.x < global_position.x:
+				var distance: float = global_position.x - b.global_position.x
 				if distance < nearest_distance:
 					nearest_ball = b
 					nearest_distance = distance
