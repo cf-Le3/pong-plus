@@ -5,6 +5,7 @@ const ARENA_W = 1024
 const ARENA_H = 512
 const SCORE_MAX = 5
 const BALLS_MAX = 5
+var is_multiplayer: bool = true
 var viewport_w
 var viewport_h
 var balls_spawned = 0
@@ -27,6 +28,8 @@ func _ready() -> void:
 	$Paddle1.init_x = $Paddle1.global_position.x
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-ARENA_W)/2-32, viewport_h/2)
 	$Paddle2.init_x = $Paddle2.global_position.x
+	if not is_multiplayer:
+		$Paddle2.is_player_controlled = false
 	$BallSpawn.global_position = Vector2(viewport_w/2, viewport_h/2)
 	$Sprite2D.global_position = Vector2(viewport_w/2, viewport_h/2)
 	$StartGameTimer.start()
