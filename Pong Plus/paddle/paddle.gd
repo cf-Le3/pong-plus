@@ -1,10 +1,8 @@
 extends CharacterBody2D
 @export var is_player_1: bool
+var init_x: float
 const SPEED_MAX = 300
 const ACCELERATION = 10
-
-func _ready() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	if (is_player_1 && Input.is_action_pressed("up_player1")) || (!is_player_1 && Input.is_action_pressed("up_player2")):
@@ -18,3 +16,7 @@ func _physics_process(delta: float) -> void:
 	# Slow down faster upon colliding with walls to prevent "sticking".
 	if collision && collision.get_collider().is_in_group("bounce_walls"):
 		velocity.y = lerp(velocity.y, 0.0, 0.2)
+		
+	if collision && collision.get_collider().is_in_group("balls"):
+		if global_position.x != init_x:
+			global_position.x = init_x
