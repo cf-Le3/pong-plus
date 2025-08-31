@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3k2sxndgmaue"]
 
-[ext_resource type="Script" path="res://ball/ball.gd" id="1_2ml3n"]
+[ext_resource type="Script" uid="uid://bmfgbkdcpnssv" path="res://ball/ball.gd" id="1_2ml3n"]
 [ext_resource type="Texture2D" uid="uid://0nufo7e0bxg4" path="res://ball/ball1.png" id="1_k2q1g"]
 [ext_resource type="AudioStream" uid="uid://55cdi3e3vxmv" path="res://ball/Hit damage 1.wav" id="3_wy28e"]
 [ext_resource type="AudioStream" uid="uid://cswb4vlmilq02" path="res://ball/Balloon Pop 1.wav" id="4_8h4je"]
