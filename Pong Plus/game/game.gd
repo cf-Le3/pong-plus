@@ -24,7 +24,9 @@ func _ready() -> void:
 	$WallGoalLeft.global_position = Vector2((viewport_w-ARENA_W)/2, viewport_h/2)
 	$WallGoalRight.global_position = Vector2(viewport_w-(viewport_w-ARENA_W)/2, viewport_h/2)
 	$Paddle1.global_position = Vector2((viewport_w-ARENA_W)/2+32, viewport_h/2)
+	$Paddle1.init_x = $Paddle1.global_position.x
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-ARENA_W)/2-32, viewport_h/2)
+	$Paddle2.init_x = $Paddle2.global_position.x
 	$BallSpawn.global_position = Vector2(viewport_w/2, viewport_h/2)
 	$Sprite2D.global_position = Vector2(viewport_w/2, viewport_h/2)
 	$StartGameTimer.start()
