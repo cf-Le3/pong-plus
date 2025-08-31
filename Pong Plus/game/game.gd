@@ -76,7 +76,7 @@ func spawn_ball() -> void:
 func do_stuff_after_scoring() -> void:
 	if score_player_1 >= SCORE_MAX || score_player_2 >= SCORE_MAX:
 		game_over()
-	elif get_tree().get_nodes_in_group("balls").size() < 1:
+	elif get_tree().get_nodes_in_group("balls").size() <= 1:
 		spawn_ball()
 
 func game_over() -> void:
