@@ -13,13 +13,19 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity*delta)
-	if collision: 
-		if collision.get_collider().is_in_group("bounce_walls"):
+	if collision:
+		var collider = collision.get_collider()
+		if collider.is_in_group("bounce_walls"):
 			velocity.y = -1*velocity.y
 			$WallHit.play()
-		elif collision.get_collider().is_in_group("paddles"):
+		elif collider.is_in_group("paddles"):
 			if can_collide_with_paddle:
 				velocity.x = -1*velocity.x
+				var collider_shape = collision.get_collider_shape()
+				if velocity.y > 0 && collider_shape == collider.get_node("TopCollisionShape2D"):
+					velocity.y = -1*velocity.y
+				elif velocity.y < 0 && collider_shape == collider.get_node("BottomCollisionShape2D"):
+					velocity.y = -1*velocity.y
 				velocity = (velocity + ACCELERATION.rotated(velocity.angle())).rotated(randi_range(-5, 5)*PI/180)
 				can_collide_with_paddle = false
 				$HitTimer.start()
