@@ -5,7 +5,7 @@ signal view_help
 signal view_credits
 
 func _ready() -> void:
-	$WaitTimer.start()
+	delay_input()
 
 func _on_wait_timer_timeout() -> void:
 	$SinglePlayerButton.grab_focus()
@@ -21,6 +21,9 @@ func _on_help_button_pressed() -> void:
 
 func _on_credits_button_pressed() -> void:
 	view_credits.emit()
-	
+
+func delay_input() -> void:
+	$WaitTimer.start()
+
 func set_version(version: String) -> void:
 	$VersionLabel.text = version
