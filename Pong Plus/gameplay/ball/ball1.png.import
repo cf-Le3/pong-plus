@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crwb3wrl36uso"
-path="res://.godot/imported/arena.png-e12c948c4298bec3fe7fe450780a39bc.ctex"
+uid="uid://0nufo7e0bxg4"
+path="res://.godot/imported/ball1.png-0e2ee8325c1f6e5a162d6d12595b8c9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/arena.png"
-dest_files=["res://.godot/imported/arena.png-e12c948c4298bec3fe7fe450780a39bc.ctex"]
+source_file="res://gameplay/ball/ball1.png"
+dest_files=["res://.godot/imported/ball1.png-0e2ee8325c1f6e5a162d6d12595b8c9a.ctex"]
 
 [params]
 

@@ -9,7 +9,7 @@ var is_multiplayer: bool = true
 var viewport_w
 var viewport_h
 var balls_spawned = 0
-var ball_textures = [load("res://ball/ball1.png"), load("res://ball/ball2.png"), load("res://ball/ball3.png")]
+var ball_textures = [load("res://gameplay/ball/ball1.png"), load("res://gameplay/ball/ball2.png"), load("res://gameplay/ball/ball3.png")]
 var initial_angles = [45*PI/180, 60*PI/180, 75*PI/180]
 var initial_angles_offsets = [0, PI/2, PI, 3*PI/2]
 var score_player_1 = 0

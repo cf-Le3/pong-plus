@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://df3d5dj12liu4"
-path="res://.godot/imported/Big Egg collect 1.wav-311e6acd01e61f6df14d8f15f0612606.sample"
+path="res://.godot/imported/Big Egg collect 1.wav-b0fbbb805ea550fc3a0e73bf6f97e6f1.sample"
 
 [deps]
 
-source_file="res://game/Big Egg collect 1.wav"
-dest_files=["res://.godot/imported/Big Egg collect 1.wav-311e6acd01e61f6df14d8f15f0612606.sample"]
+source_file="res://gameplay/game/Big Egg collect 1.wav"
+dest_files=["res://.godot/imported/Big Egg collect 1.wav-b0fbbb805ea550fc3a0e73bf6f97e6f1.sample"]
 
 [params]
 

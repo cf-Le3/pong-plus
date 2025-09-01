@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://5hrpxd7ci76s"]
 
-[ext_resource type="Script" uid="uid://bmfx82nah0hih" path="res://wall_goal/wall_goal.gd" id="1_ol77t"]
-[ext_resource type="AudioStream" uid="uid://cb7500kskujnx" path="res://wall_goal/Fruit collect 1.wav" id="2_h4heu"]
+[ext_resource type="Script" uid="uid://bmfx82nah0hih" path="res://gameplay/wall_goal/wall_goal.gd" id="1_ol77t"]
+[ext_resource type="AudioStream" uid="uid://cb7500kskujnx" path="res://gameplay/wall_goal/Fruit collect 1.wav" id="2_h4heu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_087jk"]
 size = Vector2(4, 512)
