@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://t6tpeuhov8xb"
-path="res://.godot/imported/Jost-800-Heavy.ttf-7e20f08f037967b98cbdb4ce37626cd6.fontdata"
+path="res://.godot/imported/Jost-800-Heavy.ttf-945f10b9c624c178ec68306876938361.fontdata"
 
 [deps]
 
-source_file="res://fonts/Jost-800-Heavy.ttf"
-dest_files=["res://.godot/imported/Jost-800-Heavy.ttf-7e20f08f037967b98cbdb4ce37626cd6.fontdata"]
+source_file="res://general/fonts/Jost-800-Heavy.ttf"
+dest_files=["res://.godot/imported/Jost-800-Heavy.ttf-945f10b9c624c178ec68306876938361.fontdata"]
 
 [params]
 
