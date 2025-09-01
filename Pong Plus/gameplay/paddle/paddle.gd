@@ -26,7 +26,7 @@ func set_velocity_player() -> void:
 	if (is_player_1 && Input.is_action_pressed("up_player1")) || (!is_player_1 && Input.is_action_pressed("up_player2")):
 		move_up()
 	elif (is_player_1 && Input.is_action_pressed("down_player1")) || (!is_player_1 && Input.is_action_pressed("down_player2")):
-		move_up()
+		move_down()
 	else:
 		slow_to_halt()
 		
