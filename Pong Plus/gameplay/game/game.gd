@@ -16,7 +16,6 @@ const ARENA_H = 512
 const SCORE_MAX = 5
 const BALLS_MAX = 5
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	viewport_w = get_viewport_rect().size.x
 	viewport_h = get_viewport_rect().size.y

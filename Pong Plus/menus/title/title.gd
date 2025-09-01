@@ -4,7 +4,6 @@ signal new_game_multiplayer
 signal view_help
 signal view_credits
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	delay_input()
 
