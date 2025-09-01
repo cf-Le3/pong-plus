@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://twat68vd8dnc"]
 
-[ext_resource type="Script" uid="uid://bdqu7by2vy1u6" path="res://help/help.gd" id="1_a4low"]
-[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://fonts/Jost-800-Heavy.ttf" id="1_jkucu"]
-[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://fonts/Jost-500-Medium.ttf" id="2_vkxn4"]
+[ext_resource type="Script" uid="uid://bdqu7by2vy1u6" path="res://menus/help/help.gd" id="1_a4low"]
+[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://general/fonts/Jost-800-Heavy.ttf" id="1_jkucu"]
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="2_vkxn4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_507r0"]
 bg_color = Color(0.192157, 0.521569, 0.560784, 1)
