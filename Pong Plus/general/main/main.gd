@@ -12,15 +12,15 @@ func _ready() -> void:
 	$Music.play()
 
 func _on_title_new_game_singleplayer() -> void:
-	enable_title(false)
-	game = game_scene.instantiate()
-	game.is_multiplayer = false
-	game.connect("close_game", _on_close_game)
-	add_child(game)
+	create_new_game_session(false)
 
 func _on_title_new_game_multiplayer() -> void:
+	create_new_game_session(true)
+
+func create_new_game_session(is_multiplayer: bool) -> void:
 	enable_title(false)
 	game = game_scene.instantiate()
+	game.is_multiplayer = is_multiplayer
 	game.connect("close_game", _on_close_game)
 	add_child(game)
 	
