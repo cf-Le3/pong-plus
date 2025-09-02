@@ -16,4 +16,8 @@ shape = SubResource("RectangleShape2D_087jk")
 [node name="GoalSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_h4heu")
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

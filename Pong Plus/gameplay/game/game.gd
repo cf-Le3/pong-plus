@@ -46,14 +46,16 @@ func start_game() -> void:
 	$HUD.show_score()
 	spawn_ball()
 
-func _on_wall_goal_right_ball_escaped() -> void:
-	score_player_1 += 1
-	$HUD.update_score(score_player_1, true)
+func _on_wall_goal_right_ball_escaped(can_score: bool) -> void:
+	if can_score:
+		score_player_1 += 1
+		$HUD.update_score(score_player_1, true)
 	do_stuff_after_scoring()
 
-func _on_wall_goal_left_ball_escaped() -> void:
-	score_player_2 += 1
-	$HUD.update_score(score_player_2, false)
+func _on_wall_goal_left_ball_escaped(can_score: bool) -> void:
+	if can_score:
+		score_player_2 += 1
+		$HUD.update_score(score_player_2, false)
 	do_stuff_after_scoring()
 
 func do_stuff_after_scoring() -> void:
