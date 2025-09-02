@@ -17,7 +17,6 @@ shape = SubResource("RectangleShape2D_087jk")
 stream = ExtResource("2_h4heu")
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
