@@ -1,9 +1,9 @@
 extends CharacterBody2D
 @export var is_player_1: bool
-var is_player_controlled: bool = true
+var is_player_controlled := true
 var init_x: float
-const SPEED_MAX = 300
-const ACCELERATION = 10
+const SPEED_MAX := 300.0
+const ACCELERATION := 10.0
 
 func _physics_process(delta: float) -> void:
 	if is_player_controlled:
@@ -11,7 +11,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		set_velocity_ai()
 	
-	var collision = move_and_collide(velocity*delta)
+	var collision := move_and_collide(velocity*delta)
 	
 	# Slow down faster upon colliding with walls to prevent "sticking".
 	if collision && collision.get_collider().is_in_group("bounce_walls"):
@@ -31,10 +31,10 @@ func set_velocity_player() -> void:
 		slow_to_halt()
 		
 func set_velocity_ai() -> void:
-	var balls = get_tree().get_nodes_in_group("balls")
+	var balls := get_tree().get_nodes_in_group("balls")
 	
 	if balls.size() > 0:
-		var nearest_ball: CharacterBody2D = null
+		var nearest_ball: Ball = null
 		var nearest_distance: float = INF
 		
 		for b in balls:

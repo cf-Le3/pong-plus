@@ -3,9 +3,9 @@ extends CharacterBody2D
 var init_pos: Vector2
 var init_dir: float
 var texture: Texture
-var can_collide_with_paddle = true
-const INIT_SPEED = 200.0
-const ACCELERATION = Vector2(10.0, 10.0)
+var can_collide_with_paddle := true
+const INIT_SPEED := 200.0
+const ACCELERATION := Vector2(10.0, 10.0)
 
 func _ready() -> void:
 	global_position = init_pos
@@ -13,10 +13,10 @@ func _ready() -> void:
 	$Sprite2D.texture = texture
 	
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(velocity*delta)
+	var collision := move_and_collide(velocity*delta)
 	
 	if collision:
-		var collider = collision.get_collider()
+		var collider := collision.get_collider()
 		
 		if collider.is_in_group("bounce_walls"):
 			velocity.y = -1*velocity.y
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		elif collider.is_in_group("paddles"):
 			if can_collide_with_paddle:
 				velocity.x = -1*velocity.x
-				var collider_shape = collision.get_collider_shape()
+				var collider_shape := collision.get_collider_shape()
 				
 				if velocity.y > 0 && collider_shape == collider.get_node("TopCollisionShape2D"):
 					velocity.y = -1*velocity.y

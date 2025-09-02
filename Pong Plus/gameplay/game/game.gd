@@ -2,20 +2,20 @@ class_name Game
 extends Node2D
 signal close_game
 @export var ball_scene: PackedScene
-var is_multiplayer: bool = true
-var viewport_w
-var viewport_h
-var balls_spawned = 0
-var ball_textures = [load("res://gameplay/ball/ball1.png"), load("res://gameplay/ball/ball2.png"), load("res://gameplay/ball/ball3.png")]
-var initial_angles = [45*PI/180, 60*PI/180, 75*PI/180]
-var initial_angles_offsets = [0, PI/2, PI, 3*PI/2]
-var score_player_1 = 0
-var score_player_2 = 0
-var close_game_enabled = false
-const ARENA_W = 1024
-const ARENA_H = 512
-const SCORE_MAX = 5
-const BALLS_MAX = 5
+var is_multiplayer := true
+var viewport_w: float
+var viewport_h: float
+var balls_spawned := 0
+var ball_textures := [load("res://gameplay/ball/ball1.png"), load("res://gameplay/ball/ball2.png"), load("res://gameplay/ball/ball3.png")]
+var initial_angles := [45*PI/180, 60*PI/180, 75*PI/180]
+var initial_angles_offsets := [0, PI/2, PI, 3*PI/2]
+var score_player_1 := 0
+var score_player_2 := 0
+var close_game_enabled := false
+const ARENA_W := 1024
+const ARENA_H := 512
+const SCORE_MAX := 5
+const BALLS_MAX := 5
 
 func _ready() -> void:
 	viewport_w = get_viewport_rect().size.x
