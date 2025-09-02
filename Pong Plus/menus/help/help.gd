@@ -1,3 +1,4 @@
+class_name Help
 extends CanvasLayer
 signal close_help
 

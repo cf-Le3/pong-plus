@@ -2,10 +2,10 @@ extends Node
 @export var game_scene: PackedScene
 @export var help_scene: PackedScene
 @export var credits_scene: PackedScene
-var game
-var help
-var credits
-var version = "v1.0.0"
+var game: Game
+var help: Help
+var credits: Credits
+var version := "v1.0.0"
 
 func _ready() -> void:
 	$Title.set_version(version)

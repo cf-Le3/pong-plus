@@ -1,3 +1,4 @@
+class_name Game
 extends Node2D
 signal close_game
 @export var ball_scene: PackedScene
@@ -63,7 +64,7 @@ func do_stuff_after_scoring() -> void:
 
 func spawn_ball() -> void:
 	if get_tree().get_nodes_in_group("balls").size() < BALLS_MAX:
-		var ball = ball_scene.instantiate()
+		var ball: Ball = ball_scene.instantiate()
 		ball.init_pos = $BallSpawn.global_position
 		ball.init_dir = initial_angles[balls_spawned%3] + initial_angles_offsets.pick_random()
 		ball.texture = ball_textures[balls_spawned%3]

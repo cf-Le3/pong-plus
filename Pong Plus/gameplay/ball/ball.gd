@@ -1,3 +1,4 @@
+class_name Ball
 extends CharacterBody2D
 var init_pos: Vector2
 var init_dir: float
