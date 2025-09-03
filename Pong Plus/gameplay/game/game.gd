@@ -1,11 +1,8 @@
 class_name Game
 extends Node2D
 signal close_game
-@export var ball_scene: PackedScene
-var balls_spawned := 0
-var ball_textures := [load("res://gameplay/ball/ball1.png"), load("res://gameplay/ball/ball2.png"), load("res://gameplay/ball/ball3.png")]
-var initial_angles := [45*PI/180, 60*PI/180, 75*PI/180]
-var initial_angles_offsets := [0, PI/2, PI, 3*PI/2]
+@export var _ball_spawner_scene: PackedScene
+
 # Configuration values
 var config_is_multiplayer := true
 var config_resize_enabled := true
@@ -14,6 +11,7 @@ var config_balls_max := 5
 # var config_cpu_difficulty = null
 
 # Session-specific
+var _ball_spawner: BallSpawner
 var score_player_1 := 0
 var score_player_2 := 0
 var close_game_enabled := false
@@ -39,18 +37,26 @@ func _ready() -> void:
 	if not config_is_multiplayer:
 		$Paddle2.is_player_controlled = false
 	
-	$BallSpawn.global_position = Vector2(viewport_w/2, viewport_h/2)
-	$Sprite2D.global_position = Vector2(viewport_w/2, viewport_h/2)
+	_ball_spawner = _ball_spawner_scene.instantiate()
+	_ball_spawner.enable_magic_balls = config_resize_enabled
+	_ball_spawner.connect("spawned", _on_ball_spawner_spawned)
+	_ball_spawner.global_position = Vector2(viewport_w/2, viewport_h/2)
+	add_child(_ball_spawner)
 	
 	$StartGameTimer.start()
 	$GameStartSound.play()
 
 func _on_start_game_timer_timeout() -> void:
-	start_game()
-
-func start_game() -> void:
 	$HUD.show_score()
-	spawn_ball()
+	_ball_spawner.spawn_ball()
+
+func _on_ball_spawner_spawned(ball: Ball) -> void:
+	add_child(ball)
+	$BallSpawnTimer.start()
+
+func _on_ball_spawn_timer_timeout() -> void:
+	if get_tree().get_nodes_in_group("balls").size() < config_balls_max:
+		_ball_spawner.spawn_ball()
 
 func _on_wall_goal_right_ball_escaped(can_score: bool) -> void:
 	if can_score:
@@ -68,23 +74,10 @@ func do_stuff_after_scoring() -> void:
 	if score_player_1 >= config_score_max || score_player_2 >= config_score_max:
 		game_over()
 	elif get_tree().get_nodes_in_group("balls").size() <= 1:
-		spawn_ball()
-
-func spawn_ball() -> void:
-	if get_tree().get_nodes_in_group("balls").size() < BALLS_MAX:
-		var ball: Ball = ball_scene.instantiate()
-		ball.init_pos = $BallSpawn.global_position
-		ball.init_dir = initial_angles[balls_spawned%3] + initial_angles_offsets.pick_random()
-		ball.texture = ball_textures[balls_spawned%3]
-		add_child(ball)
-		balls_spawned += 1
-		$BallTimer.start()
-
-func _on_ball_timer_timeout() -> void:
-	spawn_ball()
+		_ball_spawner.spawn_ball()
 
 func game_over() -> void:
-	$BallTimer.stop()
+	$BallSpawnTimer.stop()
 	get_tree().call_group("paddles", "queue_free")
 	get_tree().call_group("balls", "queue_free")
 	$HUD.show_game_over(score_player_1, score_player_2)
