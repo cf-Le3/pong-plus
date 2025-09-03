@@ -1,5 +1,11 @@
 class_name Ball
 extends CharacterBody2D
+enum Effect {
+	NORMAL,
+	GROW,
+	SHRINK
+}
+var effect: Effect
 var init_pos: Vector2
 var init_dir: float
 var texture: Texture
