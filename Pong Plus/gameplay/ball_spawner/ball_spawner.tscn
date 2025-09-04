@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuuftl8hlxvux"]
+
+[ext_resource type="Script" uid="uid://cr4bfqwtxx0j0" path="res://gameplay/ball_spawner/ball_spawner.gd" id="1_baj2o"]
+[ext_resource type="PackedScene" uid="uid://d3k2sxndgmaue" path="res://gameplay/ball/ball.tscn" id="2_52s2a"]
+
+[node name="BallSpawner" type="Node2D"]
+script = ExtResource("1_baj2o")
+_ball_scene = ExtResource("2_52s2a")
+
+[node name="BallSpawnPoint" type="Marker2D" parent="."]

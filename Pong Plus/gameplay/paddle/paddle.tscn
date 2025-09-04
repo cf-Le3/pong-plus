@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj3pwg27ip3fb"]
+[gd_scene load_steps=7 format=3 uid="uid://cj3pwg27ip3fb"]
 
 [ext_resource type="Script" uid="uid://dwrokhrxxaubo" path="res://gameplay/paddle/paddle.gd" id="1_s1ttm"]
 [ext_resource type="Texture2D" uid="uid://djfvs8uih53ex" path="res://gameplay/paddle/paddle.png" id="2_st0or"]
+[ext_resource type="AudioStream" uid="uid://cr1r7lhhuoso5" path="res://gameplay/paddle/Cancel 1.wav" id="3_ahuv0"]
+[ext_resource type="AudioStream" uid="uid://bl7vcft6ggam5" path="res://gameplay/paddle/Confirm 1.wav" id="4_y2mxq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jy6pc"]
 radius = 16.0
-height = 112.0
+height = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2emja"]
 radius = 16.0
@@ -29,3 +31,11 @@ shape = SubResource("CircleShape2D_2emja")
 [node name="BottomCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 50)
 shape = SubResource("CircleShape2D_2emja")
+
+[node name="GrowSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ahuv0")
+volume_db = -5.0
+
+[node name="ShrinkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_y2mxq")
+volume_db = -5.0
