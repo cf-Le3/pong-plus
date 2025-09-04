@@ -10,12 +10,12 @@ var init_pos: Vector2
 var init_dir: float
 var texture: Texture
 var can_collide_with_paddle := true
-const INIT_SPEED := 200.0
-const ACCELERATION := Vector2(10.0, 10.0)
+const _INIT_SPEED := 200.0
+const _ACCELERATION := Vector2(10.0, 10.0)
 
 func _ready() -> void:
 	global_position = init_pos
-	velocity = Vector2(INIT_SPEED, 0).rotated(init_dir)
+	velocity = Vector2(_INIT_SPEED, 0).rotated(init_dir)
 	$Sprite2D.texture = texture
 	
 func _physics_process(delta: float) -> void:
@@ -41,11 +41,11 @@ func _physics_process(delta: float) -> void:
 				
 				# Align acceleration vector with ball's velocity before adding to ball's velocity.
 				# Randomly rotate new velocity by -5 to 5 degrees.
-				velocity = (velocity + ACCELERATION.rotated(velocity.angle())).rotated(randi_range(-5, 5)*PI/180)
-				disable_paddle_collision()
+				velocity = (velocity + _ACCELERATION.rotated(velocity.angle())).rotated(randi_range(-5, 5)*PI/180)
+				_disable_paddle_collision()
 				$PaddleHit.play()
 
-func disable_paddle_collision():
+func _disable_paddle_collision():
 	can_collide_with_paddle = false
 	$HitTimer.start()
 

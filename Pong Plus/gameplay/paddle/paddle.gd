@@ -2,8 +2,8 @@ extends CharacterBody2D
 @export var is_player_1: bool
 var is_player_controlled := true
 var init_x: float
-const SPEED_MAX := 300.0
-const ACCELERATION := 10.0
+var _terminal_speed := 300.0
+const _ACCELERATION := 10.0
 
 func _physics_process(delta: float) -> void:
 	if is_player_controlled:
