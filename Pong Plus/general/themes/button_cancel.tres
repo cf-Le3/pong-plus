@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://3fnqa7mo40oi"]
+
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="1_rs7qm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs7qm"]
+content_margin_left = 32.0
+bg_color = Color(0.858824, 0.329412, 0.52549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhnvk"]
+content_margin_left = 32.0
+bg_color = Color(0.859095, 0.329469, 0.525625, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eo7t3"]
+content_margin_left = 32.0
+bg_color = Color(0.858824, 0.329412, 0.52549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnu8d"]
+content_margin_left = 16.0
+bg_color = Color(0.347618, 0.0937091, 0.191388, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2xpq"]
+content_margin_left = 16.0
+bg_color = Color(0.858824, 0.329412, 0.52549, 1)
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_rs7qm")
+Button/styles/focus = SubResource("StyleBoxFlat_rs7qm")
+Button/styles/hover = SubResource("StyleBoxFlat_yhnvk")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_eo7t3")
+Button/styles/normal = SubResource("StyleBoxFlat_tnu8d")
+Button/styles/pressed = SubResource("StyleBoxFlat_c2xpq")
