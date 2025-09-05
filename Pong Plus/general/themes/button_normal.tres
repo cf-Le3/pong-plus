@@ -1,6 +1,10 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b0d8oqpo1fhvc"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b0d8oqpo1fhvc"]
 
 [ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="1_c22pl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c22pl"]
+content_margin_left = 16.0
+bg_color = Color(0.205117, 0.205117, 0.205117, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgnv2"]
 content_margin_left = 32.0
@@ -25,6 +29,7 @@ bg_color = Color(0.192157, 0.521569, 0.560784, 1)
 [resource]
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_c22pl")
+Button/styles/disabled = SubResource("StyleBoxFlat_c22pl")
 Button/styles/focus = SubResource("StyleBoxFlat_rgnv2")
 Button/styles/hover = SubResource("StyleBoxFlat_rv26h")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_hcn4g")
