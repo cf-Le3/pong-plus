@@ -5,7 +5,7 @@ extends Node
 var game: Game
 var help: Help
 var credits: Credits
-var version := "v1.0.0"
+var version := "v1.1.0"
 
 func _ready() -> void:
 	$Title.set_version(version)
@@ -51,5 +51,3 @@ func _on_close_credits() -> void:
 func enable_title(status: bool) -> void:
 	$Title.visible = status
 	$Title.set_process_input(status)
-	if status == true:
-		$Title.delay_input()

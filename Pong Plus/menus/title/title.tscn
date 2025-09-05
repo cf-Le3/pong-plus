@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdol5wggxteul"]
+[gd_scene load_steps=13 format=3 uid="uid://bdol5wggxteul"]
 
-[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://general/fonts/Jost-800-Heavy.ttf" id="1_7u21k"]
 [ext_resource type="Script" uid="uid://b21cslq6fnt4f" path="res://menus/title/title.gd" id="1_vnel8"]
 [ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="2_avlu2"]
 [ext_resource type="Texture2D" uid="uid://ciofokgwxst8x" path="res://menus/title/title.png" id="4_7edc8"]
@@ -12,21 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bq4rthu7cphct" path="res://menus/title/logo_anim/frame_4.png" id="8_jeybk"]
 [ext_resource type="Texture2D" uid="uid://di045xhk8xhov" path="res://menus/title/logo_anim/frame_5.png" id="9_nx5hg"]
 [ext_resource type="Texture2D" uid="uid://i0aghpjcl2no" path="res://menus/title/logo_anim/frame_6.png" id="10_0l4sv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhcvy"]
-bg_color = Color(0.1904, 0.52304, 0.56, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tujvl"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbddu"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khm8l"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vsni"]
-bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_4mel8"]
 frames = 6
@@ -45,105 +29,6 @@ frame_5/duration = 1.0
 
 [node name="Title" type="CanvasLayer"]
 script = ExtResource("1_vnel8")
-
-[node name="TitleLabel" type="Label" parent="."]
-visible = false
-offset_right = 728.0
-offset_bottom = 278.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_7u21k")
-theme_override_font_sizes/font_size = 192
-text = "PONG+"
-horizontal_alignment = 1
-
-[node name="TaglineLabel" type="Label" parent="."]
-visible = false
-offset_top = 104.0
-offset_right = 728.0
-offset_bottom = 174.0
-theme_override_fonts/font = ExtResource("2_avlu2")
-theme_override_font_sizes/font_size = 48
-text = "Same Pong. More balls."
-horizontal_alignment = 1
-
-[node name="SinglePlayerButton" type="Button" parent="."]
-visible = false
-offset_right = 728.0
-offset_bottom = 278.0
-focus_neighbor_top = NodePath("../CreditsButton")
-focus_neighbor_bottom = NodePath("../MultiPlayerButton")
-theme_override_fonts/font = ExtResource("2_avlu2")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_nhcvy")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tujvl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nbddu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_khm8l")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7vsni")
-text = "1 PLAYER"
-icon_alignment = 1
-
-[node name="MultiPlayerButton" type="Button" parent="."]
-visible = false
-offset_right = 728.0
-offset_bottom = 278.0
-focus_neighbor_top = NodePath("../SinglePlayerButton")
-focus_neighbor_bottom = NodePath("../HelpButton")
-theme_override_fonts/font = ExtResource("2_avlu2")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_nhcvy")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tujvl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nbddu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_khm8l")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7vsni")
-text = "2 PLAYER"
-icon_alignment = 1
-
-[node name="HelpButton" type="Button" parent="."]
-visible = false
-offset_right = 728.0
-offset_bottom = 278.0
-focus_neighbor_top = NodePath("../MultiPlayerButton")
-focus_neighbor_bottom = NodePath("../CreditsButton")
-theme_override_fonts/font = ExtResource("2_avlu2")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_nhcvy")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tujvl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nbddu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_khm8l")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7vsni")
-text = "HOW TO PLAY"
-icon_alignment = 1
-
-[node name="CreditsButton" type="Button" parent="."]
-visible = false
-offset_right = 728.0
-offset_bottom = 278.0
-focus_neighbor_top = NodePath("../HelpButton")
-focus_neighbor_bottom = NodePath("../SinglePlayerButton")
-theme_override_fonts/font = ExtResource("2_avlu2")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_nhcvy")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tujvl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nbddu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_khm8l")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7vsni")
-text = "CREDITS
-"
-icon_alignment = 1
-
-[node name="VersionLabel" type="Label" parent="."]
-visible = false
-offset_left = 100.0
-offset_top = 390.0
-offset_right = 628.0
-offset_bottom = 437.0
-theme_override_fonts/font = ExtResource("2_avlu2")
-theme_override_font_sizes/font_size = 32
-text = "vX.X"
-
-[node name="WaitTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -182,82 +67,111 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="VBoxTitleButtons" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-visible = false
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
 [node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
 theme = ExtResource("5_nsibk")
 text = "PLAY"
 alignment = 0
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../HelpButton")
 theme = ExtResource("5_nsibk")
+disabled = true
 text = "SETTINGS"
 alignment = 0
 
 [node name="HelpButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
 theme = ExtResource("5_nsibk")
 text = "HELP"
 alignment = 0
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../HelpButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
 theme = ExtResource("5_nsibk")
 text = "CREDITS"
 alignment = 0
 
 [node name="VBoxPlayButtons" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="DuelCpuButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+[node name="VsCpuButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../VsPlayerButton")
 theme = ExtResource("5_nsibk")
-text = "DUEL CPU"
+text = "VS CPU"
 alignment = 0
 
-[node name="DuelPlayerButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+[node name="VsPlayerButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../VsCpuButton")
+focus_neighbor_bottom = NodePath("../EndlessButton")
 theme = ExtResource("5_nsibk")
-text = "DUEL PLAYER"
+text = "VS PLAYER"
 alignment = 0
 
 [node name="EndlessButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../VsPlayerButton")
+focus_neighbor_bottom = NodePath("../BackButton")
 theme = ExtResource("5_nsibk")
-text = "ENDLESS"
+disabled = true
+text = "???"
 alignment = 0
 
 [node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../EndlessButton")
+focus_neighbor_bottom = NodePath("../VsCpuButton")
 theme = ExtResource("7_nsibk")
 text = "BACK
 "
 alignment = 0
 
 [node name="VersionLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_fonts/font = ExtResource("2_avlu2")
@@ -265,8 +179,11 @@ theme_override_font_sizes/font_size = 24
 text = "vX.X.X"
 horizontal_alignment = 2
 
-[connection signal="pressed" from="SinglePlayerButton" to="." method="_on_single_player_button_pressed"]
-[connection signal="pressed" from="MultiPlayerButton" to="." method="_on_multi_player_button_pressed"]
-[connection signal="pressed" from="HelpButton" to="." method="_on_help_button_pressed"]
-[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/VsCpuButton" to="." method="_on_vs_cpu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/VsPlayerButton" to="." method="_on_vs_player_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/EndlessButton" to="." method="_on_endless_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/BackButton" to="." method="_on_back_button_pressed"]
