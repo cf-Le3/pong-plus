@@ -1,8 +1,10 @@
 extends Node
 @export var game_scene: PackedScene
+@export var volume_settings_scene: PackedScene
 @export var help_scene: PackedScene
 @export var credits_scene: PackedScene
 var game: Game
+var volume_settings: VolumeSettings
 var help: Help
 var credits: Credits
 var version := "v1.1.0"
@@ -27,7 +29,17 @@ func create_new_game_session(is_multiplayer: bool) -> void:
 func _on_close_game() -> void:
 	game.queue_free()
 	enable_title(true)
-	
+
+func _on_title_open_volume_settings() -> void:
+	enable_title(false)
+	volume_settings = volume_settings_scene.instantiate()
+	volume_settings.connect("close_volume_settings", _on_close_volume_settings)
+	add_child(volume_settings)
+
+func _on_close_volume_settings() -> void:
+	volume_settings.queue_free()
+	enable_title(true)	
+
 func _on_title_view_help() -> void:
 	enable_title(false)
 	help = help_scene.instantiate()

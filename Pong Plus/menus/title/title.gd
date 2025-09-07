@@ -1,6 +1,9 @@
 extends CanvasLayer
 signal new_game_singleplayer
 signal new_game_multiplayer
+signal open_volume_settings
+signal open_game_settings
+signal view_license
 signal view_help
 signal view_credits
 enum ActiveMenu {
@@ -50,18 +53,6 @@ func _on_play_button_pressed() -> void:
 func _on_play_back_button_pressed() -> void:
 	_switch_menu(ActiveMenu.TITLE)
 
-func _on_settings_button_pressed() -> void:
-	_switch_menu(ActiveMenu.SETTINGS)
-
-func _on_settings_back_button_pressed() -> void:
-	_switch_menu(ActiveMenu.TITLE)
-
-func _on_help_button_pressed() -> void:
-	view_help.emit()
-
-func _on_credits_button_pressed() -> void:
-	view_credits.emit()
-
 func _on_vs_cpu_button_pressed() -> void:
 	new_game_singleplayer.emit()
 
@@ -70,6 +61,27 @@ func _on_vs_player_button_pressed() -> void:
 
 func _on_endless_button_pressed() -> void:
 	pass # Replace with function body.
+
+func _on_settings_button_pressed() -> void:
+	_switch_menu(ActiveMenu.SETTINGS)
+
+func _on_settings_back_button_pressed() -> void:
+	_switch_menu(ActiveMenu.TITLE)
+
+func _on_volume_settings_button_pressed() -> void:
+	open_volume_settings.emit()
+
+func _on_game_settings_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_license_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_help_button_pressed() -> void:
+	view_help.emit()
+
+func _on_credits_button_pressed() -> void:
+	view_credits.emit()
 
 func set_version(version: String) -> void:
 	$%VersionLabel.text = version

@@ -237,4 +237,7 @@ horizontal_alignment = 2
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/VsPlayerButton" to="." method="_on_vs_player_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/EndlessButton" to="." method="_on_endless_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/PlayBackButton" to="." method="_on_play_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons/VolumeSettingsButton" to="." method="_on_volume_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons/GameSettingsButton" to="." method="_on_game_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons/LicenseButton" to="." method="_on_license_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons/SettingsBackButton" to="." method="_on_settings_back_button_pressed"]
