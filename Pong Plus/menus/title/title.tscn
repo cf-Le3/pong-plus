@@ -174,12 +174,15 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 8
 
 [node name="VolumeSettingsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../SettingsBackButton")
+focus_neighbor_bottom = NodePath("../GameSettingsButton")
 theme = ExtResource("5_nsibk")
 text = "VOLUME"
 alignment = 0
@@ -189,14 +192,18 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../VolumeSettingsButton")
+focus_neighbor_bottom = NodePath("../LicenseButton")
 theme = ExtResource("5_nsibk")
 text = "GAME"
 alignment = 0
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons"]
+[node name="LicenseButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../GameSettingsButton")
+focus_neighbor_bottom = NodePath("../SettingsBackButton")
 theme = ExtResource("5_nsibk")
 disabled = true
 text = "LICENSE"
@@ -207,6 +214,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../LicenseButton")
+focus_neighbor_bottom = NodePath("../VolumeSettingsButton")
 theme = ExtResource("7_nsibk")
 text = "BACK"
 alignment = 0
