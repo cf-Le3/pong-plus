@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://uviesa8wb43n"]
+[gd_scene load_steps=10 format=3 uid="uid://uviesa8wb43n"]
 
 [ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://general/themes/settings_title_label.tres" id="1_jykqg"]
 [ext_resource type="Theme" uid="uid://cma8plh8jdkxh" path="res://general/themes/settings_control_label.tres" id="2_50vup"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d2r0yshvqy6hc" path="res://menus/arrow_button_l_focus.png" id="5_qt7f2"]
 [ext_resource type="Texture2D" uid="uid://d13a1hucll5b3" path="res://menus/arrow_button_r.png" id="6_nuhl7"]
 [ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/arrow_button_r_focus.png" id="7_e2fab"]
+[ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://general/themes/button_cancel_general.tres" id="8_nuhl7"]
+[ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://general/themes/button_normal_general.tres" id="9_e2fab"]
 
 [node name="Settings" type="CanvasLayer"]
 
@@ -21,9 +23,8 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 24
+theme_override_constants/separation = 32
 
 [node name="VBoxVolumeSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -205,3 +206,21 @@ layout_mode = 2
 theme = ExtResource("2_50vup")
 text = "CPU DIFFICULTY"
 horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="DefaultButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("8_nuhl7")
+text = "DEFAULT"
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("9_e2fab")
+text = "CONFIRM
+"
