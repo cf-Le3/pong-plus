@@ -33,7 +33,6 @@ color = Color(0.082485, 0.231064, 0.299641, 1)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamOggVorbis_4jibc")
-volume_db = -15.0
 
 [connection signal="new_game_multiplayer" from="Title" to="." method="_on_title_new_game_multiplayer"]
 [connection signal="new_game_singleplayer" from="Title" to="." method="_on_title_new_game_singleplayer"]
