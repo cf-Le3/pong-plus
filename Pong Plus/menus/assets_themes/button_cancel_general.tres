@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://dvkknqaldhwsk"]
 
-[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="1_3h7mt"]
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="1_eaw60"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs7qm"]
 bg_color = Color(0.858824, 0.329412, 0.52549, 1)
@@ -39,7 +39,7 @@ corner_radius_bottom_left = 32
 
 [resource]
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("1_3h7mt")
+Button/fonts/font = ExtResource("1_eaw60")
 Button/styles/focus = SubResource("StyleBoxFlat_rs7qm")
 Button/styles/hover = SubResource("StyleBoxFlat_yhnvk")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_eo7t3")
