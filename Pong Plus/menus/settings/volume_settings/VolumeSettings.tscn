@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvopnty8hgf7d"]
+
+[ext_resource type="Script" uid="uid://dwd0661k0uqjh" path="res://menus/settings/volume_settings/volume_settings.gd" id="1_icfaq"]
+[ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="1_j7flm"]
+[ext_resource type="Theme" uid="uid://cma8plh8jdkxh" path="res://menus/assets_themes/settings_control_label.tres" id="2_bo3du"]
+[ext_resource type="PackedScene" uid="uid://7vjl8gc06x5y" path="res://menus/settings/volume_slider/volume_slider.tscn" id="3_op1sk"]
+[ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="4_op1sk"]
+[ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="5_icfaq"]
+[ext_resource type="AudioStream" uid="uid://cb7500kskujnx" path="res://gameplay/wall_goal/Fruit collect 1.wav" id="7_bf36o"]
+
+[node name="VolumeSettings" type="CanvasLayer"]
+script = ExtResource("1_icfaq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 280
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 280
+theme_override_constants/margin_bottom = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="VBoxVolumeSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_j7flm")
+text = "VOLUME"
+horizontal_alignment = 1
+
+[node name="MasterControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MasterControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_bo3du")
+text = "MASTER"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MasterControl"]
+layout_mode = 2
+
+[node name="MasterVolumeSlider" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MasterControl/CenterContainer" instance=ExtResource("3_op1sk")]
+unique_name_in_owner = true
+layout_mode = 2
+_bus_name = "Master"
+
+[node name="MusicControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MusicControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_bo3du")
+text = "MUSIC"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MusicControl"]
+layout_mode = 2
+
+[node name="MusicVolumeSlider" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MusicControl/CenterContainer" instance=ExtResource("3_op1sk")]
+unique_name_in_owner = true
+layout_mode = 2
+value = 0.5
+_bus_name = "Music"
+
+[node name="SFXControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/SFXControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_bo3du")
+text = "SFX"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/SFXControl"]
+layout_mode = 2
+
+[node name="SFXVolumeSlider" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/SFXControl/CenterContainer" instance=ExtResource("3_op1sk")]
+unique_name_in_owner = true
+layout_mode = 2
+_bus_name = "SFX"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="DefaultButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("4_op1sk")
+text = "DEFAULT"
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = ExtResource("5_icfaq")
+text = "CONFIRM
+"
+
+[node name="SFXTestSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_bf36o")
+
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/VBoxVolumeSettings/SFXControl/CenterContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_drag_ended"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
