@@ -46,9 +46,11 @@ one_shot = true
 [node name="GameStartSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_pndjt")
 pitch_scale = 0.5
+bus = &"SFX"
 
 [node name="GameOverSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_p38ft")
+bus = &"SFX"
 
 [connection signal="ball_escaped" from="WallGoalLeft" to="." method="_on_wall_goal_left_ball_escaped"]
 [connection signal="ball_escaped" from="WallGoalRight" to="." method="_on_wall_goal_right_ball_escaped"]
