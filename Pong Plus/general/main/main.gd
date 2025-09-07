@@ -3,6 +3,7 @@ extends Node
 @export var volume_settings_scene: PackedScene
 @export var help_scene: PackedScene
 @export var credits_scene: PackedScene
+var _game_config: GameConfig
 var game: Game
 var volume_settings: VolumeSettings
 var help: Help
@@ -10,6 +11,7 @@ var credits: Credits
 var version := "v1.1.0"
 
 func _ready() -> void:
+	_game_config = GameConfig.new()
 	$Title.set_version(version)
 	$Music.play()
 
