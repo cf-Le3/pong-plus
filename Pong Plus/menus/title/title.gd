@@ -22,7 +22,7 @@ func _input(event: InputEvent) -> void:
 			if _active_menu == ActiveMenu.TITLE:
 				$%CreditsButton.grab_focus()
 			elif _active_menu == ActiveMenu.PLAY:
-				$%BackButton.grab_focus()
+				$%PlayBackButton.grab_focus()
 
 func _on_play_button_pressed() -> void:
 	if _active_menu == ActiveMenu.TITLE:
@@ -30,7 +30,7 @@ func _on_play_button_pressed() -> void:
 		$%VBoxPlayButtons.visible = true
 		_active_menu = ActiveMenu.PLAY
 
-func _on_back_button_pressed() -> void:
+func _on_play_back_button_pressed() -> void:
 	if _active_menu == ActiveMenu.PLAY:
 		$%VBoxTitleButtons.visible = true
 		$%VBoxPlayButtons.visible = false
