@@ -1,0 +1,207 @@
+[gd_scene load_steps=8 format=3 uid="uid://uviesa8wb43n"]
+
+[ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://general/themes/settings_title_label.tres" id="1_jykqg"]
+[ext_resource type="Theme" uid="uid://cma8plh8jdkxh" path="res://general/themes/settings_control_label.tres" id="2_50vup"]
+[ext_resource type="PackedScene" uid="uid://7vjl8gc06x5y" path="res://menus/settings/volume_slider/volume_slider.tscn" id="3_6plv5"]
+[ext_resource type="Texture2D" uid="uid://d10o4jsqbjw5g" path="res://menus/arrow_button_l.png" id="4_7logk"]
+[ext_resource type="Texture2D" uid="uid://d2r0yshvqy6hc" path="res://menus/arrow_button_l_focus.png" id="5_qt7f2"]
+[ext_resource type="Texture2D" uid="uid://d13a1hucll5b3" path="res://menus/arrow_button_r.png" id="6_nuhl7"]
+[ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/arrow_button_r_focus.png" id="7_e2fab"]
+
+[node name="Settings" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="VBoxVolumeSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_jykqg")
+text = "VOLUME"
+horizontal_alignment = 1
+
+[node name="MasterControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MasterControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_50vup")
+text = "MASTER"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MasterControl"]
+layout_mode = 2
+
+[node name="VolumeSlider" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MasterControl/CenterContainer" instance=ExtResource("3_6plv5")]
+layout_mode = 2
+_bus_name = "Master"
+
+[node name="MusicControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MusicControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_50vup")
+text = "MUSIC"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MusicControl"]
+layout_mode = 2
+
+[node name="VolumeSlider" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/MusicControl/CenterContainer" instance=ExtResource("3_6plv5")]
+layout_mode = 2
+_bus_name = "Music"
+
+[node name="SFXControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/SFXControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_50vup")
+text = "SFX"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/SFXControl"]
+layout_mode = 2
+
+[node name="VolumeSlider" parent="MarginContainer/VBoxContainer/VBoxVolumeSettings/SFXControl/CenterContainer" instance=ExtResource("3_6plv5")]
+layout_mode = 2
+_bus_name = "SFX"
+
+[node name="VBoxGameSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
+layout_mode = 2
+theme = ExtResource("1_jykqg")
+text = "GAME"
+horizontal_alignment = 1
+
+[node name="PointsControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_50vup")
+text = "MAX POINTS"
+horizontal_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ButtonL" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_7logk")
+texture_pressed = ExtResource("5_qt7f2")
+texture_hover = ExtResource("5_qt7f2")
+texture_focused = ExtResource("5_qt7f2")
+
+[node name="Counter" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_jykqg")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonR" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_nuhl7")
+texture_pressed = ExtResource("7_e2fab")
+texture_hover = ExtResource("7_e2fab")
+texture_focused = ExtResource("7_e2fab")
+
+[node name="BallsControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_50vup")
+text = "MAX BALLS"
+horizontal_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ButtonL" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_7logk")
+texture_pressed = ExtResource("5_qt7f2")
+texture_hover = ExtResource("5_qt7f2")
+texture_focused = ExtResource("5_qt7f2")
+
+[node name="Counter" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_jykqg")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonR" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_nuhl7")
+texture_pressed = ExtResource("7_e2fab")
+texture_hover = ExtResource("7_e2fab")
+texture_focused = ExtResource("7_e2fab")
+
+[node name="ResizeControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/ResizeControl"]
+layout_mode = 2
+theme = ExtResource("2_50vup")
+text = "RESIZING PADDLES"
+horizontal_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings/ResizeControl"]
+layout_mode = 2
+
+[node name="DifficultyControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/DifficultyControl"]
+layout_mode = 2
+theme = ExtResource("2_50vup")
+text = "CPU DIFFICULTY"
+horizontal_alignment = 2
