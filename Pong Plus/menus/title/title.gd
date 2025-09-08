@@ -75,7 +75,7 @@ func _on_game_settings_button_pressed() -> void:
 	open_game_settings.emit()
 
 func _on_license_button_pressed() -> void:
-	pass # Replace with function body.
+	view_license.emit()
 
 func _on_help_button_pressed() -> void:
 	view_help.emit()

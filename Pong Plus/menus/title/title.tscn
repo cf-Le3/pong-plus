@@ -205,7 +205,6 @@ size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../GameSettingsButton")
 focus_neighbor_bottom = NodePath("../SettingsBackButton")
 theme = ExtResource("5_nsibk")
-disabled = true
 text = "LICENSE"
 alignment = 0
 

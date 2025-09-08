@@ -2,12 +2,14 @@ extends Node
 @export var game_scene: PackedScene
 @export var volume_settings_scene: PackedScene
 @export var game_settings_scene: PackedScene
+@export var license_scene: PackedScene
 @export var help_scene: PackedScene
 @export var credits_scene: PackedScene
 var _game_config: GameConfig
 var game: Game
 var volume_settings: VolumeSettings
 var game_settings: GameSettings
+var license: License
 var help: Help
 var credits: Credits
 var version := "v1.1.0"
@@ -55,6 +57,16 @@ func _on_title_open_game_settings() -> void:
 func _on_close_game_settings(game_config: GameConfig) -> void:
 	_game_config = game_config
 	game_settings.queue_free()
+	enable_title(true)
+
+func _on_title_view_license() -> void:
+	enable_title(false)
+	license = license_scene.instantiate()
+	license.connect("close_license", _on_close_license)
+	add_child(license)
+	
+func _on_close_license() -> void:
+	license.queue_free()
 	enable_title(true)
 
 func _on_title_view_help() -> void:
