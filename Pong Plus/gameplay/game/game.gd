@@ -5,9 +5,8 @@ signal close_game
 
 # Configuration values
 var config_is_multiplayer := true
-var config_resize_enabled := true
-var config_score_max := 5
-var config_balls_max := 5
+var config_resize_enabled := false
+var game_config := GameConfig.new()
 # var config_cpu_difficulty = null
 
 # Session-specific
@@ -55,7 +54,7 @@ func _on_ball_spawner_spawned(ball: Ball) -> void:
 	$BallSpawnTimer.start()
 
 func _on_ball_spawn_timer_timeout() -> void:
-	if get_tree().get_nodes_in_group("balls").size() < config_balls_max:
+	if get_tree().get_nodes_in_group("balls").size() < game_config.get_max_balls():
 		_ball_spawner.spawn_ball()
 
 func _on_wall_goal_right_ball_escaped(can_score: bool) -> void:
@@ -71,7 +70,7 @@ func _on_wall_goal_left_ball_escaped(can_score: bool) -> void:
 	do_stuff_after_scoring()
 
 func do_stuff_after_scoring() -> void:
-	if _score_player_1 >= config_score_max || _score_player_2 >= config_score_max:
+	if _score_player_1 >= game_config.get_max_points() || _score_player_2 >= game_config.get_max_points():
 		game_over()
 	elif get_tree().get_nodes_in_group("balls").size() <= 1:
 		_ball_spawner.spawn_ball()

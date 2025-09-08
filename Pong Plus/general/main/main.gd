@@ -27,6 +27,7 @@ func create_new_game_session(is_multiplayer: bool) -> void:
 	enable_title(false)
 	game = game_scene.instantiate()
 	game.config_is_multiplayer = is_multiplayer
+	game.game_config = _game_config
 	game.connect("close_game", _on_close_game)
 	add_child(game)
 	
