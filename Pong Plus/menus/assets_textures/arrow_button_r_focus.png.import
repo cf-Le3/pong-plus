@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cprfj0kf6kaks"
-path="res://.godot/imported/logo_h_2.png-a98112df5b91b072be6c80b6b2cc8504.ctex"
+uid="uid://clcosfdya4cnp"
+path="res://.godot/imported/arrow_button_r_focus.png-d8900c5d7d2ac67e384e1f4602bc3d03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menus/title/logo_h_2.png"
-dest_files=["res://.godot/imported/logo_h_2.png-a98112df5b91b072be6c80b6b2cc8504.ctex"]
+source_file="res://menus/assets_textures/arrow_button_r_focus.png"
+dest_files=["res://.godot/imported/arrow_button_r_focus.png-d8900c5d7d2ac67e384e1f4602bc3d03.ctex"]
 
 [params]
 
