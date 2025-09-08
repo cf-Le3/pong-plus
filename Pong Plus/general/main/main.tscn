@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://dbv1atm3o3avv"]
+[gd_scene load_steps=10 format=4 uid="uid://dbv1atm3o3avv"]
 
 [ext_resource type="Script" uid="uid://ft0380ee8rbj" path="res://general/main/main.gd" id="1_wtcpt"]
 [ext_resource type="PackedScene" uid="uid://bdol5wggxteul" path="res://menus/title/title.tscn" id="2_afa6e"]
 [ext_resource type="PackedScene" uid="uid://dfodn8ia5n12i" path="res://gameplay/game/game.tscn" id="2_w43ni"]
 [ext_resource type="PackedScene" uid="uid://dvopnty8hgf7d" path="res://menus/settings/volume_settings/volume_settings.tscn" id="3_d5y16"]
 [ext_resource type="PackedScene" uid="uid://twat68vd8dnc" path="res://menus/help/help.tscn" id="3_u37n1"]
+[ext_resource type="PackedScene" uid="uid://b5vvibm87hgpv" path="res://menus/settings/game_settings/game_settings.tscn" id="4_b04w8"]
 [ext_resource type="PackedScene" uid="uid://dd4eh3jh7j4ei" path="res://menus/credits/credits.tscn" id="4_i10c4"]
 
 [sub_resource type="OggPacketSequence" id="OggPacketSequence_kyrmi"]
@@ -20,6 +21,7 @@ loop = true
 script = ExtResource("1_wtcpt")
 game_scene = ExtResource("2_w43ni")
 volume_settings_scene = ExtResource("3_d5y16")
+game_settings_scene = ExtResource("4_b04w8")
 help_scene = ExtResource("3_u37n1")
 credits_scene = ExtResource("4_i10c4")
 
@@ -39,6 +41,7 @@ bus = &"Music"
 
 [connection signal="new_game_multiplayer" from="Title" to="." method="_on_title_new_game_multiplayer"]
 [connection signal="new_game_singleplayer" from="Title" to="." method="_on_title_new_game_singleplayer"]
+[connection signal="open_game_settings" from="Title" to="." method="_on_title_open_game_settings"]
 [connection signal="open_volume_settings" from="Title" to="." method="_on_title_open_volume_settings"]
 [connection signal="view_credits" from="Title" to="." method="_on_title_view_credits"]
 [connection signal="view_help" from="Title" to="." method="_on_title_view_help"]
