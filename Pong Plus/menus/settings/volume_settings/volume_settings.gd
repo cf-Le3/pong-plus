@@ -5,7 +5,7 @@ signal close_volume_settings
 func _ready() -> void:
 	$%MasterVolumeSlider.grab_focus()
 
-func _on_sfx_volume_slider_drag_ended(value_changed: bool) -> void:
+func _on_sfx_volume_slider_drag_ended(_value_changed: bool) -> void:
 	$SFXTestSound.play()
 
 func _on_default_button_pressed() -> void:
