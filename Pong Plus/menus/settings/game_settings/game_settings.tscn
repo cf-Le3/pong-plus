@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5vvibm87hgpv"]
+[gd_scene load_steps=11 format=3 uid="uid://b5vvibm87hgpv"]
 
 [ext_resource type="Script" uid="uid://b3bv87cgvdo07" path="res://menus/settings/game_settings/game_settings.gd" id="1_4iu0o"]
 [ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="1_g4nkl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d13a1hucll5b3" path="res://menus/assets_textures/arrow_button_r.png" id="5_bdek5"]
 [ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/assets_textures/arrow_button_r_focus.png" id="6_2xgd5"]
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="7_tn3w7"]
+[ext_resource type="ButtonGroup" uid="uid://c0lgol6iek2dr" path="res://menus/settings/game_settings/difficulty.tres" id="8_7wr6i"]
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="8_qkoji"]
 
 [node name="GameSettings" type="CanvasLayer"]
@@ -28,46 +29,47 @@ theme_override_constants/margin_bottom = 120
 layout_mode = 2
 theme_override_constants/separation = 48
 
-[node name="VBoxGameSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 24
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
-layout_mode = 2
+size_flags_vertical = 1
 theme = ExtResource("1_g4nkl")
 text = "GAME"
 horizontal_alignment = 1
 
-[node name="PointsControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 80
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 24
+columns = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl"]
+[node name="PointsLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_4iu0o")
 text = "MAX POINTS"
 horizontal_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl"]
+[node name="PointsControls" type="CenterContainer" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/GridContainer/PointsControls"]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="PointsButtonL" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/HBoxContainer"]
+[node name="PointsButtonL" type="TextureButton" parent="MarginContainer/VBoxContainer/GridContainer/PointsControls/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../../../HBoxContainer/ConfirmButton")
 focus_neighbor_right = NodePath("../PointsButtonR")
-focus_neighbor_bottom = NodePath("../../../BallsControl/HBoxContainer/BallsButtonL")
+focus_neighbor_bottom = NodePath("../../../BallsControls/HBoxContainer/BallsButtonL")
 texture_normal = ExtResource("3_7wr6i")
 texture_pressed = ExtResource("4_3unct")
 texture_hover = ExtResource("4_3unct")
 texture_focused = ExtResource("4_3unct")
 
-[node name="PointsCounter" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/HBoxContainer"]
+[node name="PointsCounter" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/PointsControls/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_g4nkl")
@@ -75,46 +77,45 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PointsButtonR" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/HBoxContainer"]
+[node name="PointsButtonR" type="TextureButton" parent="MarginContainer/VBoxContainer/GridContainer/PointsControls/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../PointsButtonL")
 focus_neighbor_top = NodePath("../../../../HBoxContainer/ConfirmButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../../BallsControl/HBoxContainer/BallsButtonR")
+focus_neighbor_bottom = NodePath("../../../BallsControls/HBoxContainer/BallsButtonR")
 texture_normal = ExtResource("5_bdek5")
 texture_pressed = ExtResource("6_2xgd5")
 texture_hover = ExtResource("6_2xgd5")
 texture_focused = ExtResource("6_2xgd5")
 
-[node name="BallsControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
-layout_mode = 2
-theme_override_constants/separation = 80
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl"]
+[node name="BallsLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_4iu0o")
 text = "MAX BALLS"
 horizontal_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl"]
+[node name="BallsControls" type="CenterContainer" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/GridContainer/BallsControls"]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="BallsButtonL" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/HBoxContainer"]
+[node name="BallsButtonL" type="TextureButton" parent="MarginContainer/VBoxContainer/GridContainer/BallsControls/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../../PointsControl/HBoxContainer/PointsButtonL")
+focus_neighbor_top = NodePath("../../../PointsControls/HBoxContainer/PointsButtonL")
 focus_neighbor_right = NodePath("../BallsButtonR")
-focus_neighbor_bottom = NodePath("../../../../HBoxContainer/ConfirmButton")
+focus_neighbor_bottom = NodePath("../../../DifficultyControls/NormalButton")
 texture_normal = ExtResource("3_7wr6i")
 texture_pressed = ExtResource("4_3unct")
 texture_hover = ExtResource("4_3unct")
 texture_focused = ExtResource("4_3unct")
 
-[node name="BallsCounter" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/HBoxContainer"]
+[node name="BallsCounter" type="Label" parent="MarginContainer/VBoxContainer/GridContainer/BallsControls/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_g4nkl")
@@ -122,40 +123,62 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BallsButtonR" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/HBoxContainer"]
+[node name="BallsButtonR" type="TextureButton" parent="MarginContainer/VBoxContainer/GridContainer/BallsControls/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../BallsButtonL")
-focus_neighbor_top = NodePath("../../../PointsControl/HBoxContainer/PointsButtonR")
+focus_neighbor_top = NodePath("../../../PointsControls/HBoxContainer/PointsButtonR")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../../../HBoxContainer/ConfirmButton")
+focus_neighbor_bottom = NodePath("../../../DifficultyControls/NormalButton")
 texture_normal = ExtResource("5_bdek5")
 texture_pressed = ExtResource("6_2xgd5")
 texture_hover = ExtResource("6_2xgd5")
 texture_focused = ExtResource("6_2xgd5")
 
-[node name="ResizeControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
-visible = false
+[node name="DifficultyLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/ResizeControl"]
-layout_mode = 2
-theme = ExtResource("2_4iu0o")
-text = "RESIZING PADDLES"
-horizontal_alignment = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings/ResizeControl"]
-layout_mode = 2
-
-[node name="DifficultyControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxGameSettings"]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxGameSettings/DifficultyControl"]
-layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_4iu0o")
 text = "CPU DIFFICULTY"
 horizontal_alignment = 2
+
+[node name="DifficultyControls" type="HBoxContainer" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="EasyButton" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer/DifficultyControls"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../HardButton")
+focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
+focus_neighbor_right = NodePath("../NormalButton")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
+theme = ExtResource("2_4iu0o")
+button_group = ExtResource("8_7wr6i")
+text = "EASY"
+
+[node name="NormalButton" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer/DifficultyControls"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../EasyButton")
+focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
+focus_neighbor_right = NodePath("../HardButton")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
+theme = ExtResource("2_4iu0o")
+button_pressed = true
+button_group = ExtResource("8_7wr6i")
+text = "NORMAL"
+
+[node name="HardButton" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer/DifficultyControls"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../NormalButton")
+focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonR")
+focus_neighbor_right = NodePath("../EasyButton")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
+theme = ExtResource("2_4iu0o")
+button_group = ExtResource("8_7wr6i")
+text = "HARD"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -167,9 +190,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../ConfirmButton")
-focus_neighbor_top = NodePath("../../VBoxGameSettings/BallsControl/HBoxContainer/BallsButtonL")
+focus_neighbor_top = NodePath("../../GridContainer/DifficultyControls/NormalButton")
 focus_neighbor_right = NodePath("../ConfirmButton")
-focus_neighbor_bottom = NodePath("../../VBoxGameSettings/PointsControl/HBoxContainer/PointsButtonL")
+focus_neighbor_bottom = NodePath("../../GridContainer/PointsControls/HBoxContainer/PointsButtonL")
 theme = ExtResource("7_tn3w7")
 text = "DEFAULT
 "
@@ -179,15 +202,18 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../DefaultButton")
-focus_neighbor_top = NodePath("../../VBoxGameSettings/BallsControl/HBoxContainer/BallsButtonR")
+focus_neighbor_top = NodePath("../../GridContainer/DifficultyControls/NormalButton")
 focus_neighbor_right = NodePath("../DefaultButton")
-focus_neighbor_bottom = NodePath("../../VBoxGameSettings/PointsControl/HBoxContainer/PointsButtonR")
+focus_neighbor_bottom = NodePath("../../GridContainer/PointsControls/HBoxContainer/PointsButtonL")
 theme = ExtResource("8_qkoji")
 text = "CONFIRM"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/HBoxContainer/PointsButtonL" to="." method="_on_points_button_l_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxGameSettings/PointsControl/HBoxContainer/PointsButtonR" to="." method="_on_points_button_r_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/HBoxContainer/BallsButtonL" to="." method="_on_balls_button_l_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxGameSettings/BallsControl/HBoxContainer/BallsButtonR" to="." method="_on_balls_button_r_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/PointsControls/HBoxContainer/PointsButtonL" to="." method="_on_points_button_l_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/PointsControls/HBoxContainer/PointsButtonR" to="." method="_on_points_button_r_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/BallsControls/HBoxContainer/BallsButtonL" to="." method="_on_balls_button_l_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/BallsControls/HBoxContainer/BallsButtonR" to="." method="_on_balls_button_r_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/DifficultyControls/EasyButton" to="." method="_on_easy_button_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/DifficultyControls/NormalButton" to="." method="_on_normal_button_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/DifficultyControls/HardButton" to="." method="_on_hard_button_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

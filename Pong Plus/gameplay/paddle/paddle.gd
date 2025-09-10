@@ -1,8 +1,13 @@
 class_name Paddle
 extends CharacterBody2D
-@export var is_player_1: bool
-var is_player_controlled := true
-var init_x: float
+enum Player {
+	PLAYER_1,
+	PLAYER_2,
+	CPU_EASY,
+	CPU_NORMAL,
+	CPU_HARD
+}
+var player: Player
 var _terminal_speed := 300.0
 const _ACCELERATION := 10.0
 const _SCALE_INCREMENT := 0.05
@@ -11,9 +16,9 @@ const _SCALE_MIN := 0.75
 const _SCALE_MAX := 1.25
 
 func _physics_process(delta: float) -> void:
-	if is_player_controlled:
+	if player == Player.PLAYER_1 || player == Player.PLAYER_2:
 		_set_velocity_player()
-	else:
+	if player == Player.CPU_EASY || player == Player.CPU_NORMAL || player == Player.CPU_HARD:
 		_set_velocity_ai()
 
 	# Slow down faster upon colliding with walls to prevent "sticking".	
@@ -22,36 +27,54 @@ func _physics_process(delta: float) -> void:
 		velocity.y = lerp(velocity.y, 0.0, 0.2)
 
 func _set_velocity_player() -> void:
-	if (is_player_1 && Input.is_action_pressed("up_player1")) || (!is_player_1 && Input.is_action_pressed("up_player2")):
+	if (player == Player.PLAYER_1 && Input.is_action_pressed("up_player1")) || (player == Player.PLAYER_2 && Input.is_action_pressed("up_player2")):
 		_move_up()
-	elif (is_player_1 && Input.is_action_pressed("down_player1")) || (!is_player_1 && Input.is_action_pressed("down_player2")):
+	elif (player == Player.PLAYER_1 && Input.is_action_pressed("down_player1")) || (player == Player.PLAYER_2 && Input.is_action_pressed("down_player2")):
 		_move_down()
 	else:
 		_slow_to_halt()
 		
 func _set_velocity_ai() -> void:
 	var balls := get_tree().get_nodes_in_group("balls")
-	
+
 	if balls.size() > 0:
-		var nearest_ball: Ball = null
-		var nearest_distance: float = INF
+		var priority_ball: Ball = null
+		var priority_attribute: float = INF
 		
 		for b: Ball in balls:
 			if b.velocity.x > 0 && b.global_position.x < global_position.x:
-				var distance: float = global_position.x - b.global_position.x
-				if distance < nearest_distance:
-					nearest_ball = b
-					nearest_distance = distance
-
-		if nearest_ball != null:
-			if nearest_ball.global_position.y < global_position.y:
-				_move_up()
-			elif nearest_ball.global_position.y > global_position.y:
-				_move_down()
+				var attribute: float
+				if player == Player.CPU_EASY:
+					# EASY: Prioritize ball closest to paddle.
+					attribute = global_position.distance_squared_to(b.global_position)
+				else:
+					# NORMAL: Prioitize ball horizontally closest to paddle.
+					attribute = global_position.x - b.global_position.x
+					# HARD: Prioritize ball that will reach paddle soonest.
+					if player == Player.CPU_HARD:
+						attribute = attribute / b.velocity.x
+				if attribute < priority_attribute:
+					priority_ball = b
+					priority_attribute = attribute
+					
+		if priority_ball != null:
+			# HARD: Align paddle such that the ball is between the two markers.
+			if player == Player.CPU_HARD:
+				if priority_ball.global_position.y < get_high_marker_position():
+					_move_up()
+				elif priority_ball.global_position.y > get_low_marker_position():
+					_move_down()
+				else:
+					_slow_to_halt()
+			# EASY / NORMAL: Align paddle and ball's global positions.
 			else:
-				_slow_to_halt()
+				if priority_ball.global_position.y < global_position.y:
+					_move_up()
+				elif priority_ball.global_position.y > global_position.y:
+					_move_down()
+				else:
+					_slow_to_halt()
 			return
-			
 	_slow_to_halt()
 	
 func _move_up() -> void:

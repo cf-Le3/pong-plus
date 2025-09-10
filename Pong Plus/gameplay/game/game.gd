@@ -7,7 +7,6 @@ signal close_game
 var config_is_multiplayer := true
 var config_resize_enabled := false
 var game_config := GameConfig.new()
-# var config_cpu_difficulty = null
 
 # Session-specific
 var _ball_spawner: BallSpawner
@@ -30,11 +29,17 @@ func _ready() -> void:
 	$Sprite2D.global_position = Vector2(viewport_w/2, viewport_h/2)
 	
 	$Paddle1.global_position = Vector2((viewport_w-_ARENA_W)/2+32, viewport_h/2)
-	$Paddle1.init_x = $Paddle1.global_position.x
+	$Paddle1.player = Paddle.Player.PLAYER_1
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-_ARENA_W)/2-32, viewport_h/2)
-	$Paddle2.init_x = $Paddle2.global_position.x
-	if not config_is_multiplayer:
-		$Paddle2.is_player_controlled = false
+	if config_is_multiplayer:
+		$Paddle2.player = Paddle.Player.PLAYER_2
+	else:
+		if game_config.get_difficulty() == GameConfig.Difficulty.EASY:
+			$Paddle2.player = Paddle.Player.CPU_EASY
+		elif game_config.get_difficulty() == GameConfig.Difficulty.NORMAL:
+			$Paddle2.player = Paddle.Player.CPU_NORMAL
+		elif game_config.get_difficulty() == GameConfig.Difficulty.HARD:
+			$Paddle2.player = Paddle.Player.CPU_HARD
 	
 	_ball_spawner = _ball_spawner_scene.instantiate()
 	_ball_spawner.enable_magic_balls = config_resize_enabled

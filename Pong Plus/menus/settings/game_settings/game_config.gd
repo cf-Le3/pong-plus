@@ -1,6 +1,12 @@
 class_name GameConfig
+enum Difficulty {
+	EASY,
+	NORMAL,
+	HARD
+}
 var _max_points := 5
 var _max_balls := 5
+var _difficulty := Difficulty.NORMAL
 const _MAX_POINTS_MIN := 1
 const _MAX_POINTS_MAX := 9
 const _MAX_BALLS_MIN := 1
@@ -12,6 +18,9 @@ func get_max_points() -> int:
 func get_max_balls() -> int:
 	return _max_balls
 
+func get_difficulty() -> Difficulty:
+	return _difficulty
+
 func set_max_points(max_points: int) -> void:
 	if max_points >= _MAX_POINTS_MIN && max_points <= _MAX_POINTS_MAX:
 		_max_points = max_points
@@ -19,6 +28,9 @@ func set_max_points(max_points: int) -> void:
 func set_max_balls(max_balls: int) -> void:
 	if max_balls >= _MAX_BALLS_MIN && max_balls <= _MAX_BALLS_MAX:
 		_max_balls = max_balls
+
+func set_difficulty(difficulty: Difficulty) -> void:
+	_difficulty = difficulty
 
 func debug_assert_correctness() -> void:
 	assert(_max_points >= _MAX_POINTS_MIN && _max_points <= _MAX_POINTS_MAX)
