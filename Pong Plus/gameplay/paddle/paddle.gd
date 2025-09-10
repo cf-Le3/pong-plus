@@ -1,8 +1,12 @@
 class_name Paddle
 extends CharacterBody2D
-@export var is_player_1: bool
-var is_player_controlled := true
-var init_x: float
+enum Player {
+	PLAYER_1,
+	PLAYER_2,
+	CPU_NORMAL,
+	CPU_HARD
+}
+var player: Player
 var _terminal_speed := 300.0
 const _ACCELERATION := 10.0
 const _SCALE_INCREMENT := 0.05
@@ -11,9 +15,9 @@ const _SCALE_MIN := 0.75
 const _SCALE_MAX := 1.25
 
 func _physics_process(delta: float) -> void:
-	if is_player_controlled:
+	if player == Player.PLAYER_1 || player == Player.PLAYER_2:
 		_set_velocity_player()
-	else:
+	if player == Player.CPU_NORMAL || player == Player.CPU_HARD:
 		_set_velocity_ai()
 
 	# Slow down faster upon colliding with walls to prevent "sticking".	
@@ -22,9 +26,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = lerp(velocity.y, 0.0, 0.2)
 
 func _set_velocity_player() -> void:
-	if (is_player_1 && Input.is_action_pressed("up_player1")) || (!is_player_1 && Input.is_action_pressed("up_player2")):
+	if (player == Player.PLAYER_1 && Input.is_action_pressed("up_player1")) || (player == Player.PLAYER_2 && Input.is_action_pressed("up_player2")):
 		_move_up()
-	elif (is_player_1 && Input.is_action_pressed("down_player1")) || (!is_player_1 && Input.is_action_pressed("down_player2")):
+	elif (player == Player.PLAYER_1 && Input.is_action_pressed("down_player1")) || (player == Player.PLAYER_2 && Input.is_action_pressed("down_player2")):
 		_move_down()
 	else:
 		_slow_to_halt()
