@@ -2,7 +2,7 @@ extends Area2D
 signal ball_escaped(can_score: bool)
 var _is_invincible := false
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("balls"):
 		body.queue_free()
 	ball_escaped.emit(not _is_invincible)

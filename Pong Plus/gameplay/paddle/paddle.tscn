@@ -14,7 +14,6 @@ radius = 16.0
 
 [node name="Paddle" type="CharacterBody2D" groups=["paddles"]]
 collision_layer = 2
-collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_s1ttm")
 
@@ -25,12 +24,16 @@ texture = ExtResource("2_st0or")
 shape = SubResource("CapsuleShape2D_jy6pc")
 
 [node name="TopCollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -50)
 shape = SubResource("CircleShape2D_2emja")
+disabled = true
 
 [node name="BottomCollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 50)
 shape = SubResource("CircleShape2D_2emja")
+disabled = true
 
 [node name="GrowSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ahuv0")
@@ -39,3 +42,9 @@ bus = &"SFX"
 [node name="ShrinkSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_y2mxq")
 bus = &"SFX"
+
+[node name="HighMarker2D" type="Marker2D" parent="."]
+position = Vector2(0, -48)
+
+[node name="LowMarker2D" type="Marker2D" parent="."]
+position = Vector2(0, 48)
