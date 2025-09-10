@@ -3,6 +3,7 @@ extends CharacterBody2D
 enum Player {
 	PLAYER_1,
 	PLAYER_2,
+	CPU_EASY,
 	CPU_NORMAL,
 	CPU_HARD
 }
@@ -17,7 +18,7 @@ const _SCALE_MAX := 1.25
 func _physics_process(delta: float) -> void:
 	if player == Player.PLAYER_1 || player == Player.PLAYER_2:
 		_set_velocity_player()
-	if player == Player.CPU_NORMAL || player == Player.CPU_HARD:
+	if player == Player.CPU_EASY || player == Player.CPU_NORMAL || player == Player.CPU_HARD:
 		_set_velocity_ai()
 
 	# Slow down faster upon colliding with walls to prevent "sticking".	
@@ -38,29 +39,38 @@ func _set_velocity_ai() -> void:
 
 	if balls.size() > 0:
 		var priority_ball: Ball = null
-		var priority_attribute: float = INF # distance for NORMAL, eta for HARD
+		var priority_attribute: float = INF
 		
 		for b: Ball in balls:
 			if b.velocity.x > 0 && b.global_position.x < global_position.x:
-				var attribute: float = global_position.x - b.global_position.x
-				if player == Player.CPU_HARD:
-					attribute = attribute / b.velocity.x
+				var attribute: float
+				if player == Player.CPU_EASY:
+					# EASY: Prioritize ball closest to paddle.
+					attribute = global_position.distance_squared_to(b.global_position)
+				else:
+					# NORMAL: Prioitize ball horizontally closest to paddle.
+					attribute = global_position.x - b.global_position.x
+					# HARD: Prioritize ball that will reach paddle soonest.
+					if player == Player.CPU_HARD:
+						attribute = attribute / b.velocity.x
 				if attribute < priority_attribute:
 					priority_ball = b
 					priority_attribute = attribute
 					
 		if priority_ball != null:
-			if player == Player.CPU_NORMAL:
-				if priority_ball.global_position.y < global_position.y:
-					_move_up()
-				elif priority_ball.global_position.y > global_position.y:
-					_move_down()
-				else:
-					_slow_to_halt()
-			elif player == Player.CPU_HARD:
+			# HARD: Align paddle such that the ball is between the two markers.
+			if player == Player.CPU_HARD:
 				if priority_ball.global_position.y < get_high_marker_position():
 					_move_up()
 				elif priority_ball.global_position.y > get_low_marker_position():
+					_move_down()
+				else:
+					_slow_to_halt()
+			# EASY / NORMAL: Align paddle and ball's global positions.
+			else:
+				if priority_ball.global_position.y < global_position.y:
+					_move_up()
+				elif priority_ball.global_position.y > global_position.y:
 					_move_down()
 				else:
 					_slow_to_halt()
