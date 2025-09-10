@@ -35,27 +35,36 @@ func _set_velocity_player() -> void:
 		
 func _set_velocity_ai() -> void:
 	var balls := get_tree().get_nodes_in_group("balls")
-	
+
 	if balls.size() > 0:
-		var nearest_ball: Ball = null
-		var nearest_distance: float = INF
+		var priority_ball: Ball = null
+		var priority_attribute: float = INF # distance for NORMAL, eta for HARD
 		
 		for b: Ball in balls:
 			if b.velocity.x > 0 && b.global_position.x < global_position.x:
-				var distance: float = global_position.x - b.global_position.x
-				if distance < nearest_distance:
-					nearest_ball = b
-					nearest_distance = distance
-
-		if nearest_ball != null:
-			if nearest_ball.global_position.y < global_position.y:
-				_move_up()
-			elif nearest_ball.global_position.y > global_position.y:
-				_move_down()
-			else:
-				_slow_to_halt()
+				var attribute: float = global_position.x - b.global_position.x
+				if player == Player.CPU_HARD:
+					attribute = attribute / b.velocity.x
+				if attribute < priority_attribute:
+					priority_ball = b
+					priority_attribute = attribute
+					
+		if priority_ball != null:
+			if player == Player.CPU_NORMAL:
+				if priority_ball.global_position.y < global_position.y:
+					_move_up()
+				elif priority_ball.global_position.y > global_position.y:
+					_move_down()
+				else:
+					_slow_to_halt()
+			elif player == Player.CPU_HARD:
+				if priority_ball.global_position.y < get_high_marker_position():
+					_move_up()
+				elif priority_ball.global_position.y > get_low_marker_position():
+					_move_down()
+				else:
+					_slow_to_halt()
 			return
-			
 	_slow_to_halt()
 	
 func _move_up() -> void:
