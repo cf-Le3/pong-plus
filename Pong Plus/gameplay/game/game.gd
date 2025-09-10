@@ -7,7 +7,6 @@ signal close_game
 var config_is_multiplayer := true
 var config_resize_enabled := false
 var game_config := GameConfig.new()
-# var config_cpu_difficulty = null
 
 # Session-specific
 var _ball_spawner: BallSpawner
@@ -35,7 +34,12 @@ func _ready() -> void:
 	if config_is_multiplayer:
 		$Paddle2.player = Paddle.Player.PLAYER_2
 	else:
-		$Paddle2.player = Paddle.Player.CPU_NORMAL
+		if game_config.get_difficulty() == GameConfig.Difficulty.EASY:
+			$Paddle2.player = Paddle.Player.CPU_EASY
+		elif game_config.get_difficulty() == GameConfig.Difficulty.NORMAL:
+			$Paddle2.player = Paddle.Player.CPU_NORMAL
+		elif game_config.get_difficulty() == GameConfig.Difficulty.HARD:
+			$Paddle2.player = Paddle.Player.CPU_HARD
 	
 	_ball_spawner = _ball_spawner_scene.instantiate()
 	_ball_spawner.enable_magic_balls = config_resize_enabled
