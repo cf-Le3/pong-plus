@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3k2sxndgmaue"]
+[gd_scene load_steps=7 format=3 uid="uid://d3k2sxndgmaue"]
 
 [ext_resource type="Script" uid="uid://bmfgbkdcpnssv" path="res://gameplay/ball/ball.gd" id="1_2ml3n"]
 [ext_resource type="Texture2D" uid="uid://0nufo7e0bxg4" path="res://gameplay/ball/ball1.png" id="1_k2q1g"]
@@ -8,16 +8,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_h8b3a"]
 radius = 16.1245
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_smgia"]
+radius = 16.0
+
 [node name="Ball" type="CharacterBody2D" groups=["balls"]]
 collision_layer = 4
-collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_2ml3n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_k2q1g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h8b3a")
 
 [node name="WallHit" type="AudioStreamPlayer2D" parent="."]
@@ -28,7 +30,11 @@ bus = &"SFX"
 stream = ExtResource("4_8h4je")
 bus = &"SFX"
 
-[node name="HitTimer" type="Timer" parent="."]
-one_shot = true
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 
-[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
+[node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_smgia")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

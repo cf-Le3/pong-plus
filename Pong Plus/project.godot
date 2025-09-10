@@ -84,7 +84,9 @@ down_player2={
 
 2d_physics/layer_1="walls"
 2d_physics/layer_2="paddles"
-2d_physics/layer_3="ball"
+2d_physics/layer_3="balls"
+2d_physics/layer_4="interaction"
+2d_physics/layer_5="Layer 5"
 
 [rendering]
 
