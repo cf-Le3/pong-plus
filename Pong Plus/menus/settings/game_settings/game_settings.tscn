@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5vvibm87hgpv"]
+[gd_scene load_steps=12 format=3 uid="uid://b5vvibm87hgpv"]
 
 [ext_resource type="Script" uid="uid://b3bv87cgvdo07" path="res://menus/settings/game_settings/game_settings.gd" id="1_4iu0o"]
 [ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="1_g4nkl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="7_tn3w7"]
 [ext_resource type="ButtonGroup" uid="uid://c0lgol6iek2dr" path="res://menus/settings/game_settings/difficulty.tres" id="8_7wr6i"]
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="8_qkoji"]
+[ext_resource type="ButtonGroup" uid="uid://du8xdrt0u6lxo" path="res://menus/settings/game_settings/ball_collisions.tres" id="9_3unct"]
 
 [node name="GameSettings" type="CanvasLayer"]
 script = ExtResource("1_4iu0o")
@@ -152,7 +153,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../HardButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
 focus_neighbor_right = NodePath("../NormalButton")
-focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("8_7wr6i")
 text = "EASY"
@@ -163,7 +164,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../EasyButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
 focus_neighbor_right = NodePath("../HardButton")
-focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
 theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("8_7wr6i")
@@ -175,10 +176,43 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../NormalButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonR")
 focus_neighbor_right = NodePath("../EasyButton")
-focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("8_7wr6i")
 text = "HARD"
+
+[node name="CollisionsLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_4iu0o")
+text = "BALL COLLISIONS"
+horizontal_alignment = 2
+
+[node name="CollisionsControls" type="HBoxContainer" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="CollisionsEnabledButton" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer/CollisionsControls"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../CollisionsDisabledButton")
+focus_neighbor_top = NodePath("../../DifficultyControls/NormalButton")
+focus_neighbor_right = NodePath("../CollisionsDisabledButton")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
+theme = ExtResource("2_4iu0o")
+button_group = ExtResource("9_3unct")
+text = "ENABLED"
+
+[node name="CollisionsDisabledButton" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer/CollisionsControls"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../CollisionsEnabledButton")
+focus_neighbor_top = NodePath("../../DifficultyControls/NormalButton")
+focus_neighbor_right = NodePath("../CollisionsEnabledButton")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
+theme = ExtResource("2_4iu0o")
+button_pressed = true
+button_group = ExtResource("9_3unct")
+text = "DISABLED"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -190,7 +224,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../ConfirmButton")
-focus_neighbor_top = NodePath("../../GridContainer/DifficultyControls/NormalButton")
+focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsEnabledButton")
 focus_neighbor_right = NodePath("../ConfirmButton")
 focus_neighbor_bottom = NodePath("../../GridContainer/PointsControls/HBoxContainer/PointsButtonL")
 theme = ExtResource("7_tn3w7")
@@ -202,7 +236,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../DefaultButton")
-focus_neighbor_top = NodePath("../../GridContainer/DifficultyControls/NormalButton")
+focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsEnabledButton")
 focus_neighbor_right = NodePath("../DefaultButton")
 focus_neighbor_bottom = NodePath("../../GridContainer/PointsControls/HBoxContainer/PointsButtonL")
 theme = ExtResource("8_qkoji")
@@ -215,5 +249,7 @@ text = "CONFIRM"
 [connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/DifficultyControls/EasyButton" to="." method="_on_easy_button_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/DifficultyControls/NormalButton" to="." method="_on_normal_button_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/DifficultyControls/HardButton" to="." method="_on_hard_button_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/CollisionsControls/CollisionsEnabledButton" to="." method="_on_collisions_enabled_button_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/GridContainer/CollisionsControls/CollisionsDisabledButton" to="." method="_on_collisions_disabled_button_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

@@ -5,12 +5,19 @@ var game_config := GameConfig.new()
 
 func _ready() -> void:
 	_update_display()
+	
 	if game_config.get_difficulty() == GameConfig.Difficulty.EASY:
 		$%EasyButton.button_pressed = true
 	elif game_config.get_difficulty() == GameConfig.Difficulty.NORMAL:
 		$%NormalButton.button_pressed = true
 	elif game_config.get_difficulty() == GameConfig.Difficulty.HARD:
 		$%HardButton.button_pressed = true
+
+	if game_config.get_ball_collisions_enabled():
+		$%CollisionsEnabledButton.button_pressed = true
+	else:
+		$%CollisionsDisabledButton.button_pressed = true
+
 	$%PointsButtonL.grab_focus()
 
 func _input(event: InputEvent) -> void:
@@ -54,9 +61,18 @@ func _on_hard_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.HARD)
 
+func _on_collisions_enabled_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		game_config.set_ball_collisions_enabled(true)
+
+func _on_collisions_disabled_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		game_config.set_ball_collisions_enabled(false)
+
 func _on_default_button_pressed() -> void:
 	game_config = GameConfig.new()
 	$%NormalButton.button_pressed = true
+	$%CollisionsDisabledButton.button_pressed = true
 	_update_display()
 
 func _on_confirm_button_pressed() -> void:
