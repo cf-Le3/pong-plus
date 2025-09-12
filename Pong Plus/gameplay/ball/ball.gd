@@ -9,6 +9,7 @@ var effect: Effect
 var init_pos: Vector2
 var init_dir: float
 var texture: Texture
+var _can_collide_with_other_balls := true
 const _INIT_SPEED := 200.0
 const _ACCELERATION_BY_PADDLE := Vector2(10.0, 10.0)
 const _ACCELERATION_BY_BALL := Vector2(5.0, 5.0)
@@ -32,11 +33,16 @@ func enable_ball_collisions():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("paddles"):
 		_handle_paddle_collision(body)
+		_can_collide_with_other_balls = false
 
-	elif body.is_in_group("balls") && body != self:
-		velocity.x = -1*velocity.x
+	elif body.is_in_group("balls") && _can_collide_with_other_balls && body != self:
+		_handle_ball_collision(body)
 		_randomly_tilt_velocity()
 		$WallHit.play()
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("paddles"):
+		_can_collide_with_other_balls = true
 
 func _handle_paddle_collision(paddle: Paddle) -> void:
 		velocity.x = -1*velocity.x
@@ -65,7 +71,7 @@ func _handle_ball_collision(other_ball: Ball) -> void:
 				velocity.x = -1*velocity.x
 		else:
 			if abs(other_ball.velocity.x) >= abs(other_ball.velocity.y):
-				velocity.y = -1*velocity.x
+				velocity.y = -1*velocity.y
 			else:
 				velocity.x = -1*velocity.x
 	elif _is_matching_x_polarity_with(other_ball) && !_is_matching_y_polarity_with(other_ball):
