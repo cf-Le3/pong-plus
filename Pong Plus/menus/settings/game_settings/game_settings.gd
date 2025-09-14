@@ -18,7 +18,7 @@ func _ready() -> void:
 	else:
 		$%CollisionsDisabledButton.button_pressed = true
 
-	$%PointsButtonL.grab_focus()
+	$%PointsButtonR.grab_focus()
 
 func _input(event: InputEvent) -> void:
 	var focus_owner := get_viewport().gui_get_focus_owner()
