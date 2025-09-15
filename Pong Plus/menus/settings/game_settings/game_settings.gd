@@ -27,6 +27,7 @@ func _on_viewport_gui_focus_changed(node: Control):
 		if node.button_group != null && node.button_group != _last_focused.button_group:
 			node.button_group.get_pressed_button().grab_focus()
 	_last_focused = node
+	MenuSfx.play_select_sound()
 
 func _input(event: InputEvent) -> void:
 	var focus_owner := get_viewport().gui_get_focus_owner()
@@ -44,47 +45,58 @@ func _input(event: InputEvent) -> void:
 func _on_points_button_l_pressed() -> void:
 	game_config.set_max_points(game_config.get_max_points()-1)
 	_update_display()
+	MenuSfx.play_cancel_sound()
 
 func _on_points_button_r_pressed() -> void:
 	game_config.set_max_points(game_config.get_max_points()+1)
 	_update_display()
+	MenuSfx.play_confirm_sound()
 
 func _on_balls_button_l_pressed() -> void:
 	game_config.set_max_balls(game_config.get_max_balls()-1)
 	_update_display()
+	MenuSfx.play_cancel_sound()
 
 func _on_balls_button_r_pressed() -> void:
 	game_config.set_max_balls(game_config.get_max_balls()+1)
 	_update_display()
+	MenuSfx.play_confirm_sound()
 
 func _on_easy_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.EASY)
+		MenuSfx.play_confirm_sound()
 
 func _on_normal_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.NORMAL)
+		MenuSfx.play_confirm_sound()
 
 func _on_hard_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.HARD)
+		MenuSfx.play_confirm_sound()
 
 func _on_collisions_enabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_ball_collisions_enabled(true)
+		MenuSfx.play_confirm_sound()
 
 func _on_collisions_disabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_ball_collisions_enabled(false)
+		MenuSfx.play_confirm_sound()
 
 func _on_default_button_pressed() -> void:
 	game_config = GameConfig.new()
 	$%NormalButton.button_pressed = true
 	$%CollisionsDisabledButton.button_pressed = true
 	_update_display()
+	MenuSfx.play_cancel_sound()
 
 func _on_confirm_button_pressed() -> void:
 	close_game_settings.emit(game_config)
+	MenuSfx.play_confirm_sound()
 
 func _update_display() -> void:
 	$%PointsCounter.text = str(game_config.get_max_points())
