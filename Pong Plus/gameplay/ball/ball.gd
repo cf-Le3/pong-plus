@@ -87,7 +87,7 @@ func _handle_ball_collision(other_ball: Ball) -> void:
 		# Align acceleration vector with ball's velocity before adding to ball's velocity.
 		velocity = velocity + _ACCELERATION_BY_BALL.rotated(velocity.angle())
 	_randomly_tilt_velocity()
-	$WallHit.play()
+	$BallHit.play()
 
 func _is_matching_x_polarity_with(other_ball: Ball) -> bool:
 	return (velocity.x >= 0 && other_ball.velocity.x >= 0) || (velocity.x < 0 && other_ball.velocity.x < 0)

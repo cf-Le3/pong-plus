@@ -3,7 +3,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihun7"]
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
+bg_color = Color(0.239216, 0.87451, 0.694118, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
