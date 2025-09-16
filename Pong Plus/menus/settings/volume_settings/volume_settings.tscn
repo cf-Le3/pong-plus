@@ -77,7 +77,6 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../MasterControl/MasterVolumeSlider")
 focus_neighbor_bottom = NodePath("../../SFXControl/SFXVolumeSlider")
-value = 0.5
 _bus_name = "Music"
 
 [node name="SFXLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
