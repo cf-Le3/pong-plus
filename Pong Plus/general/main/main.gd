@@ -6,6 +6,7 @@ extends Node
 @export var help_scene: PackedScene
 @export var credits_scene: PackedScene
 var _game_config: GameConfig
+var _volume_config: VolumeConfig
 var game: Game
 var volume_settings: VolumeSettings
 var game_settings: GameSettings
@@ -16,6 +17,7 @@ var version := "v1.1.0"
 
 func _ready() -> void:
 	_game_config = GameConfig.new()
+	_volume_config = VolumeConfig.new()
 	$Title.set_version(version)
 	$Music.play()
 
@@ -40,10 +42,12 @@ func _on_close_game() -> void:
 func _on_title_open_volume_settings() -> void:
 	enable_title(false)
 	volume_settings = volume_settings_scene.instantiate()
+	volume_settings.volume_config = _volume_config
 	volume_settings.connect("close_volume_settings", _on_close_volume_settings)
 	add_child(volume_settings)
 
-func _on_close_volume_settings() -> void:
+func _on_close_volume_settings(volume_config: VolumeConfig) -> void:
+	_volume_config = volume_config
 	volume_settings.queue_free()
 	enable_title(true)	
 

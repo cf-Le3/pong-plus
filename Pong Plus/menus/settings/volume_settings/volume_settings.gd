@@ -1,8 +1,12 @@
 class_name VolumeSettings
 extends CanvasLayer
-signal close_volume_settings
+signal close_volume_settings(volume_config: VolumeConfig)
+var volume_config := VolumeConfig.new()
 
 func _ready() -> void:
+	$%MasterVolumeSlider.value = volume_config.get_master_vol_value()
+	$%MusicVolumeSlider.value = volume_config.get_music_vol_value()
+	$%SFXVolumeSlider.value = volume_config.get_sfx_vol_value()
 	$%MasterVolumeSlider.grab_focus()
 	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
 
@@ -24,5 +28,8 @@ func _on_default_button_pressed() -> void:
 	MenuSfx.play_cancel_sound()
 
 func _on_confirm_button_pressed() -> void:
-	close_volume_settings.emit()
+	volume_config.set_master_vol_value($%MasterVolumeSlider.value)
+	volume_config.set_music_vol_value($%MusicVolumeSlider.value)
+	volume_config.set_sfx_vol_value($%SFXVolumeSlider.value)
+	close_volume_settings.emit(volume_config)
 	MenuSfx.play_confirm_sound()
