@@ -15,14 +15,6 @@ var _magic_balls_enabled: bool
 
 const _NO_UNIQUE_BALLS := 3
 
-func configure_ball_behaviors(colliding_balls_enabled: bool, magic_balls_enabled: bool) -> void:
-	_colliding_balls_enabled = colliding_balls_enabled
-	_magic_balls_enabled = magic_balls_enabled
-
-func spawn_ball() -> void:
-	_balls_spawned += 1
-	spawned.emit(_generate_ball())
-
 func _generate_ball() -> Ball:
 	var ball: Ball = _ball_scene.instantiate()
 	var rand_index: int = randi_range(0, _NO_UNIQUE_BALLS-1)
@@ -41,3 +33,11 @@ func _generate_ball() -> Ball:
 		ball.init_texture = _textures_normal[_balls_spawned%_NO_UNIQUE_BALLS]
 
 	return ball
+
+func configure_ball_behaviors(colliding_balls_enabled: bool, magic_balls_enabled: bool) -> void:
+	_colliding_balls_enabled = colliding_balls_enabled
+	_magic_balls_enabled = magic_balls_enabled
+
+func spawn_ball() -> void:
+	_balls_spawned += 1
+	spawned.emit(_generate_ball())
