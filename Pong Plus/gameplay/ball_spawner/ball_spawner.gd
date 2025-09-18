@@ -34,10 +34,10 @@ func _generate_ball() -> Ball:
 		ball.enable_ball_collisions()
 
 	if _magic_balls_enabled:
-		ball.set_effect(Ball.Effect[Ball.Effect.keys()[rand_index]])
+		ball.set_magic_effect(Ball.Effect[Ball.Effect.keys()[rand_index]])
 		ball.init_texture = _textures_magic[rand_index]
 	else:
-		ball.set_effect(Ball.Effect.NORMAL)
+		ball.set_magic_effect(Ball.Effect.NORMAL)
 		ball.init_texture = _textures_normal[_balls_spawned%_NO_UNIQUE_BALLS]
 
 	return ball

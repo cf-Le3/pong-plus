@@ -10,7 +10,7 @@ enum Effect {
 var init_pos: Vector2
 var init_dir: float
 var init_texture: Texture
-var _effect: Effect
+var _magic_effect: Effect
 var _can_collide_with_other_balls := true
 
 const _INIT_SPEED := 200.0
@@ -29,12 +29,6 @@ func _physics_process(delta: float) -> void:
 		if collider.is_in_group("bounce_walls"):
 			velocity.y = -1*velocity.y
 			$WallHit.play()
-
-func enable_ball_collisions():
-	$Area2D.set_collision_mask_value(3, true)
-	
-func set_effect(effect: Ball.Effect) -> void:
-	_effect = effect
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("paddles"):
@@ -55,9 +49,9 @@ func _handle_paddle_collision(paddle: Paddle) -> void:
 		
 		if (velocity.y > 0 && global_position.y < paddle.get_high_marker_position()) || (velocity.y < 0 && global_position.y > paddle.get_low_marker_position()):
 			velocity.y = -1*velocity.y
-			if _effect == Effect.GROW:
+			if _magic_effect == Effect.GROW:
 				paddle.grow()
-			elif _effect == Effect.SHRINK:
+			elif _magic_effect == Effect.SHRINK:
 				paddle.shrink()
 
 		# Align acceleration vector with ball's velocity before adding to ball's velocity.
@@ -107,3 +101,9 @@ func _is_slower_than(other_ball: Ball) -> bool:
 func _randomly_tilt_velocity() -> void:
 	# Randomly rotate velocity by -5 to 5 degrees.	
 	velocity = velocity.rotated(randi_range(-5, 5)*PI/180)
+
+func enable_ball_collisions():
+	$Area2D.set_collision_mask_value(3, true)
+	
+func set_magic_effect(magic_effect: Ball.Effect) -> void:
+	_magic_effect = magic_effect
