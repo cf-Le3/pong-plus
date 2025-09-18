@@ -7,17 +7,13 @@ signal spawned(ball: Ball)
 
 var _initial_angles := [45*PI/180, 60*PI/180, 75*PI/180]
 var _initial_angles_offsets := [0, PI/2, PI, 3*PI/2]
-var _textures_normal: Array[Texture] = [preload("res://gameplay/ball_spawner/assets_textures/ball1.png"), preload("res://gameplay/ball_spawner/assets_textures/ball2.png"), preload("res://gameplay/ball_spawner/assets_textures/ball3.png")]
-var _textures_magic: Array[Texture] = [preload("res://gameplay/ball_spawner/assets_textures/ball_normal.png"), preload("res://gameplay/ball_spawner/assets_textures/ball_grow.png"), preload("res://gameplay/ball_spawner/assets_textures/ball_shrink.png")]
 var _balls_spawned := 0
-var _colliding_balls_enabled: bool
-var _magic_balls_enabled: bool
+var colliding_balls_enabled: bool
+var magic_balls_enabled: bool
 
+const _TEXTURES_NORMAL: Array[Texture] = [preload("res://gameplay/ball_spawner/assets_textures/ball1.png"), preload("res://gameplay/ball_spawner/assets_textures/ball2.png"), preload("res://gameplay/ball_spawner/assets_textures/ball3.png")]
+const _TEXTURES_MAGIC: Array[Texture] = [preload("res://gameplay/ball_spawner/assets_textures/ball_normal.png"), preload("res://gameplay/ball_spawner/assets_textures/ball_grow.png"), preload("res://gameplay/ball_spawner/assets_textures/ball_shrink.png")]
 const _NO_UNIQUE_BALLS := 3
-
-func configure_ball_behaviors(colliding_balls_enabled: bool, magic_balls_enabled: bool) -> void:
-	_colliding_balls_enabled = colliding_balls_enabled
-	_magic_balls_enabled = magic_balls_enabled
 
 func spawn_ball() -> void:
 	_balls_spawned += 1
@@ -30,10 +26,10 @@ func _generate_ball() -> Ball:
 	ball.init_pos = $BallSpawnPoint.global_position
 	ball.init_dir = _initial_angles[_balls_spawned%_NO_UNIQUE_BALLS] + _initial_angles_offsets.pick_random()
 
-	if _colliding_balls_enabled:
+	if colliding_balls_enabled:
 		ball.enable_ball_collisions()
 
-	if _magic_balls_enabled:
+	if magic_balls_enabled:
 		ball.magic_effect = Ball.Effect[Ball.Effect.keys()[rand_index]]
 		ball.texture = _TEXTURES_MAGIC[rand_index]
 	else:
