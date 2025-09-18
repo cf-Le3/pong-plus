@@ -3,12 +3,12 @@ extends Node2D
 signal close_game
 @export var _ball_spawner_scene: PackedScene
 
-# Configuration values
+# Game configuration
 var config_is_multiplayer := true
 var config_resize_enabled := false
 var game_config := GameConfig.new()
 
-# Session-specific
+# Game state
 var _ball_spawner: BallSpawner
 var _score_player_1 := 0
 var _score_player_2 := 0
@@ -42,8 +42,8 @@ func _ready() -> void:
 			$Paddle2.player = Paddle.Player.CPU_HARD
 	
 	_ball_spawner = _ball_spawner_scene.instantiate()
-	_ball_spawner.colliding_balls_enabled = game_config.get_ball_collisions_enabled()
-	_ball_spawner.magic_balls_enabled = config_resize_enabled
+	_ball_spawner.init_colliding_balls_enabled = game_config.get_ball_collisions_enabled()
+	_ball_spawner.init_magic_balls_enabled = config_resize_enabled
 	_ball_spawner.connect("spawned", _on_ball_spawner_spawned)
 	_ball_spawner.global_position = Vector2(viewport_w/2, viewport_h/2)
 	add_child(_ball_spawner)
