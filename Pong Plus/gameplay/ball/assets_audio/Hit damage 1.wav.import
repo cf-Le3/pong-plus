@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://55cdi3e3vxmv"
+path="res://.godot/imported/Hit damage 1.wav-cf0ab31dbb3c947a5d8257e4bf6592fa.sample"
+
+[deps]
+
+source_file="res://gameplay/ball/assets_audio/Hit damage 1.wav"
+dest_files=["res://.godot/imported/Hit damage 1.wav-cf0ab31dbb3c947a5d8257e4bf6592fa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

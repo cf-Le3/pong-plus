@@ -1,5 +1,7 @@
 extends Area2D
+
 signal ball_escaped(can_score: bool)
+
 var _is_invincible := false
 
 func _on_body_exited(body: Node2D) -> void:

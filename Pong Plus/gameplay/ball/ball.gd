@@ -1,15 +1,18 @@
 class_name Ball
 extends CharacterBody2D
+
 enum Effect {
 	NORMAL,
 	GROW,
 	SHRINK
 }
-var effect: Effect
+
 var init_pos: Vector2
 var init_dir: float
 var texture: Texture
+var magic_effect: Effect
 var _can_collide_with_other_balls := true
+
 const _INIT_SPEED := 200.0
 const _ACCELERATION_BY_PADDLE := Vector2(10.0, 10.0)
 const _ACCELERATION_BY_BALL := Vector2(5.0, 5.0)
@@ -18,7 +21,10 @@ func _ready() -> void:
 	global_position = init_pos
 	velocity = Vector2(_INIT_SPEED, 0).rotated(init_dir)
 	$Sprite2D.texture = texture
-	
+
+func enable_ball_collisions():
+	$Area2D.set_collision_mask_value(3, true)
+
 func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(velocity*delta)
 	if collision:
@@ -26,9 +32,6 @@ func _physics_process(delta: float) -> void:
 		if collider.is_in_group("bounce_walls"):
 			velocity.y = -1*velocity.y
 			$WallHit.play()
-
-func enable_ball_collisions():
-	$Area2D.set_collision_mask_value(3, true)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("paddles"):
@@ -49,9 +52,9 @@ func _handle_paddle_collision(paddle: Paddle) -> void:
 		
 		if (velocity.y > 0 && global_position.y < paddle.get_high_marker_position()) || (velocity.y < 0 && global_position.y > paddle.get_low_marker_position()):
 			velocity.y = -1*velocity.y
-			if effect == Effect.GROW:
+			if magic_effect == Effect.GROW:
 				paddle.grow()
-			elif effect == Effect.SHRINK:
+			elif magic_effect == Effect.SHRINK:
 				paddle.shrink()
 
 		# Align acceleration vector with ball's velocity before adding to ball's velocity.
@@ -74,10 +77,13 @@ func _handle_ball_collision(other_ball: Ball) -> void:
 				velocity.y = -1*velocity.y
 			else:
 				velocity.x = -1*velocity.x
+				
 	elif _is_matching_x_polarity_with(other_ball) && !_is_matching_y_polarity_with(other_ball):
 		velocity.y = -1*velocity.y
+		
 	elif !_is_matching_x_polarity_with(other_ball) && _is_matching_y_polarity_with(other_ball):
 		velocity.x = -1*velocity.x
+		
 	elif _is_matching_x_polarity_with(other_ball) && _is_matching_y_polarity_with(other_ball):
 		var temp := Vector2(velocity.x, velocity.y)
 		velocity = Vector2(other_ball.velocity.x, other_ball.velocity.y)

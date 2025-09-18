@@ -1,4 +1,5 @@
 extends CanvasLayer
+
 signal new_game_singleplayer
 signal new_game_multiplayer
 signal open_volume_settings
@@ -6,15 +7,20 @@ signal open_game_settings
 signal view_license
 signal view_help
 signal view_credits
+
 enum ActiveMenu {
 	TITLE,
 	PLAY,
 	SETTINGS
 }
+
 var _active_menu := ActiveMenu.TITLE
 
 func _ready() -> void:
 	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
+
+func set_version(version: String) -> void:
+	$%VersionLabel.text = version
 
 func _input(event: InputEvent) -> void:
 	if get_viewport().gui_get_focus_owner() == null:
@@ -99,6 +105,3 @@ func _on_help_button_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	view_credits.emit()
 	MenuSfx.play_confirm_sound()
-
-func set_version(version: String) -> void:
-	$%VersionLabel.text = version

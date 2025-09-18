@@ -1,5 +1,6 @@
 class_name Paddle
 extends CharacterBody2D
+
 enum Player {
 	PLAYER_1,
 	PLAYER_2,
@@ -7,8 +8,10 @@ enum Player {
 	CPU_NORMAL,
 	CPU_HARD
 }
+
 var player: Player
 var _terminal_speed := 300.0
+
 const _ACCELERATION := 10.0
 const _SCALE_INCREMENT := 0.05
 const _SPEED_INCREMENT := 25.0
@@ -17,16 +20,16 @@ const _SCALE_MAX := 1.25
 
 func _physics_process(delta: float) -> void:
 	if player == Player.PLAYER_1 || player == Player.PLAYER_2:
-		_set_velocity_player()
+		_perform_action_player()
 	if player == Player.CPU_EASY || player == Player.CPU_NORMAL || player == Player.CPU_HARD:
-		_set_velocity_ai()
+		_perform_action_ai()
 
 	# Slow down faster upon colliding with walls to prevent "sticking".	
 	var collision := move_and_collide(velocity*delta)	
 	if collision && collision.get_collider().is_in_group("bounce_walls"):
 		velocity.y = lerp(velocity.y, 0.0, 0.2)
 
-func _set_velocity_player() -> void:
+func _perform_action_player() -> void:
 	if (player == Player.PLAYER_1 && Input.is_action_pressed("up_player1")) || (player == Player.PLAYER_2 && Input.is_action_pressed("up_player2")):
 		_move_up()
 	elif (player == Player.PLAYER_1 && Input.is_action_pressed("down_player1")) || (player == Player.PLAYER_2 && Input.is_action_pressed("down_player2")):
@@ -34,7 +37,7 @@ func _set_velocity_player() -> void:
 	else:
 		_slow_to_halt()
 		
-func _set_velocity_ai() -> void:
+func _perform_action_ai() -> void:
 	var balls := get_tree().get_nodes_in_group("balls")
 
 	if balls.size() > 0:

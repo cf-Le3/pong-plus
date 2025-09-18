@@ -1,6 +1,8 @@
 class_name GameSettings
 extends CanvasLayer
+
 signal close_game_settings(game_config: GameConfig)
+
 var game_config := GameConfig.new()
 var _last_focused: Control = null
 

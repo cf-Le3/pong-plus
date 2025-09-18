@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://dd4eh3jh7j4ei"]
 
 [ext_resource type="Script" uid="uid://kjb07mr8gkwb" path="res://menus/credits/credits.gd" id="1_nxg04"]
-[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://general/fonts/Jost-800-Heavy.ttf" id="1_udukd"]
+[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://assets_fonts/Jost-800-Heavy.ttf" id="1_udukd"]
 [ext_resource type="Texture2D" uid="uid://d2pw5n83w74j7" path="res://menus/credits/logo_large_color_dark.svg" id="2_iccok"]
-[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="2_n867l"]
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://assets_fonts/Jost-500-Medium.ttf" id="2_n867l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rttxh"]
 bg_color = Color(0.192157, 0.521569, 0.560784, 1)

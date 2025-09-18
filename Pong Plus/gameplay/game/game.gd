@@ -1,14 +1,16 @@
 class_name Game
 extends Node2D
+
 signal close_game
+
 @export var _ball_spawner_scene: PackedScene
 
-# Configuration values
+# Game configuration
 var config_is_multiplayer := true
 var config_resize_enabled := false
 var game_config := GameConfig.new()
 
-# Session-specific
+# Game state
 var _ball_spawner: BallSpawner
 var _score_player_1 := 0
 var _score_player_2 := 0
@@ -67,21 +69,21 @@ func _on_wall_goal_right_ball_escaped(can_score: bool) -> void:
 	if can_score:
 		_score_player_1 += 1
 		$HUD.update_score(_score_player_1, true)
-	do_stuff_after_scoring()
+	_do_stuff_after_scoring()
 
 func _on_wall_goal_left_ball_escaped(can_score: bool) -> void:
 	if can_score:
 		_score_player_2 += 1
 		$HUD.update_score(_score_player_2, false)
-	do_stuff_after_scoring()
+	_do_stuff_after_scoring()
 
-func do_stuff_after_scoring() -> void:
+func _do_stuff_after_scoring() -> void:
 	if _score_player_1 >= game_config.get_max_points() || _score_player_2 >= game_config.get_max_points():
-		game_over()
+		_game_over()
 	elif get_tree().get_nodes_in_group("balls").size() <= 1:
 		_ball_spawner.spawn_ball()
 
-func game_over() -> void:
+func _game_over() -> void:
 	$BallSpawnTimer.stop()
 	get_tree().call_group("paddles", "queue_free")
 	get_tree().call_group("balls", "queue_free")
