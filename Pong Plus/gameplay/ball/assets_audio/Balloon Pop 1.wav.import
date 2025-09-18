@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cswb4vlmilq02"
-path="res://.godot/imported/Balloon Pop 1.wav-9177bad519ac7be63d7163c05721c186.sample"
+path="res://.godot/imported/Balloon Pop 1.wav-24b864cbf69bfd22e5ee3803fee780ca.sample"
 
 [deps]
 
-source_file="res://gameplay/ball/Balloon Pop 1.wav"
-dest_files=["res://.godot/imported/Balloon Pop 1.wav-9177bad519ac7be63d7163c05721c186.sample"]
+source_file="res://gameplay/ball/assets_audio/Balloon Pop 1.wav"
+dest_files=["res://.godot/imported/Balloon Pop 1.wav-24b864cbf69bfd22e5ee3803fee780ca.sample"]
 
 [params]
 

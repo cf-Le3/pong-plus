@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0nufo7e0bxg4"
-path="res://.godot/imported/ball1.png-0e2ee8325c1f6e5a162d6d12595b8c9a.ctex"
+uid="uid://dtx2stlqamlu5"
+path="res://.godot/imported/ball_shrink.png-9ae0c61baf76114cbe8be2fdfe07bf38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/ball/ball1.png"
-dest_files=["res://.godot/imported/ball1.png-0e2ee8325c1f6e5a162d6d12595b8c9a.ctex"]
+source_file="res://gameplay/ball_spawner/assets_textures/ball_shrink.png"
+dest_files=["res://.godot/imported/ball_shrink.png-9ae0c61baf76114cbe8be2fdfe07bf38.ctex"]
 
 [params]
 

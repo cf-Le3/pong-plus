@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://55cdi3e3vxmv"
-path="res://.godot/imported/Hit damage 1.wav-0b020268fb2d3580ff25a5e1ce0081d0.sample"
+path="res://.godot/imported/Hit damage 1.wav-cf0ab31dbb3c947a5d8257e4bf6592fa.sample"
 
 [deps]
 
-source_file="res://gameplay/ball/Hit damage 1.wav"
-dest_files=["res://.godot/imported/Hit damage 1.wav-0b020268fb2d3580ff25a5e1ce0081d0.sample"]
+source_file="res://gameplay/ball/assets_audio/Hit damage 1.wav"
+dest_files=["res://.godot/imported/Hit damage 1.wav-cf0ab31dbb3c947a5d8257e4bf6592fa.sample"]
 
 [params]
 

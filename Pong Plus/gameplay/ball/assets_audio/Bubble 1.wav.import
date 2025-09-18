@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://3ikev7c220qg"
-path="res://.godot/imported/Bubble 1.wav-e1bb89e7056f0f77962a18a1eaba6e71.sample"
+path="res://.godot/imported/Bubble 1.wav-0485fc8ca08911a4fe7be5f4fad4c3cc.sample"
 
 [deps]
 
-source_file="res://gameplay/ball/Bubble 1.wav"
-dest_files=["res://.godot/imported/Bubble 1.wav-e1bb89e7056f0f77962a18a1eaba6e71.sample"]
+source_file="res://gameplay/ball/assets_audio/Bubble 1.wav"
+dest_files=["res://.godot/imported/Bubble 1.wav-0485fc8ca08911a4fe7be5f4fad4c3cc.sample"]
 
 [params]
 

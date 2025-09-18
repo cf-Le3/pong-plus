@@ -12,9 +12,9 @@ const _NO_UNIQUE_BALLS := 3
 
 func _ready() -> void:
 	if magic_balls_enabled:
-		_textures = [load("res://gameplay/ball/ball_normal.png"), load("res://gameplay/ball/ball_grow.png"), load("res://gameplay/ball/ball_shrink.png")]
+		_textures = [load("res://gameplay/ball_spawner/assets_textures/ball_normal.png"), load("res://gameplay/ball_spawner/assets_textures/ball_grow.png"), load("res://gameplay/ball_spawner/assets_textures/ball_shrink.png")]
 	else:
-		_textures = [load("res://gameplay/ball/ball1.png"), load("res://gameplay/ball/ball2.png"), load("res://gameplay/ball/ball3.png")]
+		_textures = [load("res://gameplay/ball_spawner/assets_textures/ball1.png"), load("res://gameplay/ball_spawner/assets_textures/ball2.png"), load("res://gameplay/ball_spawner/assets_textures/ball3.png")]
 
 func spawn_ball() -> void:
 	_balls_spawned += 1

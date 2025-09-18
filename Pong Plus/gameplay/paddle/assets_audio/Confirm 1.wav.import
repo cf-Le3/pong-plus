@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bl7vcft6ggam5"
-path="res://.godot/imported/Confirm 1.wav-3b1690d414f14942ed367239f470f5b5.sample"
+path="res://.godot/imported/Confirm 1.wav-aeca3dc58897258bbb28ed2f28139144.sample"
 
 [deps]
 
-source_file="res://gameplay/paddle/Confirm 1.wav"
-dest_files=["res://.godot/imported/Confirm 1.wav-3b1690d414f14942ed367239f470f5b5.sample"]
+source_file="res://gameplay/paddle/assets_audio/Confirm 1.wav"
+dest_files=["res://.godot/imported/Confirm 1.wav-aeca3dc58897258bbb28ed2f28139144.sample"]
 
 [params]
 
