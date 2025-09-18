@@ -22,6 +22,12 @@ func _ready() -> void:
 	velocity = Vector2(_INIT_SPEED, 0).rotated(init_dir)
 	$Sprite2D.texture = init_texture
 
+func enable_ball_collisions():
+	$Area2D.set_collision_mask_value(3, true)
+	
+func set_magic_effect(magic_effect: Ball.Effect) -> void:
+	_magic_effect = magic_effect
+
 func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(velocity*delta)
 	if collision:
@@ -101,9 +107,3 @@ func _is_slower_than(other_ball: Ball) -> bool:
 func _randomly_tilt_velocity() -> void:
 	# Randomly rotate velocity by -5 to 5 degrees.	
 	velocity = velocity.rotated(randi_range(-5, 5)*PI/180)
-
-func enable_ball_collisions():
-	$Area2D.set_collision_mask_value(3, true)
-	
-func set_magic_effect(magic_effect: Ball.Effect) -> void:
-	_magic_effect = magic_effect

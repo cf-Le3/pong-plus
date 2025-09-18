@@ -18,6 +18,9 @@ const _SPEED_INCREMENT := 25.0
 const _SCALE_MIN := 0.75
 const _SCALE_MAX := 1.25
 
+func set_player(player: Player) -> void:
+	_player = player
+
 func _physics_process(delta: float) -> void:
 	if _player == Player.PLAYER_1 || _player == Player.PLAYER_2:
 		_perform_action_player()
@@ -88,9 +91,6 @@ func _move_down() -> void:
 	
 func _slow_to_halt() -> void:
 	velocity.y = lerp(velocity.y, 0.0, 0.05)
-
-func set_player(player: Player) -> void:
-	_player = player
 
 func get_high_marker_position() -> float:
 	return $HighMarker2D.global_position.y
