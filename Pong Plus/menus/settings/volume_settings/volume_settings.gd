@@ -1,6 +1,8 @@
 class_name VolumeSettings
 extends CanvasLayer
+
 signal close_volume_settings(volume_config: VolumeConfig)
+
 var volume_config := VolumeConfig.new()
 
 func _ready() -> void:

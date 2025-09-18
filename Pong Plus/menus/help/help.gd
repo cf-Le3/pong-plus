@@ -1,5 +1,6 @@
 class_name Help
 extends CanvasLayer
+
 signal close_help
 
 func _ready() -> void:

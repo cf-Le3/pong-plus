@@ -1,5 +1,6 @@
 class_name Credits
 extends CanvasLayer
+
 signal close_credits
 
 func _ready() -> void:

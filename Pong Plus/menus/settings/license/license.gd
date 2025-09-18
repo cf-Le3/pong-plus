@@ -1,6 +1,8 @@
 class_name License
 extends CanvasLayer
+
 signal close_license
+
 var _license_text_opening := "This game uses Godot Engine, available under the following license:\n\n"
 
 func _ready() -> void:
