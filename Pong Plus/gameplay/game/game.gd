@@ -29,17 +29,17 @@ func _ready() -> void:
 	$Sprite2D.global_position = Vector2(viewport_w/2, viewport_h/2)
 	
 	$Paddle1.global_position = Vector2((viewport_w-_ARENA_W)/2+32, viewport_h/2)
-	$Paddle1.set_player(Paddle.Player.PLAYER_1)
+	$Paddle1.player = Paddle.Player.PLAYER_1
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-_ARENA_W)/2-32, viewport_h/2)
 	if config_is_multiplayer:
-		$Paddle2.set_player(Paddle.Player.PLAYER_2)
+		$Paddle2.player = Paddle.Player.PLAYER_2
 	else:
 		if game_config.get_difficulty() == GameConfig.Difficulty.EASY:
-			$Paddle2.set_player(Paddle.Player.CPU_EASY)
+			$Paddle2.player = Paddle.Player.CPU_EASY
 		elif game_config.get_difficulty() == GameConfig.Difficulty.NORMAL:
-			$Paddle2.set_player(Paddle.Player.CPU_NORMAL)
+			$Paddle2.player = Paddle.Player.CPU_NORMAL
 		elif game_config.get_difficulty() == GameConfig.Difficulty.HARD:
-			$Paddle2.set_player(Paddle.Player.CPU_HARD)
+			$Paddle2.player = Paddle.Player.CPU_HARD
 	
 	_ball_spawner = _ball_spawner_scene.instantiate()
 	_ball_spawner.colliding_balls_enabled = game_config.get_ball_collisions_enabled()

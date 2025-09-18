@@ -9,7 +9,7 @@ enum Player {
 	CPU_HARD
 }
 
-var _player: Player
+var player: Player
 var _terminal_speed := 300.0
 
 const _ACCELERATION := 10.0
@@ -18,13 +18,10 @@ const _SPEED_INCREMENT := 25.0
 const _SCALE_MIN := 0.75
 const _SCALE_MAX := 1.25
 
-func set_player(player: Player) -> void:
-	_player = player
-
 func _physics_process(delta: float) -> void:
-	if _player == Player.PLAYER_1 || _player == Player.PLAYER_2:
+	if player == Player.PLAYER_1 || player == Player.PLAYER_2:
 		_perform_action_player()
-	if _player == Player.CPU_EASY || _player == Player.CPU_NORMAL || _player == Player.CPU_HARD:
+	if player == Player.CPU_EASY || player == Player.CPU_NORMAL || player == Player.CPU_HARD:
 		_perform_action_ai()
 
 	# Slow down faster upon colliding with walls to prevent "sticking".	
@@ -33,9 +30,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = lerp(velocity.y, 0.0, 0.2)
 
 func _perform_action_player() -> void:
-	if (_player == Player.PLAYER_1 && Input.is_action_pressed("up_player1")) || (_player == Player.PLAYER_2 && Input.is_action_pressed("up_player2")):
+	if (player == Player.PLAYER_1 && Input.is_action_pressed("up_player1")) || (player == Player.PLAYER_2 && Input.is_action_pressed("up_player2")):
 		_move_up()
-	elif (_player == Player.PLAYER_1 && Input.is_action_pressed("down_player1")) || (_player == Player.PLAYER_2 && Input.is_action_pressed("down_player2")):
+	elif (player == Player.PLAYER_1 && Input.is_action_pressed("down_player1")) || (player == Player.PLAYER_2 && Input.is_action_pressed("down_player2")):
 		_move_down()
 	else:
 		_slow_to_halt()
@@ -50,14 +47,14 @@ func _perform_action_ai() -> void:
 		for b: Ball in balls:
 			if b.velocity.x > 0 && b.global_position.x < global_position.x:
 				var attribute: float
-				if _player == Player.CPU_EASY:
+				if player == Player.CPU_EASY:
 					# EASY: Prioritize ball closest to paddle.
 					attribute = global_position.distance_squared_to(b.global_position)
 				else:
 					# NORMAL: Prioitize ball horizontally closest to paddle.
 					attribute = global_position.x - b.global_position.x
 					# HARD: Prioritize ball that will reach paddle soonest.
-					if _player == Player.CPU_HARD:
+					if player == Player.CPU_HARD:
 						attribute = attribute / b.velocity.x
 				if attribute < priority_attribute:
 					priority_ball = b
@@ -65,7 +62,7 @@ func _perform_action_ai() -> void:
 					
 		if priority_ball != null:
 			# HARD: Align paddle such that the ball is between the two markers.
-			if _player == Player.CPU_HARD:
+			if player == Player.CPU_HARD:
 				if priority_ball.global_position.y < get_high_marker_position():
 					_move_up()
 				elif priority_ball.global_position.y > get_low_marker_position():
