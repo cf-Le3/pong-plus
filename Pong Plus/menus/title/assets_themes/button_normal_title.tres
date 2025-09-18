@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://b0d8oqpo1fhvc"]
 
-[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="1_pcn51"]
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://assets_fonts/Jost-500-Medium.ttf" id="1_pcn51"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c22pl"]
 content_margin_left = 16.0

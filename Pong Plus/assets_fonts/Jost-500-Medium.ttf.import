@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://3bakknuabxrn"
-path="res://.godot/imported/Jost-500-Medium.ttf-979563ef2e589e8e37e1c4d46742cd3d.fontdata"
+path="res://.godot/imported/Jost-500-Medium.ttf-33ada597270cd7a8516923598901ee00.fontdata"
 
 [deps]
 
-source_file="res://general/fonts/Jost-500-Medium.ttf"
-dest_files=["res://.godot/imported/Jost-500-Medium.ttf-979563ef2e589e8e37e1c4d46742cd3d.fontdata"]
+source_file="res://assets_fonts/Jost-500-Medium.ttf"
+dest_files=["res://.godot/imported/Jost-500-Medium.ttf-33ada597270cd7a8516923598901ee00.fontdata"]
 
 [params]
 

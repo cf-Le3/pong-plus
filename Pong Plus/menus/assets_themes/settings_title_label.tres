@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://bebmaum0nxo2t"]
 
-[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://general/fonts/Jost-800-Heavy.ttf" id="1_jvqfs"]
+[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://assets_fonts/Jost-800-Heavy.ttf" id="1_jvqfs"]
 
 [resource]
 Label/font_sizes/font_size = 40

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcktngg6b8fyk"]
 
 [ext_resource type="Script" uid="uid://dpvalgine0a2w" path="res://gameplay/hud/hud.gd" id="1_n0o34"]
-[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://general/fonts/Jost-800-Heavy.ttf" id="2_7p07k"]
-[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://general/fonts/Jost-500-Medium.ttf" id="3_86vby"]
+[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://assets_fonts/Jost-800-Heavy.ttf" id="2_7p07k"]
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://assets_fonts/Jost-500-Medium.ttf" id="3_86vby"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_n0o34")
