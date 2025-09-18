@@ -26,7 +26,6 @@ texture = ExtResource("3_jxpyf")
 [node name="WallGoalRight" parent="." instance=ExtResource("5_tp3gb")]
 
 [node name="Paddle1" parent="." instance=ExtResource("6_5cgph")]
-is_player_1 = true
 
 [node name="Paddle2" parent="." instance=ExtResource("6_5cgph")]
 

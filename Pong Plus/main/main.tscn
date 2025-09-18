@@ -20,12 +20,12 @@ loop = true
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wtcpt")
-game_scene = ExtResource("2_w43ni")
-volume_settings_scene = ExtResource("3_d5y16")
-game_settings_scene = ExtResource("4_b04w8")
-license_scene = ExtResource("5_uw54y")
-help_scene = ExtResource("3_u37n1")
-credits_scene = ExtResource("4_i10c4")
+_game_scene = ExtResource("2_w43ni")
+_volume_settings_scene = ExtResource("3_d5y16")
+_game_settings_scene = ExtResource("4_b04w8")
+_license_scene = ExtResource("5_uw54y")
+_help_scene = ExtResource("3_u37n1")
+_credits_scene = ExtResource("4_i10c4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
