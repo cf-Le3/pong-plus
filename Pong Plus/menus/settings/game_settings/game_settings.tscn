@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://d13a1hucll5b3" path="res://menus/assets_textures/arrow_button_r.png" id="5_bdek5"]
 [ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/assets_textures/arrow_button_r_focus.png" id="6_2xgd5"]
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="7_tn3w7"]
-[ext_resource type="ButtonGroup" uid="uid://c0lgol6iek2dr" path="res://menus/settings/game_settings/difficulty.tres" id="8_7wr6i"]
+[ext_resource type="ButtonGroup" uid="uid://c0lgol6iek2dr" path="res://menus/settings/game_settings/assets_resources/difficulty.tres" id="8_7wr6i"]
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="8_qkoji"]
-[ext_resource type="ButtonGroup" uid="uid://du8xdrt0u6lxo" path="res://menus/settings/game_settings/ball_collisions.tres" id="9_3unct"]
+[ext_resource type="ButtonGroup" uid="uid://du8xdrt0u6lxo" path="res://menus/settings/game_settings/assets_resources/ball_collisions.tres" id="9_3unct"]
 
 [node name="GameSettings" type="CanvasLayer"]
 script = ExtResource("1_4iu0o")
