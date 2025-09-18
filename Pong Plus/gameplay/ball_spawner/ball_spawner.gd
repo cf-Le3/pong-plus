@@ -22,18 +22,18 @@ func spawn_ball() -> void:
 
 func _generate_ball() -> Ball:
 	var ball: Ball = _ball_scene.instantiate()
-	var random_index: int = randi_range(0, _NO_UNIQUE_BALLS-1)
+	var rand_index: int = randi_range(0, _NO_UNIQUE_BALLS-1)
 	
 	ball.init_pos = $BallSpawnPoint.global_position
 	ball.init_dir = _initial_angles[_balls_spawned%_NO_UNIQUE_BALLS] + _initial_angles_offsets.pick_random()
-	ball.texture = _textures[random_index]
+	ball.init_texture = _textures[rand_index]
 
 	if colliding_balls_enabled:
 		ball.enable_ball_collisions()
 
 	if magic_balls_enabled:
-		ball.effect = Ball.Effect[Ball.Effect.keys()[random_index]]
+		ball.set_effect(Ball.Effect[Ball.Effect.keys()[rand_index]])
 	else:
-		ball.effect = Ball.Effect.NORMAL
+		ball.set_effect(Ball.Effect.NORMAL)
 
 	return ball
