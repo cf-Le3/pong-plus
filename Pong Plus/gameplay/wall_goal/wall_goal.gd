@@ -1,5 +1,7 @@
 extends Area2D
+
 signal ball_escaped(can_score: bool)
+
 var _is_invincible := false
 
 func _on_body_exited(body: Node2D) -> void:
@@ -10,9 +12,9 @@ func _on_body_exited(body: Node2D) -> void:
 		enable_invincibility()
 		$GoalSound.play()
 
+func _on_invincibility_timer_timeout() -> void:
+	_is_invincible = false
+
 func enable_invincibility() -> void:
 	_is_invincible = true
 	$InvincibilityTimer.start()
-
-func _on_invincibility_timer_timeout() -> void:
-	_is_invincible = false
