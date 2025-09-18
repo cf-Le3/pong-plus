@@ -2,23 +2,22 @@ class_name BallSpawner
 extends Node2D
 
 signal spawned(ball: Ball)
-@export var _ball_scene: PackedScene
 
-var init_colliding_balls_enabled := false
-var init_magic_balls_enabled := false
+@export var _ball_scene: PackedScene
 
 var _initial_angles := [45*PI/180, 60*PI/180, 75*PI/180]
 var _initial_angles_offsets := [0, PI/2, PI, 3*PI/2]
-var _textures : Array[Texture]
+var _textures_normal: Array[Texture] = [preload("res://gameplay/ball_spawner/assets_textures/ball1.png"), preload("res://gameplay/ball_spawner/assets_textures/ball2.png"), preload("res://gameplay/ball_spawner/assets_textures/ball3.png")]
+var _textures_magic: Array[Texture] = [preload("res://gameplay/ball_spawner/assets_textures/ball_normal.png"), preload("res://gameplay/ball_spawner/assets_textures/ball_grow.png"), preload("res://gameplay/ball_spawner/assets_textures/ball_shrink.png")]
 var _balls_spawned := 0
+var _colliding_balls_enabled: bool
+var _magic_balls_enabled: bool
 
 const _NO_UNIQUE_BALLS := 3
 
-func _ready() -> void:
-	if init_magic_balls_enabled:
-		_textures = [load("res://gameplay/ball_spawner/assets_textures/ball_normal.png"), load("res://gameplay/ball_spawner/assets_textures/ball_grow.png"), load("res://gameplay/ball_spawner/assets_textures/ball_shrink.png")]
-	else:
-		_textures = [load("res://gameplay/ball_spawner/assets_textures/ball1.png"), load("res://gameplay/ball_spawner/assets_textures/ball2.png"), load("res://gameplay/ball_spawner/assets_textures/ball3.png")]
+func configure_ball_behaviors(colliding_balls_enabled: bool, magic_balls_enabled: bool) -> void:
+	_colliding_balls_enabled = colliding_balls_enabled
+	_magic_balls_enabled = magic_balls_enabled
 
 func spawn_ball() -> void:
 	_balls_spawned += 1
@@ -30,14 +29,15 @@ func _generate_ball() -> Ball:
 	
 	ball.init_pos = $BallSpawnPoint.global_position
 	ball.init_dir = _initial_angles[_balls_spawned%_NO_UNIQUE_BALLS] + _initial_angles_offsets.pick_random()
-	ball.init_texture = _textures[rand_index]
 
-	if init_colliding_balls_enabled:
+	if _colliding_balls_enabled:
 		ball.enable_ball_collisions()
 
-	if init_magic_balls_enabled:
+	if _magic_balls_enabled:
 		ball.set_effect(Ball.Effect[Ball.Effect.keys()[rand_index]])
+		ball.init_texture = _textures_magic[rand_index]
 	else:
 		ball.set_effect(Ball.Effect.NORMAL)
+		ball.init_texture = _textures_normal[_balls_spawned%_NO_UNIQUE_BALLS]
 
 	return ball
