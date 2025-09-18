@@ -1,98 +1,100 @@
 extends Node
-@export var game_scene: PackedScene
-@export var volume_settings_scene: PackedScene
-@export var game_settings_scene: PackedScene
-@export var license_scene: PackedScene
-@export var help_scene: PackedScene
-@export var credits_scene: PackedScene
+
+@export var _game_scene: PackedScene
+@export var _volume_settings_scene: PackedScene
+@export var _game_settings_scene: PackedScene
+@export var _license_scene: PackedScene
+@export var _help_scene: PackedScene
+@export var _credits_scene: PackedScene
+
 var _game_config: GameConfig
 var _volume_config: VolumeConfig
-var game: Game
-var volume_settings: VolumeSettings
-var game_settings: GameSettings
-var license: License
-var help: Help
-var credits: Credits
-var version := "v1.1.0"
+var _game: Game
+var _volume_settings: VolumeSettings
+var _game_settings: GameSettings
+var _license: License
+var _help: Help
+var _credits: Credits
+var _version := "v1.1.0"
 
 func _ready() -> void:
 	_game_config = GameConfig.new()
 	_volume_config = VolumeConfig.new()
-	$Title.set_version(version)
+	$Title.set_version(_version)
 	$Music.play()
 
 func _on_title_new_game_singleplayer() -> void:
-	create_new_game_session(false)
+	_create_new_game_session(false)
 
 func _on_title_new_game_multiplayer() -> void:
-	create_new_game_session(true)
+	_create_new_game_session(true)
 
-func create_new_game_session(is_multiplayer: bool) -> void:
-	enable_title(false)
-	game = game_scene.instantiate()
-	game.config_is_multiplayer = is_multiplayer
-	game.game_config = _game_config
-	game.connect("close_game", _on_close_game)
-	add_child(game)
+func _create_new_game_session(is_multiplayer: bool) -> void:
+	_enable_title(false)
+	_game = _game_scene.instantiate()
+	_game.config_is_multiplayer = is_multiplayer
+	_game.game_config = _game_config
+	_game.connect("close_game", _on_close_game)
+	add_child(_game)
 	
 func _on_close_game() -> void:
-	game.queue_free()
-	enable_title(true)
+	_game.queue_free()
+	_enable_title(true)
 
 func _on_title_open_volume_settings() -> void:
-	enable_title(false)
-	volume_settings = volume_settings_scene.instantiate()
-	volume_settings.volume_config = _volume_config
-	volume_settings.connect("close_volume_settings", _on_close_volume_settings)
-	add_child(volume_settings)
+	_enable_title(false)
+	_volume_settings = _volume_settings_scene.instantiate()
+	_volume_settings.volume_config = _volume_config
+	_volume_settings.connect("close_volume_settings", _on_close_volume_settings)
+	add_child(_volume_settings)
 
 func _on_close_volume_settings(volume_config: VolumeConfig) -> void:
 	_volume_config = volume_config
-	volume_settings.queue_free()
-	enable_title(true)	
+	_volume_settings.queue_free()
+	_enable_title(true)	
 
 func _on_title_open_game_settings() -> void:
-	enable_title(false)
-	game_settings = game_settings_scene.instantiate()
-	game_settings.game_config = _game_config
-	game_settings.connect("close_game_settings", _on_close_game_settings)
-	add_child(game_settings)
+	_enable_title(false)
+	_game_settings = _game_settings_scene.instantiate()
+	_game_settings.game_config = _game_config
+	_game_settings.connect("close_game_settings", _on_close_game_settings)
+	add_child(_game_settings)
 
 func _on_close_game_settings(game_config: GameConfig) -> void:
 	_game_config = game_config
-	game_settings.queue_free()
-	enable_title(true)
+	_game_settings.queue_free()
+	_enable_title(true)
 
 func _on_title_view_license() -> void:
-	enable_title(false)
-	license = license_scene.instantiate()
-	license.connect("close_license", _on_close_license)
-	add_child(license)
+	_enable_title(false)
+	_license = _license_scene.instantiate()
+	_license.connect("close_license", _on_close_license)
+	add_child(_license)
 	
 func _on_close_license() -> void:
-	license.queue_free()
-	enable_title(true)
+	_license.queue_free()
+	_enable_title(true)
 
 func _on_title_view_help() -> void:
-	enable_title(false)
-	help = help_scene.instantiate()
-	help.connect("close_help", _on_close_help)
-	add_child(help)
+	_enable_title(false)
+	_help = _help_scene.instantiate()
+	_help.connect("close_help", _on_close_help)
+	add_child(_help)
 
 func _on_close_help() -> void:
-	help.queue_free()
-	enable_title(true)
+	_help.queue_free()
+	_enable_title(true)
 	
 func _on_title_view_credits() -> void:
-	enable_title(false)
-	credits = credits_scene.instantiate()
-	credits.connect("close_credits", _on_close_credits)
-	add_child(credits)
+	_enable_title(false)
+	_credits = _credits_scene.instantiate()
+	_credits.connect("close_credits", _on_close_credits)
+	add_child(_credits)
 	
 func _on_close_credits() -> void:
-	credits.queue_free()
-	enable_title(true)
+	_credits.queue_free()
+	_enable_title(true)
 	
-func enable_title(status: bool) -> void:
+func _enable_title(status: bool) -> void:
 	$Title.visible = status
 	$Title.set_process_input(status)
