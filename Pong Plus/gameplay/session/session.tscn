@@ -71,6 +71,8 @@ theme_override_constants/separation = 24
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../ExitButton")
+focus_neighbor_right = NodePath("../RestartButton")
 theme = ExtResource("4_stq55")
 text = "RESUME"
 
@@ -78,6 +80,8 @@ text = "RESUME"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../ResumeButton")
+focus_neighbor_right = NodePath("../ExitButton")
 theme = ExtResource("4_stq55")
 text = "RESTART"
 
@@ -85,6 +89,8 @@ text = "RESTART"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../RestartButton")
+focus_neighbor_right = NodePath("../ResumeButton")
 theme = ExtResource("5_5cnlg")
 text = "EXIT"
 
@@ -102,6 +108,7 @@ stream = ExtResource("7_b7cr8")
 bus = &"SFX"
 
 [connection signal="pressed" from="Display/VBoxContainer/ButtonContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="visibility_changed" from="Display/VBoxContainer/ButtonContainer/HBoxContainer/ResumeButton" to="Display" method="_on_resume_button_visibility_changed"]
 [connection signal="pressed" from="Display/VBoxContainer/ButtonContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Display/VBoxContainer/ButtonContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="timeout" from="StartGameTimer" to="." method="_on_start_game_timer_timeout"]
