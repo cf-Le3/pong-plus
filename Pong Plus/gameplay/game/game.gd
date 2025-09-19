@@ -53,7 +53,7 @@ func begin() -> void:
 	_ball_spawner.spawn_ball()
 
 func _on_ball_spawner_spawned(ball: Ball) -> void:
-	get_tree().current_scene.call_deferred("add_child", ball)
+	call_deferred("add_child", ball)
 	$BallSpawnTimer.start()
 
 func _on_ball_spawn_timer_timeout() -> void:
