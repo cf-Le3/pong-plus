@@ -13,13 +13,3 @@ func update_score(score: int, is_player_1: bool) -> void:
 		$ScoreLabel1.text = str(score)
 	else:
 		$ScoreLabel2.text = str(score)
-
-func show_game_over(score_player_1, score_player_2):
-	if score_player_1 >= score_player_2:
-		$GameOverMessage/WinnerLabel.text = "PLAYER 1 WINS"
-	else:
-		$GameOverMessage/WinnerLabel.text = "PLAYER 2 WINS"
-	$GameOverMessage.visible = true
-	
-func show_end_game():
-	$ContinueLabel.visible = true

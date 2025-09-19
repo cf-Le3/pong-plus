@@ -36,6 +36,11 @@ func _start_game() -> void:
 func _on_start_game_timer_timeout() -> void:
 	_show_ready(false)
 	_game.begin()
+
+func _on_game_ended(player_1_won) -> void:
+	_show_end(true, player_1_won)
+	$EndGameSound.play()
+
 func _show_ready(status: bool) -> void:
 	$%LabelContainer.visible = status
 	if $%LabelContainer.visible:
@@ -65,6 +70,3 @@ func _show_end(status: bool, player_1_won: bool = true) -> void:
 		$%ResumeButton.visible = false
 	else:
 		$%ResumeButton.visible = true
-	
-func _on_game_ended() -> void:
-	session_closed.emit()

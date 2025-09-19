@@ -1,3 +1,4 @@
+[gd_scene load_steps=10 format=3 uid="uid://dx7p0spr0qeep"]
 
 [ext_resource type="Script" uid="uid://cgcnjcugajyme" path="res://gameplay/session/session.gd" id="1_vob28"]
 [ext_resource type="PackedScene" uid="uid://dfodn8ia5n12i" path="res://gameplay/game/game.tscn" id="2_xcp3g"]
@@ -5,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="4_stq55"]
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="5_5cnlg"]
 [ext_resource type="AudioStream" uid="uid://cfkunww8ixa22" path="res://gameplay/session/assets_audio/Balloon start riding 1.wav" id="6_5cnlg"]
+[ext_resource type="AudioStream" uid="uid://b6pw1bmskjkmw" path="res://gameplay/session/assets_audio/Big Egg collect 1.wav" id="7_b7cr8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7cr8"]
 bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
@@ -76,13 +78,12 @@ layout_mode = 2
 theme = ExtResource("4_stq55")
 text = "RESTART"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer/ButtonContainer/HBoxContainer"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/VBoxContainer/ButtonContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("5_5cnlg")
-text = "QUIT
-"
+text = "EXIT"
 
 [node name="StartGameTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -91,6 +92,10 @@ one_shot = true
 [node name="StartGameSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_5cnlg")
 pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="EndGameSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_b7cr8")
 bus = &"SFX"
 
 [connection signal="timeout" from="StartGameTimer" to="." method="_on_start_game_timer_timeout"]

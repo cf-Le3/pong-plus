@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfodn8ia5n12i"]
+[gd_scene load_steps=8 format=3 uid="uid://dfodn8ia5n12i"]
 
 [ext_resource type="Script" uid="uid://dp56kl0rt3tjf" path="res://gameplay/game/game.gd" id="1_cxpw7"]
 [ext_resource type="PackedScene" uid="uid://cuuftl8hlxvux" path="res://gameplay/ball_spawner/ball_spawner.tscn" id="2_q0t4u"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://5hrpxd7ci76s" path="res://gameplay/wall_goal/wall_goal.tscn" id="5_tp3gb"]
 [ext_resource type="PackedScene" uid="uid://cj3pwg27ip3fb" path="res://gameplay/paddle/paddle.tscn" id="6_5cgph"]
 [ext_resource type="PackedScene" uid="uid://dcktngg6b8fyk" path="res://gameplay/hud/hud.tscn" id="7_wr3ym"]
-[ext_resource type="AudioStream" uid="uid://df3d5dj12liu4" path="res://gameplay/game/assets_audio/Big Egg collect 1.wav" id="8_p38ft"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_cxpw7")
@@ -31,17 +30,8 @@ texture = ExtResource("3_jxpyf")
 [node name="BallSpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 
-[node name="CloseGameTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
 [node name="HUD" parent="." instance=ExtResource("7_wr3ym")]
-
-[node name="GameOverSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_p38ft")
-bus = &"SFX"
 
 [connection signal="ball_escaped" from="WallGoalLeft" to="." method="_on_wall_goal_left_ball_escaped"]
 [connection signal="ball_escaped" from="WallGoalRight" to="." method="_on_wall_goal_right_ball_escaped"]
 [connection signal="timeout" from="BallSpawnTimer" to="." method="_on_ball_spawn_timer_timeout"]
-[connection signal="timeout" from="CloseGameTimer" to="." method="_on_close_game_timer_timeout"]

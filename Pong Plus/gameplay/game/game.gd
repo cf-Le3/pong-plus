@@ -1,7 +1,7 @@
 class_name Game
 extends Node2D
 
-signal game_ended
+signal game_ended(player_1_won: bool)
 
 @export var _ball_spawner_scene: PackedScene
 
@@ -13,7 +13,6 @@ var game_config := GameConfig.new()
 var _ball_spawner: BallSpawner
 var _score_player_1 := 0
 var _score_player_2 := 0
-var _close_game_enabled := false
 
 # Arena dimensions
 const _ARENA_W := 1024
@@ -83,14 +82,4 @@ func _game_over() -> void:
 	$BallSpawnTimer.stop()
 	get_tree().call_group("paddles", "queue_free")
 	get_tree().call_group("balls", "queue_free")
-	$HUD.show_game_over(_score_player_1, _score_player_2)
-	$CloseGameTimer.start()
-	$GameOverSound.play()
-
-func _on_close_game_timer_timeout() -> void:
-	$HUD.show_end_game()
-	_close_game_enabled = true
-
-func _input(event) -> void:
-	if event is InputEventKey && _close_game_enabled:
-		game_ended.emit()
+	game_ended.emit(_score_player_1 >= _score_player_2)
