@@ -40,6 +40,7 @@ func _create_new_game_session(is_multiplayer: bool) -> void:
 func _on_close_game() -> void:
 	_game.queue_free()
 	_enable_title(true)
+	$Title.switch_menu(Title.ActiveMenu.TITLE)
 
 func _on_title_open_volume_settings() -> void:
 	_enable_title(false)
@@ -64,6 +65,7 @@ func _on_close_game_settings(game_config: GameConfig) -> void:
 	_game_config = game_config
 	_game_settings.queue_free()
 	_enable_title(true)
+	$Title.switch_menu(Title.ActiveMenu.TITLE)
 
 func _on_title_view_license() -> void:
 	_enable_title(false)

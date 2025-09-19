@@ -1,3 +1,4 @@
+class_name Title
 extends CanvasLayer
 
 signal new_game_singleplayer
@@ -44,7 +45,7 @@ func _input(event: InputEvent) -> void:
 func _on_viewport_gui_focus_changed(_node: Control) -> void:
 	MenuSfx.play_select_sound()
 
-func _switch_menu(target_menu: ActiveMenu) -> void:
+func switch_menu(target_menu: ActiveMenu) -> void:
 	if target_menu == ActiveMenu.TITLE:
 		if _active_menu == ActiveMenu.PLAY:
 			$%VBoxPlayButtons.visible = false
@@ -60,11 +61,11 @@ func _switch_menu(target_menu: ActiveMenu) -> void:
 	_active_menu = target_menu
 
 func _on_play_button_pressed() -> void:
-	_switch_menu(ActiveMenu.PLAY)
+	switch_menu(ActiveMenu.PLAY)
 	MenuSfx.play_confirm_sound()
 
 func _on_play_back_button_pressed() -> void:
-	_switch_menu(ActiveMenu.TITLE)
+	switch_menu(ActiveMenu.TITLE)
 	MenuSfx.play_cancel_sound()
 
 func _on_vs_cpu_button_pressed() -> void:
@@ -79,11 +80,11 @@ func _on_endless_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_settings_button_pressed() -> void:
-	_switch_menu(ActiveMenu.SETTINGS)
+	switch_menu(ActiveMenu.SETTINGS)
 	MenuSfx.play_confirm_sound()
 
 func _on_settings_back_button_pressed() -> void:
-	_switch_menu(ActiveMenu.TITLE)
+	switch_menu(ActiveMenu.TITLE)
 	MenuSfx.play_cancel_sound()
 
 func _on_volume_settings_button_pressed() -> void:
