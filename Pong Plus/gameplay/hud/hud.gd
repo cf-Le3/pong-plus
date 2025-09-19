@@ -7,7 +7,6 @@ func _ready() -> void:
 func show_score() -> void:
 	$ScoreLabel1.visible = true
 	$ScoreLabel2.visible = true
-	$ReadyMessage.visible = false
 
 func update_score(score: int, is_player_1: bool) -> void:
 	if is_player_1:

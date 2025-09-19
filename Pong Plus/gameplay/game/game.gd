@@ -48,16 +48,13 @@ func _ready() -> void:
 	_ball_spawner.connect("spawned", _on_ball_spawner_spawned)
 	_ball_spawner.global_position = Vector2(viewport_w/2, viewport_h/2)
 	add_child(_ball_spawner)
-	
-	$StartGameTimer.start()
-	$GameStartSound.play()
 
-func _on_start_game_timer_timeout() -> void:
+func begin() -> void:
 	$HUD.show_score()
 	_ball_spawner.spawn_ball()
 
 func _on_ball_spawner_spawned(ball: Ball) -> void:
-	add_child(ball)
+	get_tree().current_scene.call_deferred("add_child", ball)
 	$BallSpawnTimer.start()
 
 func _on_ball_spawn_timer_timeout() -> void:

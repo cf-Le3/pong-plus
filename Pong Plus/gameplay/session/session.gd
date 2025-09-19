@@ -18,6 +18,7 @@ const TEXT_PLAYER_2_WIN := "PLAYER 2 WINS"
 
 func _ready() -> void:
 	_create_new_game()
+	_start_game()
 
 func _create_new_game() -> void:
 	_game = _game_scene.instantiate()
@@ -26,6 +27,15 @@ func _create_new_game() -> void:
 	_game.connect("game_ended", _on_game_ended)
 	add_child(_game)
 
+func _start_game() -> void:
+	assert(_game != null)
+	_show_ready(true)
+	$StartGameTimer.start()
+	$StartGameSound.play()
+
+func _on_start_game_timer_timeout() -> void:
+	_show_ready(false)
+	_game.begin()
 func _show_ready(status: bool) -> void:
 	$%LabelContainer.visible = status
 	if $%LabelContainer.visible:
