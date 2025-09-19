@@ -6,6 +6,8 @@ signal close_game_settings(game_config: GameConfig)
 var game_config := GameConfig.new()
 var _last_focused: Control = null
 
+#TODO: Moddify focus neighbor attributes for resizing button controls and adjacent controls.
+
 func _ready() -> void:
 	_update_display()
 
@@ -20,6 +22,11 @@ func _ready() -> void:
 		$%CollisionsEnabledButton.button_pressed = true
 	else:
 		$%CollisionsDisabledButton.button_pressed = true
+		
+	if game_config.get_magic_balls_enabled():
+		$%ResizingEnabledButton.button_pressed = true
+	else:
+		$%ResizingDisabledButton.button_pressed = true
 
 	$%PointsButtonR.grab_focus()
 	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
@@ -87,12 +94,23 @@ func _on_collisions_enabled_button_toggled(toggled_on: bool) -> void:
 func _on_collisions_disabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_ball_collisions_enabled(false)
+		MenuSfx.play_cancel_sound()
+
+func _on_resizing_enabled_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		game_config.set_magic_balls_enabled(true)
 		MenuSfx.play_confirm_sound()
+
+func _on_resizing_disabled_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		game_config.set_magic_balls_enabled(false)
+		MenuSfx.play_cancel_sound()
 
 func _on_default_button_pressed() -> void:
 	game_config = GameConfig.new()
 	$%NormalButton.button_pressed = true
 	$%CollisionsDisabledButton.button_pressed = true
+	$%ResizingDisabledButton.button_pressed = true
 	_update_display()
 	MenuSfx.play_cancel_sound()
 
