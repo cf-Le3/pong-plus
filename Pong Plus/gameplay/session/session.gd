@@ -50,13 +50,30 @@ func _input(event: InputEvent) -> void:
 			get_tree().paused = false
 			_show_pause(false)
 
+func _on_resume_button_pressed() -> void:
+	get_tree().paused = false
+	_show_pause(false)
 		
 func _show_pause(status: bool) -> void:
 	$%LabelContainer.visible = status
 	if $%LabelContainer.visible:
 		$%Label.text = TEXT_PAUSED
 	$%ButtonContainer.visible = status
+
+func _on_game_ended(player_1_won) -> void:
+	_show_end(true, player_1_won)
+	_can_pause = false
+	$EndGameSound.play()
 	
+func _on_restart_button_pressed() -> void:
+	if get_tree().paused:
+		get_tree().paused = false
+		_show_pause(false)
+	else:
+		_show_end(false)
+	_game.queue_free()
+	_start_game()
+
 func _show_end(status: bool, player_1_won: bool = true) -> void:
 	$%LabelContainer.visible = status
 	if $%LabelContainer.visible:
@@ -75,3 +92,6 @@ func _show_end(status: bool, player_1_won: bool = true) -> void:
 		$%ResumeButton.visible = false
 	else:
 		$%ResumeButton.visible = true
+
+func _on_exit_button_pressed() -> void:
+	session_closed.emit()

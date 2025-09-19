@@ -99,4 +99,7 @@ bus = &"SFX"
 stream = ExtResource("7_b7cr8")
 bus = &"SFX"
 
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ButtonContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="timeout" from="StartGameTimer" to="." method="_on_start_game_timer_timeout"]
