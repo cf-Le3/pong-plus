@@ -16,6 +16,7 @@ Label/font_sizes/font_size = 96
 Label/fonts/font = ExtResource("3_srpmx")
 
 [node name="Session" type="Node"]
+process_mode = 3
 script = ExtResource("1_vob28")
 _game_scene = ExtResource("2_xcp3g")
 

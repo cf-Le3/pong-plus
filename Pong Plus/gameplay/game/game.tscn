@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dcktngg6b8fyk" path="res://gameplay/hud/hud.tscn" id="7_wr3ym"]
 
 [node name="Game" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_cxpw7")
 _ball_spawner_scene = ExtResource("2_q0t4u")
 

@@ -8,6 +8,7 @@ signal session_closed
 var is_multiplayer := false
 var game_config := GameConfig.new()
 var _game: Game
+var _can_pause := false
 
 const TEXT_READY := "READY"
 const TEXT_PAUSED := "PAUSED"
@@ -30,17 +31,25 @@ func _start_game() -> void:
 	$StartGameSound.play()
 
 func _on_start_game_timer_timeout() -> void:
+	assert(_game != null)
 	_show_ready(false)
 	_game.begin()
-
-func _on_game_ended(player_1_won) -> void:
-	_show_end(true, player_1_won)
-	$EndGameSound.play()
+	_can_pause = true
 
 func _show_ready(status: bool) -> void:
 	$%LabelContainer.visible = status
 	if $%LabelContainer.visible:
 		$%Label.text = TEXT_READY
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") && _can_pause:
+		if not get_tree().paused:
+			get_tree().paused = true
+			_show_pause(true)
+		else:
+			get_tree().paused = false
+			_show_pause(false)
+
 		
 func _show_pause(status: bool) -> void:
 	$%LabelContainer.visible = status
