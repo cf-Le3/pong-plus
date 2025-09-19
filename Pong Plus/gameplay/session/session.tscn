@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://dx7p0spr0qeep"]
+
+[ext_resource type="Script" uid="uid://cgcnjcugajyme" path="res://gameplay/session/session.gd" id="1_vob28"]
+[ext_resource type="PackedScene" uid="uid://dfodn8ia5n12i" path="res://gameplay/game/game.tscn" id="2_xcp3g"]
+[ext_resource type="Script" uid="uid://dhbl2xkvkulp3" path="res://gameplay/session/display.gd" id="3_b7cr8"]
+[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://assets_fonts/Jost-800-Heavy.ttf" id="3_srpmx"]
+[ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="4_stq55"]
+[ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="5_5cnlg"]
+[ext_resource type="AudioStream" uid="uid://cfkunww8ixa22" path="res://gameplay/session/assets_audio/Balloon start riding 1.wav" id="6_5cnlg"]
+[ext_resource type="AudioStream" uid="uid://b6pw1bmskjkmw" path="res://gameplay/session/assets_audio/Big Egg collect 1.wav" id="7_b7cr8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7cr8"]
+bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
+
+[sub_resource type="Theme" id="Theme_1domg"]
+Label/font_sizes/font_size = 96
+Label/fonts/font = ExtResource("3_srpmx")
+
+[node name="Session" type="Node"]
+process_mode = 3
+script = ExtResource("1_vob28")
+_game_scene = ExtResource("2_xcp3g")
+
+[node name="Display" type="CanvasLayer" parent="."]
+script = ExtResource("3_b7cr8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Display"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="LabelContainer" type="PanelContainer" parent="Display/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_b7cr8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Display/VBoxContainer/LabelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="Display/VBoxContainer/LabelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_1domg")
+
+[node name="ButtonContainer" type="CenterContainer" parent="Display/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Display/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="ResumeButton" type="Button" parent="Display/VBoxContainer/ButtonContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../ExitButton")
+focus_neighbor_right = NodePath("../RestartButton")
+theme = ExtResource("4_stq55")
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="Display/VBoxContainer/ButtonContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../ResumeButton")
+focus_neighbor_right = NodePath("../ExitButton")
+theme = ExtResource("4_stq55")
+text = "RESTART"
+
+[node name="ExitButton" type="Button" parent="Display/VBoxContainer/ButtonContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../RestartButton")
+focus_neighbor_right = NodePath("../ResumeButton")
+theme = ExtResource("5_5cnlg")
+text = "EXIT"
+
+[node name="StartGameTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartGameSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5cnlg")
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="EndGameSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_b7cr8")
+bus = &"SFX"
+
+[connection signal="pressed" from="Display/VBoxContainer/ButtonContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="visibility_changed" from="Display/VBoxContainer/ButtonContainer/HBoxContainer/ResumeButton" to="Display" method="_on_resume_button_visibility_changed"]
+[connection signal="pressed" from="Display/VBoxContainer/ButtonContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Display/VBoxContainer/ButtonContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="timeout" from="StartGameTimer" to="." method="_on_start_game_timer_timeout"]
