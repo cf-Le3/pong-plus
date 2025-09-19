@@ -131,7 +131,7 @@ size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../PlayBackButton")
 focus_neighbor_bottom = NodePath("../VsPlayerButton")
 theme = ExtResource("5_nsibk")
-text = "VS CPU"
+text = "1-PLAYER"
 alignment = 0
 
 [node name="VsPlayerButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
@@ -142,7 +142,7 @@ size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../VsCpuButton")
 focus_neighbor_bottom = NodePath("../EndlessButton")
 theme = ExtResource("5_nsibk")
-text = "VS PLAYER"
+text = "2-PLAYER"
 alignment = 0
 
 [node name="EndlessButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
