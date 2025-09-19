@@ -1,0 +1,8 @@
+[gd_scene load_steps=8 format=3 uid="uid://dx7p0spr0qeep"]
+
+[ext_resource type="Script" uid="uid://cgcnjcugajyme" path="res://gameplay/session/session.gd" id="1_vob28"]
+[ext_resource type="PackedScene" uid="uid://dfodn8ia5n12i" path="res://gameplay/game/game.tscn" id="2_xcp3g"]
+
+[node name="Session" type="Node"]
+script = ExtResource("1_vob28")
+_game_scene = ExtResource("2_xcp3g")

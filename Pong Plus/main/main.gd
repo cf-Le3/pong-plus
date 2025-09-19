@@ -1,6 +1,7 @@
 extends Node
 
-@export var _game_scene: PackedScene
+@export_category("Packed Scenes")
+@export var _session_scene: PackedScene
 @export var _volume_settings_scene: PackedScene
 @export var _game_settings_scene: PackedScene
 @export var _license_scene: PackedScene
@@ -9,7 +10,7 @@ extends Node
 
 var _game_config: GameConfig
 var _volume_config: VolumeConfig
-var _game: Game
+var _session: Session
 var _volume_settings: VolumeSettings
 var _game_settings: GameSettings
 var _license: License
@@ -24,21 +25,21 @@ func _ready() -> void:
 	$Music.play()
 
 func _on_title_new_game_singleplayer() -> void:
-	_create_new_game_session(false)
+	_create_new_session(false)
 
 func _on_title_new_game_multiplayer() -> void:
-	_create_new_game_session(true)
+	_create_new_session(true)
 
-func _create_new_game_session(is_multiplayer: bool) -> void:
+func _create_new_session(is_multiplayer: bool) -> void:
 	_enable_title(false)
-	_game = _game_scene.instantiate()
-	_game.config_is_multiplayer = is_multiplayer
-	_game.game_config = _game_config
-	_game.connect("close_game", _on_close_game)
-	add_child(_game)
+	_session = _session_scene.instantiate()
+	_session.is_multiplayer = is_multiplayer
+	_session.game_config = _game_config
+	_session.connect("session_closed", _on_session_closed)
+	add_child(_session)
 	
-func _on_close_game() -> void:
-	_game.queue_free()
+func _on_session_closed() -> void:
+	_session.queue_free()
 	_enable_title(true)
 	$Title.switch_menu(Title.ActiveMenu.TITLE)
 

@@ -1,12 +1,12 @@
 class_name Game
 extends Node2D
 
-signal close_game
+signal game_ended
 
 @export var _ball_spawner_scene: PackedScene
 
 # Game configuration
-var config_is_multiplayer := true
+var is_multiplayer := true
 var game_config := GameConfig.new()
 
 # Game state
@@ -32,7 +32,7 @@ func _ready() -> void:
 	$Paddle1.global_position = Vector2((viewport_w-_ARENA_W)/2+32, viewport_h/2)
 	$Paddle1.player = Paddle.Player.PLAYER_1
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-_ARENA_W)/2-32, viewport_h/2)
-	if config_is_multiplayer:
+	if is_multiplayer:
 		$Paddle2.player = Paddle.Player.PLAYER_2
 	else:
 		if game_config.get_difficulty() == GameConfig.Difficulty.EASY:
@@ -96,4 +96,4 @@ func _on_close_game_timer_timeout() -> void:
 
 func _input(event) -> void:
 	if event is InputEventKey && _close_game_enabled:
-		close_game.emit()
+		game_ended.emit()

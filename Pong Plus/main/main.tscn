@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ft0380ee8rbj" path="res://main/main.gd" id="1_wtcpt"]
 [ext_resource type="PackedScene" uid="uid://bdol5wggxteul" path="res://menus/title/title.tscn" id="2_afa6e"]
-[ext_resource type="PackedScene" uid="uid://dfodn8ia5n12i" path="res://gameplay/game/game.tscn" id="2_w43ni"]
+[ext_resource type="PackedScene" uid="uid://dx7p0spr0qeep" path="res://gameplay/session/session.tscn" id="2_grrlh"]
 [ext_resource type="PackedScene" uid="uid://dvopnty8hgf7d" path="res://menus/settings/volume_settings/volume_settings.tscn" id="3_d5y16"]
 [ext_resource type="PackedScene" uid="uid://twat68vd8dnc" path="res://menus/help/help.tscn" id="3_u37n1"]
 [ext_resource type="PackedScene" uid="uid://b5vvibm87hgpv" path="res://menus/settings/game_settings/game_settings.tscn" id="4_b04w8"]
@@ -20,7 +20,7 @@ loop = true
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wtcpt")
-_game_scene = ExtResource("2_w43ni")
+_session_scene = ExtResource("2_grrlh")
 _volume_settings_scene = ExtResource("3_d5y16")
 _game_settings_scene = ExtResource("4_b04w8")
 _license_scene = ExtResource("5_uw54y")
