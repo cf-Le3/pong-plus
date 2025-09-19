@@ -94,4 +94,6 @@ func _show_end(status: bool, player_1_won: bool = true) -> void:
 		$%ResumeButton.visible = true
 
 func _on_exit_button_pressed() -> void:
+	if get_tree().paused:
+		get_tree().paused = false
 	session_closed.emit()
