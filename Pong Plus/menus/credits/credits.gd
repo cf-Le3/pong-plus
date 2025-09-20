@@ -1,10 +1,10 @@
 class_name Credits
 extends CanvasLayer
 
-signal close_credits
+signal closed
 
 func _ready() -> void:
 	$BackButton.grab_focus()
 
 func _on_back_button_pressed() -> void:
-	close_credits.emit()
+	closed.emit()

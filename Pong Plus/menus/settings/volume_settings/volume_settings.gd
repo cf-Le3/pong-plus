@@ -1,7 +1,7 @@
 class_name VolumeSettings
 extends CanvasLayer
 
-signal close_volume_settings(volume_config: VolumeConfig)
+signal closed(volume_config: VolumeConfig)
 
 var volume_config := VolumeConfig.new()
 
@@ -33,5 +33,5 @@ func _on_confirm_button_pressed() -> void:
 	volume_config.set_master_vol_value($%MasterVolumeSlider.value)
 	volume_config.set_music_vol_value($%MusicVolumeSlider.value)
 	volume_config.set_sfx_vol_value($%SFXVolumeSlider.value)
-	close_volume_settings.emit(volume_config)
+	closed.emit(volume_config)
 	MenuSfx.play_confirm_sound()

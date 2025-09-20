@@ -1,10 +1,10 @@
 class_name Help
 extends CanvasLayer
 
-signal close_help
+signal closed
 
 func _ready() -> void:
 	$BackButton.grab_focus()
 
 func _on_back_button_pressed() -> void:
-	close_help.emit()
+	closed.emit()

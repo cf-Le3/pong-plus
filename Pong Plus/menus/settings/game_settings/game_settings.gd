@@ -1,7 +1,7 @@
 class_name GameSettings
 extends CanvasLayer
 
-signal close_game_settings(game_config: GameConfig)
+signal closed(game_config: GameConfig)
 
 var game_config := GameConfig.new()
 var _last_focused: Control = null
@@ -115,7 +115,7 @@ func _on_default_button_pressed() -> void:
 	MenuSfx.play_cancel_sound()
 
 func _on_confirm_button_pressed() -> void:
-	close_game_settings.emit(game_config)
+	closed.emit(game_config)
 	MenuSfx.play_confirm_sound()
 
 func _update_display() -> void:

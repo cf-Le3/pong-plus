@@ -1,7 +1,7 @@
 class_name License
 extends CanvasLayer
 
-signal close_license
+signal closed
 
 var _license_text_opening := "This game uses Godot Engine, available under the following license:\n\n"
 
@@ -18,5 +18,5 @@ func _input(event: InputEvent) -> void:
 		$%ScrollContainer.set_v_scroll($%ScrollContainer.get_v_scroll()+10)
 
 func _on_back_button_pressed() -> void:
-	close_license.emit()
+	closed.emit()
 	MenuSfx.play_cancel_sound()

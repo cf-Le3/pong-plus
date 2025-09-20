@@ -1,7 +1,7 @@
 class_name Game
 extends Node2D
 
-signal game_ended(player_1_won: bool)
+signal ended(player_1_won: bool)
 
 @export var _ball_spawner_scene: PackedScene
 
@@ -82,4 +82,4 @@ func _game_over() -> void:
 	$BallSpawnTimer.stop()
 	get_tree().call_group("paddles", "queue_free")
 	get_tree().call_group("balls", "queue_free")
-	game_ended.emit(_score_player_1 >= _score_player_2)
+	ended.emit(_score_player_1 >= _score_player_2)
