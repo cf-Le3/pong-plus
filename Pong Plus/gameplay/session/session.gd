@@ -1,7 +1,7 @@
 class_name Session
 extends Node
 
-signal session_closed
+signal closed
 
 @export var _game_scene: PackedScene
 
@@ -24,7 +24,7 @@ func _start_game() -> void:
 	_game = _game_scene.instantiate()
 	_game.is_multiplayer = is_multiplayer
 	_game.game_config = game_config
-	_game.connect("game_ended", _on_game_ended)
+	_game.connect("ended", _on_game_ended)
 	add_child(_game)
 	$Display.show_ready()
 	$StartGameTimer.start()
@@ -67,4 +67,4 @@ func _pause_game(status := true) -> void:
 func _on_exit_button_pressed() -> void:
 	if get_tree().paused:
 		get_tree().paused = false
-	session_closed.emit()
+	closed.emit()

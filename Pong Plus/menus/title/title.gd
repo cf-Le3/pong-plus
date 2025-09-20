@@ -1,13 +1,13 @@
 class_name Title
 extends CanvasLayer
 
-signal new_game_singleplayer
-signal new_game_multiplayer
-signal open_volume_settings
-signal open_game_settings
-signal view_license
-signal view_help
-signal view_credits
+signal single_player_game_started
+signal multi_player_game_started
+signal volume_settings_opened
+signal game_settings_opened
+signal license_opened
+signal help_opened
+signal credits_opened
 
 enum ActiveMenu {
 	TITLE,
@@ -69,11 +69,11 @@ func _on_play_back_button_pressed() -> void:
 	MenuSfx.play_cancel_sound()
 
 func _on_vs_cpu_button_pressed() -> void:
-	new_game_singleplayer.emit()
+	single_player_game_started.emit()
 	MenuSfx.play_confirm_sound()
 
 func _on_vs_player_button_pressed() -> void:
-	new_game_multiplayer.emit()
+	multi_player_game_started.emit()
 	MenuSfx.play_confirm_sound()
 
 func _on_endless_button_pressed() -> void:
@@ -88,21 +88,21 @@ func _on_settings_back_button_pressed() -> void:
 	MenuSfx.play_cancel_sound()
 
 func _on_volume_settings_button_pressed() -> void:
-	open_volume_settings.emit()
+	volume_settings_opened.emit()
 	MenuSfx.play_confirm_sound()
 
 func _on_game_settings_button_pressed() -> void:
-	open_game_settings.emit()
+	game_settings_opened.emit()
 	MenuSfx.play_confirm_sound()
 
 func _on_license_button_pressed() -> void:
-	view_license.emit()
+	license_opened.emit()
 	MenuSfx.play_confirm_sound()
 
 func _on_help_button_pressed() -> void:
-	view_help.emit()
+	help_opened.emit()
 	MenuSfx.play_confirm_sound()
 
 func _on_credits_button_pressed() -> void:
-	view_credits.emit()
+	credits_opened.emit()
 	MenuSfx.play_confirm_sound()

@@ -24,10 +24,10 @@ func _ready() -> void:
 	$Title.set_version(_version)
 	$Music.play()
 
-func _on_title_new_game_singleplayer() -> void:
+func _on_title_single_player_game_started() -> void:
 	_create_new_session(false)
 
-func _on_title_new_game_multiplayer() -> void:
+func _on_title_multi_player_game_started() -> void:
 	_create_new_session(true)
 
 func _create_new_session(is_multiplayer: bool) -> void:
@@ -35,7 +35,7 @@ func _create_new_session(is_multiplayer: bool) -> void:
 	_session = _session_scene.instantiate()
 	_session.is_multiplayer = is_multiplayer
 	_session.game_config = _game_config
-	_session.connect("session_closed", _on_session_closed)
+	_session.connect("closed", _on_session_closed)
 	add_child(_session)
 	
 func _on_session_closed() -> void:
@@ -43,58 +43,58 @@ func _on_session_closed() -> void:
 	_enable_title(true)
 	$Title.switch_menu(Title.ActiveMenu.TITLE)
 
-func _on_title_open_volume_settings() -> void:
+func _on_title_volume_settings_opened() -> void:
 	_enable_title(false)
 	_volume_settings = _volume_settings_scene.instantiate()
 	_volume_settings.volume_config = _volume_config
-	_volume_settings.connect("close_volume_settings", _on_close_volume_settings)
+	_volume_settings.connect("closed", _on_volume_settings_closed)
 	add_child(_volume_settings)
 
-func _on_close_volume_settings(volume_config: VolumeConfig) -> void:
+func _on_volume_settings_closed(volume_config: VolumeConfig) -> void:
 	_volume_config = volume_config
 	_volume_settings.queue_free()
 	_enable_title(true)	
 
-func _on_title_open_game_settings() -> void:
+func _on_title_game_settings_opened() -> void:
 	_enable_title(false)
 	_game_settings = _game_settings_scene.instantiate()
 	_game_settings.game_config = _game_config
-	_game_settings.connect("close_game_settings", _on_close_game_settings)
+	_game_settings.connect("closed", _on_game_settings_closed)
 	add_child(_game_settings)
 
-func _on_close_game_settings(game_config: GameConfig) -> void:
+func _on_game_settings_closed(game_config: GameConfig) -> void:
 	_game_config = game_config
 	_game_settings.queue_free()
 	_enable_title(true)
 	$Title.switch_menu(Title.ActiveMenu.TITLE)
 
-func _on_title_view_license() -> void:
+func _on_title_license_opened() -> void:
 	_enable_title(false)
 	_license = _license_scene.instantiate()
-	_license.connect("close_license", _on_close_license)
+	_license.connect("closed", _on_license_closed)
 	add_child(_license)
 	
-func _on_close_license() -> void:
+func _on_license_closed() -> void:
 	_license.queue_free()
 	_enable_title(true)
 
-func _on_title_view_help() -> void:
+func _on_title_help_opened() -> void:
 	_enable_title(false)
 	_help = _help_scene.instantiate()
-	_help.connect("close_help", _on_close_help)
+	_help.connect("closed", _on_help_closed)
 	add_child(_help)
 
-func _on_close_help() -> void:
+func _on_help_closed() -> void:
 	_help.queue_free()
 	_enable_title(true)
 	
-func _on_title_view_credits() -> void:
+func _on_title_credits_opened() -> void:
 	_enable_title(false)
 	_credits = _credits_scene.instantiate()
-	_credits.connect("close_credits", _on_close_credits)
+	_credits.connect("closed", _on_credits_closed)
 	add_child(_credits)
 	
-func _on_close_credits() -> void:
+func _on_credits_closed() -> void:
 	_credits.queue_free()
 	_enable_title(true)
 	

@@ -42,10 +42,10 @@ color = Color(0.0957051, 0.258054, 0.333021, 1)
 stream = SubResource("AudioStreamOggVorbis_4jibc")
 bus = &"Music"
 
-[connection signal="new_game_multiplayer" from="Title" to="." method="_on_title_new_game_multiplayer"]
-[connection signal="new_game_singleplayer" from="Title" to="." method="_on_title_new_game_singleplayer"]
-[connection signal="open_game_settings" from="Title" to="." method="_on_title_open_game_settings"]
-[connection signal="open_volume_settings" from="Title" to="." method="_on_title_open_volume_settings"]
-[connection signal="view_credits" from="Title" to="." method="_on_title_view_credits"]
-[connection signal="view_help" from="Title" to="." method="_on_title_view_help"]
-[connection signal="view_license" from="Title" to="." method="_on_title_view_license"]
+[connection signal="credits_opened" from="Title" to="." method="_on_title_credits_opened"]
+[connection signal="game_settings_opened" from="Title" to="." method="_on_title_game_settings_opened"]
+[connection signal="help_opened" from="Title" to="." method="_on_title_help_opened"]
+[connection signal="license_opened" from="Title" to="." method="_on_title_license_opened"]
+[connection signal="multi_player_game_started" from="Title" to="." method="_on_title_multi_player_game_started"]
+[connection signal="single_player_game_started" from="Title" to="." method="_on_title_single_player_game_started"]
+[connection signal="volume_settings_opened" from="Title" to="." method="_on_title_volume_settings_opened"]
