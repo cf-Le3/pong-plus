@@ -42,6 +42,7 @@ func _input(event: InputEvent) -> void:
 			_pause_game(true)
 		else:
 			_pause_game(false)
+		$PauseGameSound.play()
 
 func _on_resume_button_pressed() -> void:
 	assert(not get_tree().paused)
