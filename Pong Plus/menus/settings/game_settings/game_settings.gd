@@ -61,17 +61,14 @@ func _on_balls_button_r_pressed() -> void:
 func _on_easy_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.EASY)
-		#ButtonSfxManager.play_confirm_sound()
 
 func _on_normal_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.NORMAL)
-		#ButtonSfxManager.play_confirm_sound()
 
 func _on_hard_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.HARD)
-		#ButtonSfxManager.play_confirm_sound()
 
 func _on_collisions_enabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:

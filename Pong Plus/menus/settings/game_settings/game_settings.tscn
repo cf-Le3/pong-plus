@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5vvibm87hgpv"]
+[gd_scene load_steps=15 format=3 uid="uid://b5vvibm87hgpv"]
 
 [ext_resource type="Script" uid="uid://b3bv87cgvdo07" path="res://menus/settings/game_settings/game_settings.gd" id="1_4iu0o"]
 [ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="1_g4nkl"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="7_tn3w7"]
 [ext_resource type="ButtonGroup" uid="uid://c0lgol6iek2dr" path="res://menus/settings/game_settings/assets_resources/difficulty_button_group.tres" id="8_7wr6i"]
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="8_qkoji"]
+[ext_resource type="PackedScene" uid="uid://bw2dkgh78ijxs" path="res://menus/noisy_buttons/noisy_check_box/noisy_check_box.tscn" id="9_2xgd5"]
 [ext_resource type="ButtonGroup" uid="uid://du8xdrt0u6lxo" path="res://menus/settings/game_settings/assets_resources/ball_collisions_button_group.tres" id="9_3unct"]
 [ext_resource type="ButtonGroup" uid="uid://cmav48h2b1vkl" path="res://menus/settings/game_settings/assets_resources/resizing_paddles_button_group.tres" id="10_bdek5"]
 
@@ -110,6 +111,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../../PointsControls/HBoxContainer/PointsButtonL")
 focus_neighbor_right = NodePath("../BallsButtonR")
+focus_neighbor_bottom = NodePath("../../../DifficultyControls/NormalButton")
 texture_normal = ExtResource("3_7wr6i")
 texture_pressed = ExtResource("4_3unct")
 texture_hover = ExtResource("4_3unct")
@@ -130,6 +132,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../BallsButtonL")
 focus_neighbor_top = NodePath("../../../PointsControls/HBoxContainer/PointsButtonR")
 focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../DifficultyControls/NormalButton")
 texture_normal = ExtResource("5_bdek5")
 texture_pressed = ExtResource("6_2xgd5")
 texture_hover = ExtResource("6_2xgd5")
@@ -146,33 +149,33 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="EasyButton" type="CheckBox" parent="VBoxContainer/GridContainer/DifficultyControls"]
+[node name="EasyButton" parent="VBoxContainer/GridContainer/DifficultyControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../HardButton")
+focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
 focus_neighbor_right = NodePath("../NormalButton")
-focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("8_7wr6i")
 text = "EASY"
 
-[node name="NormalButton" type="CheckBox" parent="VBoxContainer/GridContainer/DifficultyControls"]
+[node name="NormalButton" parent="VBoxContainer/GridContainer/DifficultyControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../EasyButton")
+focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
 focus_neighbor_right = NodePath("../HardButton")
-focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
 theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("8_7wr6i")
 text = "NORMAL"
 
-[node name="HardButton" type="CheckBox" parent="VBoxContainer/GridContainer/DifficultyControls"]
+[node name="HardButton" parent="VBoxContainer/GridContainer/DifficultyControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../NormalButton")
+focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonR")
 focus_neighbor_right = NodePath("../EasyButton")
-focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("8_7wr6i")
 text = "HARD"
@@ -191,7 +194,6 @@ theme_override_constants/separation = 24
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../CollisionsDisabledButton")
-focus_neighbor_top = NodePath("../../DifficultyControls/NormalButton")
 focus_neighbor_right = NodePath("../CollisionsDisabledButton")
 focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
 theme = ExtResource("2_4iu0o")
@@ -202,7 +204,6 @@ text = "ENABLED"
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../CollisionsEnabledButton")
-focus_neighbor_top = NodePath("../../DifficultyControls/NormalButton")
 focus_neighbor_right = NodePath("../CollisionsEnabledButton")
 focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
 theme = ExtResource("2_4iu0o")
