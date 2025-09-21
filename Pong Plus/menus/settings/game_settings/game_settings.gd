@@ -45,22 +45,18 @@ func _input(event: InputEvent) -> void:
 func _on_points_button_l_pressed() -> void:
 	game_config.set_max_points(game_config.get_max_points()-1)
 	_update_display()
-	#ButtonSfxManager.play_cancel_sound()
 
 func _on_points_button_r_pressed() -> void:
 	game_config.set_max_points(game_config.get_max_points()+1)
 	_update_display()
-	#ButtonSfxManager.play_confirm_sound()
 
 func _on_balls_button_l_pressed() -> void:
 	game_config.set_max_balls(game_config.get_max_balls()-1)
 	_update_display()
-	#ButtonSfxManager.play_cancel_sound()
 
 func _on_balls_button_r_pressed() -> void:
 	game_config.set_max_balls(game_config.get_max_balls()+1)
 	_update_display()
-	#ButtonSfxManager.play_confirm_sound()
 
 func _on_easy_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
