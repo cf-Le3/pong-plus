@@ -17,9 +17,6 @@ enum ActiveMenu {
 
 var _active_menu := ActiveMenu.TITLE
 
-func _ready() -> void:
-	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
-
 func set_version(version: String) -> void:
 	$%VersionLabel.text = version
 
@@ -41,9 +38,6 @@ func _input(event: InputEvent) -> void:
 				$%PlayBackButton.grab_focus()
 			elif _active_menu == ActiveMenu.SETTINGS:
 				$%SettingsBackButton.grab_focus()
-
-func _on_viewport_gui_focus_changed(_node: Control) -> void:
-	MenuSfx.play_select_sound()
 
 func switch_menu(target_menu: ActiveMenu) -> void:
 	if target_menu == ActiveMenu.TITLE:

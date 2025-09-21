@@ -10,10 +10,6 @@ func _ready() -> void:
 	$%MusicVolumeSlider.value = volume_config.get_music_vol_value()
 	$%SFXVolumeSlider.value = volume_config.get_sfx_vol_value()
 	$%MasterVolumeSlider.grab_focus()
-	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
-
-func _on_viewport_gui_focus_changed(_node: Control):
-	MenuSfx.play_select_sound()
 
 func _input(event: InputEvent) -> void:
 	if get_viewport().gui_get_focus_owner() == $%SFXVolumeSlider:

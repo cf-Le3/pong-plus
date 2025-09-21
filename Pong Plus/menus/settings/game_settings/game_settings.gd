@@ -4,7 +4,6 @@ extends CanvasLayer
 signal closed(game_config: GameConfig)
 
 var game_config := GameConfig.new()
-var _last_focused: Control = null
 
 #TODO: Moddify focus neighbor attributes for resizing button controls and adjacent controls.
 
@@ -29,14 +28,6 @@ func _ready() -> void:
 		$%ResizingDisabledButton.button_pressed = true
 
 	$%PointsButtonR.grab_focus()
-	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
-
-func _on_viewport_gui_focus_changed(node: Control):
-	if node is BaseButton && _last_focused is BaseButton:
-		if node.button_group != null && node.button_group != _last_focused.button_group:
-			node.button_group.get_pressed_button().grab_focus()
-	_last_focused = node
-	MenuSfx.play_select_sound()
 
 func _input(event: InputEvent) -> void:
 	var focus_owner := get_viewport().gui_get_focus_owner()
