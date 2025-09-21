@@ -8,7 +8,7 @@ enum SoundType {
 func play_select_sound() -> void:
 	$SelectSound.play()
 	
-func play_press_sound(sound_type := SoundType.CONFIRM) -> void:
+func play_press_sound(sound_type: SoundType) -> void:
 	if sound_type == SoundType.CONFIRM:
 		$ConfirmSound.play()
 	elif sound_type == SoundType.CANCEL:
