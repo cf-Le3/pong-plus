@@ -213,6 +213,7 @@ theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("9_3unct")
 text = "DISABLED"
+button_type = 1
 
 [node name="ResizingLabel" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -224,20 +225,25 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="ResizingEnabledButton" type="CheckBox" parent="VBoxContainer/GridContainer/ResizingControls"]
+[node name="ResizingEnabledButton" parent="VBoxContainer/GridContainer/ResizingControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../ResizingDisabledButton")
+focus_neighbor_right = NodePath("../ResizingDisabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("10_bdek5")
 text = "ENABLED"
 
-[node name="ResizingDisabledButton" type="CheckBox" parent="VBoxContainer/GridContainer/ResizingControls"]
+[node name="ResizingDisabledButton" parent="VBoxContainer/GridContainer/ResizingControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../ResizingEnabledButton")
+focus_neighbor_right = NodePath("../ResizingEnabledButton")
 theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("10_bdek5")
 text = "DISABLED"
+button_type = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

@@ -81,12 +81,10 @@ func _on_collisions_disabled_button_toggled(toggled_on: bool) -> void:
 func _on_resizing_enabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_magic_balls_enabled(true)
-		#ButtonSfxManager.play_confirm_sound()
 
 func _on_resizing_disabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_magic_balls_enabled(false)
-		#ButtonSfxManager.play_cancel_sound()
 
 func _on_default_button_pressed() -> void:
 	game_config = GameConfig.new()
