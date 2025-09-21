@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b882omx1xuc74" path="res://menus/button_sfx_manager/assets_audio/Cancel 1.wav" id="4_3y6vs"]
 
 [node name="ButtonSFXManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_rf2e7")
 
 [node name="SelectSound" type="AudioStreamPlayer2D" parent="."]
