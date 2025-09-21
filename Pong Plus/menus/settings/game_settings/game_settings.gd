@@ -54,57 +54,57 @@ func _input(event: InputEvent) -> void:
 func _on_points_button_l_pressed() -> void:
 	game_config.set_max_points(game_config.get_max_points()-1)
 	_update_display()
-	MenuSfx.play_cancel_sound()
+	ButtonSfxManager.play_cancel_sound()
 
 func _on_points_button_r_pressed() -> void:
 	game_config.set_max_points(game_config.get_max_points()+1)
 	_update_display()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_balls_button_l_pressed() -> void:
 	game_config.set_max_balls(game_config.get_max_balls()-1)
 	_update_display()
-	MenuSfx.play_cancel_sound()
+	ButtonSfxManager.play_cancel_sound()
 
 func _on_balls_button_r_pressed() -> void:
 	game_config.set_max_balls(game_config.get_max_balls()+1)
 	_update_display()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_easy_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.EASY)
-		MenuSfx.play_confirm_sound()
+		ButtonSfxManager.play_confirm_sound()
 
 func _on_normal_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.NORMAL)
-		MenuSfx.play_confirm_sound()
+		ButtonSfxManager.play_confirm_sound()
 
 func _on_hard_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_difficulty(GameConfig.Difficulty.HARD)
-		MenuSfx.play_confirm_sound()
+		ButtonSfxManager.play_confirm_sound()
 
 func _on_collisions_enabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_ball_collisions_enabled(true)
-		MenuSfx.play_confirm_sound()
+		ButtonSfxManager.play_confirm_sound()
 
 func _on_collisions_disabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_ball_collisions_enabled(false)
-		MenuSfx.play_cancel_sound()
+		ButtonSfxManager.play_cancel_sound()
 
 func _on_resizing_enabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_magic_balls_enabled(true)
-		MenuSfx.play_confirm_sound()
+		ButtonSfxManager.play_confirm_sound()
 
 func _on_resizing_disabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_magic_balls_enabled(false)
-		MenuSfx.play_cancel_sound()
+		ButtonSfxManager.play_cancel_sound()
 
 func _on_default_button_pressed() -> void:
 	game_config = GameConfig.new()
@@ -112,11 +112,11 @@ func _on_default_button_pressed() -> void:
 	$%CollisionsDisabledButton.button_pressed = true
 	$%ResizingDisabledButton.button_pressed = true
 	_update_display()
-	MenuSfx.play_cancel_sound()
+	ButtonSfxManager.play_cancel_sound()
 
 func _on_confirm_button_pressed() -> void:
 	closed.emit(game_config)
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _update_display() -> void:
 	$%PointsCounter.text = str(game_config.get_max_points())
