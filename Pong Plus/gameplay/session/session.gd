@@ -8,7 +8,7 @@ signal closed
 var is_multiplayer := false
 var game_config := GameConfig.new()
 var _game: Game
-var _can_pause := false
+var _can_pause
 
 const TEXT_READY := "READY"
 const TEXT_PAUSED := "PAUSED"
@@ -26,6 +26,7 @@ func _start_game() -> void:
 	_game.game_config = game_config
 	_game.connect("ended", _on_game_ended)
 	add_child(_game)
+	_can_pause = false
 	$Display.show_ready()
 	$StartGameTimer.start()
 	$StartGameSound.play()
@@ -45,7 +46,7 @@ func _input(event: InputEvent) -> void:
 		$PauseGameSound.play()
 
 func _on_resume_button_pressed() -> void:
-	assert(not get_tree().paused)
+	assert(get_tree().paused)
 	_pause_game(false)
 
 func _on_game_ended(player_1_won) -> void:
