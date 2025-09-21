@@ -56,47 +56,47 @@ func switch_menu(target_menu: ActiveMenu) -> void:
 
 func _on_play_button_pressed() -> void:
 	switch_menu(ActiveMenu.PLAY)
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()
 
 func _on_play_back_button_pressed() -> void:
 	switch_menu(ActiveMenu.TITLE)
-	ButtonSfxManager.play_cancel_sound()
+	#ButtonSfxManager.play_cancel_sound()
 
 func _on_vs_cpu_button_pressed() -> void:
 	single_player_game_started.emit()
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()
 
 func _on_vs_player_button_pressed() -> void:
 	multi_player_game_started.emit()
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()
 
 func _on_endless_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_settings_button_pressed() -> void:
 	switch_menu(ActiveMenu.SETTINGS)
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()
 
 func _on_settings_back_button_pressed() -> void:
 	switch_menu(ActiveMenu.TITLE)
-	ButtonSfxManager.play_cancel_sound()
+	#ButtonSfxManager.play_cancel_sound()
 
 func _on_volume_settings_button_pressed() -> void:
 	volume_settings_opened.emit()
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()
 
 func _on_game_settings_button_pressed() -> void:
 	game_settings_opened.emit()
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()
 
 func _on_license_button_pressed() -> void:
 	license_opened.emit()
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()
 
 func _on_help_button_pressed() -> void:
 	help_opened.emit()
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()
 
 func _on_credits_button_pressed() -> void:
 	credits_opened.emit()
-	ButtonSfxManager.play_confirm_sound()
+	#ButtonSfxManager.play_confirm_sound()

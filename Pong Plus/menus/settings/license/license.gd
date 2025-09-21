@@ -18,4 +18,4 @@ func _input(event: InputEvent) -> void:
 
 func _on_back_button_pressed() -> void:
 	closed.emit()
-	ButtonSfxManager.play_cancel_sound()
+	#ButtonSfxManager.play_cancel_sound()
