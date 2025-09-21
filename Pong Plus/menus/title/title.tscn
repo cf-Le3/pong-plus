@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdol5wggxteul"]
+[gd_scene load_steps=14 format=3 uid="uid://bdol5wggxteul"]
 
 [ext_resource type="Script" uid="uid://b21cslq6fnt4f" path="res://menus/title/title.gd" id="1_vnel8"]
 [ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://assets_fonts/Jost-500-Medium.ttf" id="2_avlu2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://pxb7yvqhfdvj" path="res://menus/title/assets_animation/frame_3.png" id="7_8xug6"]
 [ext_resource type="Theme" uid="uid://3fnqa7mo40oi" path="res://menus/title/assets_themes/button_cancel_title.tres" id="7_nsibk"]
 [ext_resource type="Texture2D" uid="uid://bq4rthu7cphct" path="res://menus/title/assets_animation/frame_4.png" id="8_jeybk"]
+[ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="9_4mel8"]
 [ext_resource type="Texture2D" uid="uid://di045xhk8xhov" path="res://menus/title/assets_animation/frame_5.png" id="9_nx5hg"]
 [ext_resource type="Texture2D" uid="uid://i0aghpjcl2no" path="res://menus/title/assets_animation/frame_6.png" id="10_0l4sv"]
 
@@ -72,7 +73,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons"]
+[node name="PlayButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons" instance=ExtResource("9_4mel8")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
@@ -83,7 +84,7 @@ theme = ExtResource("5_nsibk")
 text = "PLAY"
 alignment = 0
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons"]
+[node name="SettingsButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons" instance=ExtResource("9_4mel8")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
@@ -94,7 +95,7 @@ theme = ExtResource("5_nsibk")
 text = "SETTINGS"
 alignment = 0
 
-[node name="HelpButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons"]
+[node name="HelpButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons" instance=ExtResource("9_4mel8")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
@@ -105,7 +106,7 @@ theme = ExtResource("5_nsibk")
 text = "HELP"
 alignment = 0
 
-[node name="CreditsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons"]
+[node name="CreditsButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons" instance=ExtResource("9_4mel8")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
