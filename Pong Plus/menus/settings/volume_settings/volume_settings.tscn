@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvopnty8hgf7d"]
+[gd_scene load_steps=9 format=3 uid="uid://dvopnty8hgf7d"]
 
 [ext_resource type="Script" uid="uid://dwd0661k0uqjh" path="res://menus/settings/volume_settings/volume_settings.gd" id="1_icfaq"]
 [ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="1_j7flm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7vjl8gc06x5y" path="res://menus/settings/volume_slider/volume_slider.tscn" id="3_op1sk"]
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="4_op1sk"]
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="5_icfaq"]
+[ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="5_ip2bh"]
 [ext_resource type="AudioStream" uid="uid://cb7500kskujnx" path="res://gameplay/wall_goal/Fruit collect 1.wav" id="7_bf36o"]
 
 [node name="VolumeSettings" type="CanvasLayer"]
@@ -51,7 +52,6 @@ vertical_alignment = 1
 [node name="MasterControl" type="CenterContainer" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_top = NodePath("../../HBoxContainer/ConfirmButton")
 focus_neighbor_bottom = NodePath("../MusicControl/MusicVolumeSlider")
 
 [node name="MasterVolumeSlider" parent="MarginContainer/VBoxContainer/GridContainer/MasterControl" instance=ExtResource("3_op1sk")]
@@ -103,7 +103,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 32
 
-[node name="DefaultButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="DefaultButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_ip2bh")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
@@ -112,8 +112,9 @@ focus_neighbor_top = NodePath("../../GridContainer/SFXControl/SFXVolumeSlider")
 focus_neighbor_right = NodePath("../ConfirmButton")
 theme = ExtResource("4_op1sk")
 text = "DEFAULT"
+button_type = 1
 
-[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ConfirmButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_ip2bh")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
@@ -121,8 +122,7 @@ focus_neighbor_left = NodePath("../DefaultButton")
 focus_neighbor_top = NodePath("../../GridContainer/SFXControl/SFXVolumeSlider")
 focus_neighbor_right = NodePath("../DefaultButton")
 theme = ExtResource("5_icfaq")
-text = "CONFIRM
-"
+text = "CONFIRM"
 
 [node name="SFXTestSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_bf36o")
