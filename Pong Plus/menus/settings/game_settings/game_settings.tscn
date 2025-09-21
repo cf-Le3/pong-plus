@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5vvibm87hgpv"]
+[gd_scene load_steps=16 format=3 uid="uid://b5vvibm87hgpv"]
 
 [ext_resource type="Script" uid="uid://b3bv87cgvdo07" path="res://menus/settings/game_settings/game_settings.gd" id="1_4iu0o"]
 [ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="1_g4nkl"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bw2dkgh78ijxs" path="res://menus/noisy_buttons/noisy_check_box/noisy_check_box.tscn" id="9_2xgd5"]
 [ext_resource type="ButtonGroup" uid="uid://du8xdrt0u6lxo" path="res://menus/settings/game_settings/assets_resources/ball_collisions_button_group.tres" id="9_3unct"]
 [ext_resource type="ButtonGroup" uid="uid://cmav48h2b1vkl" path="res://menus/settings/game_settings/assets_resources/resizing_paddles_button_group.tres" id="10_bdek5"]
+[ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="13_2xgd5"]
 
 [node name="GameSettings" type="CanvasLayer"]
 script = ExtResource("1_4iu0o")
@@ -199,6 +200,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../CollisionsDisabledButton")
 focus_neighbor_top = NodePath("../../DifficultyControls/NormalButton")
 focus_neighbor_right = NodePath("../CollisionsDisabledButton")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("9_3unct")
 text = "ENABLED"
@@ -209,6 +211,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../CollisionsEnabledButton")
 focus_neighbor_top = NodePath("../../DifficultyControls/NormalButton")
 focus_neighbor_right = NodePath("../CollisionsEnabledButton")
+focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
 theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("9_3unct")
@@ -216,12 +219,14 @@ text = "DISABLED"
 button_type = 1
 
 [node name="ResizingLabel" type="Label" parent="VBoxContainer/GridContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_4iu0o")
 text = "RESIZING PADDLES"
 horizontal_alignment = 2
 
 [node name="ResizingControls" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 24
 
@@ -250,21 +255,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 32
 
-[node name="DefaultButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="DefaultButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("13_2xgd5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../ConfirmButton")
+focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsDisabledButton")
 focus_neighbor_right = NodePath("../ConfirmButton")
 theme = ExtResource("7_tn3w7")
-text = "DEFAULT
-"
+text = "DEFAULT"
+button_type = 1
 
-[node name="ConfirmButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ConfirmButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("13_2xgd5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../DefaultButton")
+focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsDisabledButton")
 focus_neighbor_right = NodePath("../DefaultButton")
 theme = ExtResource("8_qkoji")
 text = "CONFIRM"

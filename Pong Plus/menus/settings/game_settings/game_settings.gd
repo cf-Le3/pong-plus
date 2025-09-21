@@ -5,8 +5,6 @@ signal closed(game_config: GameConfig)
 
 var game_config := GameConfig.new()
 
-#TODO: Moddify focus neighbor attributes for resizing button controls and adjacent controls.
-
 func _ready() -> void:
 	_update_display()
 
@@ -92,11 +90,9 @@ func _on_default_button_pressed() -> void:
 	$%CollisionsDisabledButton.button_pressed = true
 	$%ResizingDisabledButton.button_pressed = true
 	_update_display()
-	#ButtonSfxManager.play_cancel_sound()
 
 func _on_confirm_button_pressed() -> void:
 	closed.emit(game_config)
-	#ButtonSfxManager.play_confirm_sound()
 
 func _update_display() -> void:
 	$%PointsCounter.text = str(game_config.get_max_points())
