@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cij33udeagreb"]
+[gd_scene load_steps=6 format=3 uid="uid://cij33udeagreb"]
 
 [ext_resource type="Theme" uid="uid://cma8plh8jdkxh" path="res://menus/assets_themes/settings_control_label.tres" id="1_ieltd"]
 [ext_resource type="Script" uid="uid://cgco4ytuga28g" path="res://menus/settings/license/license.gd" id="1_ojvsv"]
-[ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="3_hf8la"]
+[ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="3_hf8la"]
+[ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="4_av0uy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojvsv"]
 bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
@@ -53,12 +54,13 @@ layout_mode = 2
 theme = ExtResource("1_ieltd")
 theme_override_font_sizes/font_size = 20
 
-[node name="BackButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="BackButton" parent="MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_hf8la")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("3_hf8la")
+theme = ExtResource("4_av0uy")
 text = "BACK"
+button_type = 1
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

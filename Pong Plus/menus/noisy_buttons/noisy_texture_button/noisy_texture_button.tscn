@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd3jxko5kcdnq"]
+
+[ext_resource type="Script" uid="uid://0rt3a5lclh47" path="res://menus/noisy_buttons/noisy_texture_button/noisy_texture_button.gd" id="1_4xall"]
+
+[node name="NoisyTextureButton" type="TextureButton"]
+script = ExtResource("1_4xall")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

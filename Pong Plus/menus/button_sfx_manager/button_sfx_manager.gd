@@ -1,10 +1,15 @@
 extends Node
 
+enum SoundType {
+	CONFIRM,
+	CANCEL
+}
+
 func play_select_sound() -> void:
 	$SelectSound.play()
 	
-func play_confirm_sound() -> void:
-	$ConfirmSound.play()
-	
-func play_cancel_sound() -> void:
-	$CancelSound.play()
+func play_press_sound(sound_type: SoundType) -> void:
+	if sound_type == SoundType.CONFIRM:
+		$ConfirmSound.play()
+	elif sound_type == SoundType.CANCEL:
+		$CancelSound.play()

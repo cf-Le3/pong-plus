@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw2dkgh78ijxs"]
+
+[ext_resource type="Script" uid="uid://b0r0t0w4f3x17" path="res://menus/noisy_buttons/noisy_check_box/noisy_check_box.gd" id="1_ahtau"]
+
+[node name="NoisyCheckBox" type="CheckBox"]
+script = ExtResource("1_ahtau")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

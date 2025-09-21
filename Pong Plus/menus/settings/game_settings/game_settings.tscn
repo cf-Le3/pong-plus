@@ -1,17 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5vvibm87hgpv"]
+[gd_scene load_steps=16 format=3 uid="uid://b5vvibm87hgpv"]
 
 [ext_resource type="Script" uid="uid://b3bv87cgvdo07" path="res://menus/settings/game_settings/game_settings.gd" id="1_4iu0o"]
 [ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="1_g4nkl"]
 [ext_resource type="Theme" uid="uid://cma8plh8jdkxh" path="res://menus/assets_themes/settings_control_label.tres" id="2_4iu0o"]
 [ext_resource type="Texture2D" uid="uid://d10o4jsqbjw5g" path="res://menus/assets_textures/arrow_button_l.png" id="3_7wr6i"]
+[ext_resource type="PackedScene" uid="uid://bd3jxko5kcdnq" path="res://menus/noisy_buttons/noisy_texture_button/noisy_texture_button.tscn" id="4_2xgd5"]
 [ext_resource type="Texture2D" uid="uid://d2r0yshvqy6hc" path="res://menus/assets_textures/arrow_button_l_focus.png" id="4_3unct"]
 [ext_resource type="Texture2D" uid="uid://d13a1hucll5b3" path="res://menus/assets_textures/arrow_button_r.png" id="5_bdek5"]
 [ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/assets_textures/arrow_button_r_focus.png" id="6_2xgd5"]
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="7_tn3w7"]
 [ext_resource type="ButtonGroup" uid="uid://c0lgol6iek2dr" path="res://menus/settings/game_settings/assets_resources/difficulty_button_group.tres" id="8_7wr6i"]
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="8_qkoji"]
+[ext_resource type="PackedScene" uid="uid://bw2dkgh78ijxs" path="res://menus/noisy_buttons/noisy_check_box/noisy_check_box.tscn" id="9_2xgd5"]
 [ext_resource type="ButtonGroup" uid="uid://du8xdrt0u6lxo" path="res://menus/settings/game_settings/assets_resources/ball_collisions_button_group.tres" id="9_3unct"]
 [ext_resource type="ButtonGroup" uid="uid://cmav48h2b1vkl" path="res://menus/settings/game_settings/assets_resources/resizing_paddles_button_group.tres" id="10_bdek5"]
+[ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="13_2xgd5"]
 
 [node name="GameSettings" type="CanvasLayer"]
 script = ExtResource("1_4iu0o")
@@ -58,7 +61,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="PointsButtonL" type="TextureButton" parent="VBoxContainer/GridContainer/PointsControls/HBoxContainer"]
+[node name="PointsButtonL" parent="VBoxContainer/GridContainer/PointsControls/HBoxContainer" instance=ExtResource("4_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
@@ -68,6 +71,7 @@ texture_normal = ExtResource("3_7wr6i")
 texture_pressed = ExtResource("4_3unct")
 texture_hover = ExtResource("4_3unct")
 texture_focused = ExtResource("4_3unct")
+button_type = 1
 
 [node name="PointsCounter" type="Label" parent="VBoxContainer/GridContainer/PointsControls/HBoxContainer"]
 unique_name_in_owner = true
@@ -77,7 +81,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PointsButtonR" type="TextureButton" parent="VBoxContainer/GridContainer/PointsControls/HBoxContainer"]
+[node name="PointsButtonR" parent="VBoxContainer/GridContainer/PointsControls/HBoxContainer" instance=ExtResource("4_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../PointsButtonL")
@@ -102,7 +106,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="BallsButtonL" type="TextureButton" parent="VBoxContainer/GridContainer/BallsControls/HBoxContainer"]
+[node name="BallsButtonL" parent="VBoxContainer/GridContainer/BallsControls/HBoxContainer" instance=ExtResource("4_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
@@ -113,6 +117,7 @@ texture_normal = ExtResource("3_7wr6i")
 texture_pressed = ExtResource("4_3unct")
 texture_hover = ExtResource("4_3unct")
 texture_focused = ExtResource("4_3unct")
+button_type = 1
 
 [node name="BallsCounter" type="Label" parent="VBoxContainer/GridContainer/BallsControls/HBoxContainer"]
 unique_name_in_owner = true
@@ -122,7 +127,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BallsButtonR" type="TextureButton" parent="VBoxContainer/GridContainer/BallsControls/HBoxContainer"]
+[node name="BallsButtonR" parent="VBoxContainer/GridContainer/BallsControls/HBoxContainer" instance=ExtResource("4_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../BallsButtonL")
@@ -145,36 +150,36 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="EasyButton" type="CheckBox" parent="VBoxContainer/GridContainer/DifficultyControls"]
+[node name="EasyButton" parent="VBoxContainer/GridContainer/DifficultyControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../HardButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
 focus_neighbor_right = NodePath("../NormalButton")
-focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsDisabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("8_7wr6i")
 text = "EASY"
 
-[node name="NormalButton" type="CheckBox" parent="VBoxContainer/GridContainer/DifficultyControls"]
+[node name="NormalButton" parent="VBoxContainer/GridContainer/DifficultyControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../EasyButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
 focus_neighbor_right = NodePath("../HardButton")
-focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsDisabledButton")
 theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("8_7wr6i")
 text = "NORMAL"
 
-[node name="HardButton" type="CheckBox" parent="VBoxContainer/GridContainer/DifficultyControls"]
+[node name="HardButton" parent="VBoxContainer/GridContainer/DifficultyControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../NormalButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonR")
 focus_neighbor_right = NodePath("../EasyButton")
-focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsEnabledButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsDisabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("8_7wr6i")
 text = "HARD"
@@ -189,7 +194,7 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="CollisionsEnabledButton" type="CheckBox" parent="VBoxContainer/GridContainer/CollisionsControls"]
+[node name="CollisionsEnabledButton" parent="VBoxContainer/GridContainer/CollisionsControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../CollisionsDisabledButton")
@@ -200,7 +205,7 @@ theme = ExtResource("2_4iu0o")
 button_group = ExtResource("9_3unct")
 text = "ENABLED"
 
-[node name="CollisionsDisabledButton" type="CheckBox" parent="VBoxContainer/GridContainer/CollisionsControls"]
+[node name="CollisionsDisabledButton" parent="VBoxContainer/GridContainer/CollisionsControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../CollisionsEnabledButton")
@@ -211,54 +216,62 @@ theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("9_3unct")
 text = "DISABLED"
+button_type = 1
 
 [node name="ResizingLabel" type="Label" parent="VBoxContainer/GridContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_4iu0o")
 text = "RESIZING PADDLES"
 horizontal_alignment = 2
 
 [node name="ResizingControls" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="ResizingEnabledButton" type="CheckBox" parent="VBoxContainer/GridContainer/ResizingControls"]
+[node name="ResizingEnabledButton" parent="VBoxContainer/GridContainer/ResizingControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../ResizingDisabledButton")
+focus_neighbor_right = NodePath("../ResizingDisabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("10_bdek5")
 text = "ENABLED"
 
-[node name="ResizingDisabledButton" type="CheckBox" parent="VBoxContainer/GridContainer/ResizingControls"]
+[node name="ResizingDisabledButton" parent="VBoxContainer/GridContainer/ResizingControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../ResizingEnabledButton")
+focus_neighbor_right = NodePath("../ResizingEnabledButton")
 theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("10_bdek5")
 text = "DISABLED"
+button_type = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 32
 
-[node name="DefaultButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="DefaultButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("13_2xgd5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../ConfirmButton")
-focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsEnabledButton")
+focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsDisabledButton")
 focus_neighbor_right = NodePath("../ConfirmButton")
 theme = ExtResource("7_tn3w7")
-text = "DEFAULT
-"
+text = "DEFAULT"
+button_type = 1
 
-[node name="ConfirmButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ConfirmButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("13_2xgd5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../DefaultButton")
-focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsEnabledButton")
+focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsDisabledButton")
 focus_neighbor_right = NodePath("../DefaultButton")
 theme = ExtResource("8_qkoji")
 text = "CONFIRM"

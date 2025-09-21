@@ -23,11 +23,9 @@ func _on_default_button_pressed() -> void:
 	$%MasterVolumeSlider.set_value(1.0)
 	$%MusicVolumeSlider.set_value(0.5)
 	$%SFXVolumeSlider.set_value(1.0)
-	ButtonSfxManager.play_cancel_sound()
 
 func _on_confirm_button_pressed() -> void:
 	volume_config.set_master_vol_value($%MasterVolumeSlider.value)
 	volume_config.set_music_vol_value($%MusicVolumeSlider.value)
 	volume_config.set_sfx_vol_value($%SFXVolumeSlider.value)
 	closed.emit(volume_config)
-	ButtonSfxManager.play_confirm_sound()
