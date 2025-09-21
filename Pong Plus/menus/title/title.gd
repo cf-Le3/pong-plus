@@ -17,9 +17,6 @@ enum ActiveMenu {
 
 var _active_menu := ActiveMenu.TITLE
 
-func _ready() -> void:
-	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
-
 func set_version(version: String) -> void:
 	$%VersionLabel.text = version
 
@@ -42,9 +39,6 @@ func _input(event: InputEvent) -> void:
 			elif _active_menu == ActiveMenu.SETTINGS:
 				$%SettingsBackButton.grab_focus()
 
-func _on_viewport_gui_focus_changed(_node: Control) -> void:
-	MenuSfx.play_select_sound()
-
 func switch_menu(target_menu: ActiveMenu) -> void:
 	if target_menu == ActiveMenu.TITLE:
 		if _active_menu == ActiveMenu.PLAY:
@@ -62,47 +56,47 @@ func switch_menu(target_menu: ActiveMenu) -> void:
 
 func _on_play_button_pressed() -> void:
 	switch_menu(ActiveMenu.PLAY)
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_play_back_button_pressed() -> void:
 	switch_menu(ActiveMenu.TITLE)
-	MenuSfx.play_cancel_sound()
+	ButtonSfxManager.play_cancel_sound()
 
 func _on_vs_cpu_button_pressed() -> void:
 	single_player_game_started.emit()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_vs_player_button_pressed() -> void:
 	multi_player_game_started.emit()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_endless_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_settings_button_pressed() -> void:
 	switch_menu(ActiveMenu.SETTINGS)
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_settings_back_button_pressed() -> void:
 	switch_menu(ActiveMenu.TITLE)
-	MenuSfx.play_cancel_sound()
+	ButtonSfxManager.play_cancel_sound()
 
 func _on_volume_settings_button_pressed() -> void:
 	volume_settings_opened.emit()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_game_settings_button_pressed() -> void:
 	game_settings_opened.emit()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_license_button_pressed() -> void:
 	license_opened.emit()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_help_button_pressed() -> void:
 	help_opened.emit()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()
 
 func _on_credits_button_pressed() -> void:
 	credits_opened.emit()
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()

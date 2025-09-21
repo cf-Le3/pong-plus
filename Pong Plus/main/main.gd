@@ -17,12 +17,22 @@ var _license: License
 var _help: Help
 var _credits: Credits
 var _version := "v1.1.0"
+var _last_focused: Control
 
 func _ready() -> void:
 	_game_config = GameConfig.new()
 	_volume_config = VolumeConfig.new()
+	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
 	$Title.set_version(_version)
 	$Music.play()
+
+func _on_viewport_gui_focus_changed(node: Control):
+	if is_instance_valid(_last_focused):
+		if node is BaseButton && _last_focused is BaseButton:
+			if node.button_group != null && node.button_group != _last_focused.button_group:
+				node.button_group.get_pressed_button().grab_focus()
+	_last_focused = node
+	ButtonSfxManager.play_select_sound()
 
 func _on_title_single_player_game_started() -> void:
 	_create_new_session(false)

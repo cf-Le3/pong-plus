@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MenuSfx="*res://menus/menu_sfx/menu_sfx.tscn"
+ButtonSfxManager="*res://menus/button_sfx_manager/button_sfx_manager.tscn"
 
 [display]
 

@@ -10,10 +10,6 @@ func _ready() -> void:
 	$%MusicVolumeSlider.value = volume_config.get_music_vol_value()
 	$%SFXVolumeSlider.value = volume_config.get_sfx_vol_value()
 	$%MasterVolumeSlider.grab_focus()
-	get_viewport().connect("gui_focus_changed", _on_viewport_gui_focus_changed)
-
-func _on_viewport_gui_focus_changed(_node: Control):
-	MenuSfx.play_select_sound()
 
 func _input(event: InputEvent) -> void:
 	if get_viewport().gui_get_focus_owner() == $%SFXVolumeSlider:
@@ -27,11 +23,11 @@ func _on_default_button_pressed() -> void:
 	$%MasterVolumeSlider.set_value(1.0)
 	$%MusicVolumeSlider.set_value(0.5)
 	$%SFXVolumeSlider.set_value(1.0)
-	MenuSfx.play_cancel_sound()
+	ButtonSfxManager.play_cancel_sound()
 
 func _on_confirm_button_pressed() -> void:
 	volume_config.set_master_vol_value($%MasterVolumeSlider.value)
 	volume_config.set_music_vol_value($%MusicVolumeSlider.value)
 	volume_config.set_sfx_vol_value($%SFXVolumeSlider.value)
 	closed.emit(volume_config)
-	MenuSfx.play_confirm_sound()
+	ButtonSfxManager.play_confirm_sound()

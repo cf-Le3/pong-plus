@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://20078uoorw30"]
+
+[ext_resource type="Script" uid="uid://dbhwmbi6pppbo" path="res://menus/button_sfx_manager/button_sfx_manager.gd" id="1_rf2e7"]
+[ext_resource type="AudioStream" uid="uid://biq6tnfipv1j5" path="res://menus/button_sfx_manager/assets_audio/Text 1.wav" id="2_3dreu"]
+[ext_resource type="AudioStream" uid="uid://bpv6brrb4fbvi" path="res://menus/button_sfx_manager/assets_audio/Select 1.wav" id="3_p161u"]
+[ext_resource type="AudioStream" uid="uid://b882omx1xuc74" path="res://menus/button_sfx_manager/assets_audio/Cancel 1.wav" id="4_3y6vs"]
+
+[node name="ButtonSFXManager" type="Node"]
+script = ExtResource("1_rf2e7")
+
+[node name="SelectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_3dreu")
+bus = &"SFX"
+
+[node name="ConfirmSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p161u")
+bus = &"SFX"
+
+[node name="CancelSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3y6vs")
+bus = &"SFX"
