@@ -70,7 +70,7 @@ func _on_vs_player_button_pressed() -> void:
 	multi_player_game_started.emit()
 	#ButtonSfxManager.play_confirm_sound()
 
-func _on_endless_button_pressed() -> void:
+func _on_survival_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_settings_button_pressed() -> void:

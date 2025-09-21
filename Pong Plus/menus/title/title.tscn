@@ -124,7 +124,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="VsCpuButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+[node name="VsCpuButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons" instance=ExtResource("9_4mel8")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
@@ -135,18 +135,18 @@ theme = ExtResource("5_nsibk")
 text = "1-PLAYER"
 alignment = 0
 
-[node name="VsPlayerButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+[node name="VsPlayerButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons" instance=ExtResource("9_4mel8")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../VsCpuButton")
-focus_neighbor_bottom = NodePath("../EndlessButton")
+focus_neighbor_bottom = NodePath("../SurvivalButton")
 theme = ExtResource("5_nsibk")
 text = "2-PLAYER"
 alignment = 0
 
-[node name="EndlessButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+[node name="SurvivalButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons" instance=ExtResource("9_4mel8")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
@@ -158,17 +158,17 @@ disabled = true
 text = "???"
 alignment = 0
 
-[node name="PlayBackButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons"]
+[node name="PlayBackButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons" instance=ExtResource("9_4mel8")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-focus_neighbor_top = NodePath("../EndlessButton")
+focus_neighbor_top = NodePath("../SurvivalButton")
 focus_neighbor_bottom = NodePath("../VsCpuButton")
 theme = ExtResource("7_nsibk")
-text = "BACK
-"
+text = "BACK"
 alignment = 0
+button_type = 1
 
 [node name="VBoxSettingsButtons" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -235,7 +235,7 @@ horizontal_alignment = 2
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxTitleButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/VsCpuButton" to="." method="_on_vs_cpu_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/VsPlayerButton" to="." method="_on_vs_player_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/EndlessButton" to="." method="_on_endless_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/SurvivalButton" to="." method="_on_survival_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons/PlayBackButton" to="." method="_on_play_back_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons/VolumeSettingsButton" to="." method="_on_volume_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxSettingsButtons/GameSettingsButton" to="." method="_on_game_settings_button_pressed"]
