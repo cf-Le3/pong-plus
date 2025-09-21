@@ -155,6 +155,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../HardButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
 focus_neighbor_right = NodePath("../NormalButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsDisabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("8_7wr6i")
 text = "EASY"
@@ -165,6 +166,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../EasyButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonL")
 focus_neighbor_right = NodePath("../HardButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsDisabledButton")
 theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("8_7wr6i")
@@ -176,6 +178,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../NormalButton")
 focus_neighbor_top = NodePath("../../BallsControls/HBoxContainer/BallsButtonR")
 focus_neighbor_right = NodePath("../EasyButton")
+focus_neighbor_bottom = NodePath("../../CollisionsControls/CollisionsDisabledButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("8_7wr6i")
 text = "HARD"
@@ -190,22 +193,22 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="CollisionsEnabledButton" type="CheckBox" parent="VBoxContainer/GridContainer/CollisionsControls"]
+[node name="CollisionsEnabledButton" parent="VBoxContainer/GridContainer/CollisionsControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../CollisionsDisabledButton")
+focus_neighbor_top = NodePath("../../DifficultyControls/NormalButton")
 focus_neighbor_right = NodePath("../CollisionsDisabledButton")
-focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
 theme = ExtResource("2_4iu0o")
 button_group = ExtResource("9_3unct")
 text = "ENABLED"
 
-[node name="CollisionsDisabledButton" type="CheckBox" parent="VBoxContainer/GridContainer/CollisionsControls"]
+[node name="CollisionsDisabledButton" parent="VBoxContainer/GridContainer/CollisionsControls" instance=ExtResource("9_2xgd5")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../CollisionsEnabledButton")
+focus_neighbor_top = NodePath("../../DifficultyControls/NormalButton")
 focus_neighbor_right = NodePath("../CollisionsEnabledButton")
-focus_neighbor_bottom = NodePath("../../../HBoxContainer/ConfirmButton")
 theme = ExtResource("2_4iu0o")
 button_pressed = true
 button_group = ExtResource("9_3unct")
@@ -246,7 +249,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../ConfirmButton")
-focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsEnabledButton")
 focus_neighbor_right = NodePath("../ConfirmButton")
 theme = ExtResource("7_tn3w7")
 text = "DEFAULT
@@ -257,7 +259,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../DefaultButton")
-focus_neighbor_top = NodePath("../../GridContainer/CollisionsControls/CollisionsEnabledButton")
 focus_neighbor_right = NodePath("../DefaultButton")
 theme = ExtResource("8_qkoji")
 text = "CONFIRM"
