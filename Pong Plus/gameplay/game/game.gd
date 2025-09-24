@@ -3,13 +3,18 @@ extends Node2D
 
 signal ended(player_1_won: bool)
 
-var _ball_spawner_scene: PackedScene = load("res://gameplay/ball_spawner/ball_spawner.tscn")
+enum GameMode {
+	VERSUS,
+	SURVIVAL
+}
 
 # Game configuration
 var is_multiplayer := true
 var game_config := GameConfig.new()
+var _game_mode := GameMode.VERSUS
 
 # Game state
+var _ball_spawner_scene: PackedScene = load("res://gameplay/ball_spawner/ball_spawner.tscn")
 var _ball_spawner: BallSpawner
 var _score_player_1 := 0
 var _score_player_2 := 0
