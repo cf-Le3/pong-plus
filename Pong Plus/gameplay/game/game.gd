@@ -54,7 +54,7 @@ func _ready() -> void:
 	add_child(_ball_spawner)
 
 func begin() -> void:
-	$HUD.show_score()
+	$HUD.show_hud_elements(_game_mode)
 	_ball_spawner.spawn_ball()
 
 func _on_ball_spawner_spawned(ball: Ball) -> void:
@@ -68,13 +68,13 @@ func _on_ball_spawn_timer_timeout() -> void:
 func _on_wall_goal_right_ball_escaped(can_score: bool) -> void:
 	if can_score:
 		_score_player_1 += 1
-		$HUD.update_score(_score_player_1, true)
+		$HUD.update_versus_score(_score_player_1, true)
 	_do_stuff_after_ball_escaped()
 
 func _on_wall_goal_left_ball_escaped(can_score: bool) -> void:
 	if can_score:
 		_score_player_2 += 1
-		$HUD.update_score(_score_player_2, false)
+		$HUD.update_versus_score(_score_player_2, false)
 	_do_stuff_after_ball_escaped()
 
 func _do_stuff_after_ball_escaped() -> void:
