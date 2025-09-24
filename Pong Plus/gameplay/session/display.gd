@@ -29,7 +29,7 @@ func show_pause(status := true) -> void:
 		$%Message.text = TEXT_PAUSED
 	$%ButtonContainer.visible = status
 	
-func show_end(status := true, is_multiplayer := true, player_1_won := true) -> void:
+func show_end_versus(status := true, is_multiplayer := true, player_1_won := true) -> void:
 	$%MessageContainer.visible = status
 	if $%MessageContainer.visible:
 		if is_multiplayer:

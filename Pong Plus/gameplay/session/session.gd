@@ -50,7 +50,7 @@ func _on_resume_button_pressed() -> void:
 	_pause_game(false)
 
 func _on_game_ended(player_1_won) -> void:
-	$Display.show_end(true, is_multiplayer, player_1_won)
+	$Display.show_end_versus(true, is_multiplayer, player_1_won)
 	_can_pause = false
 	$EndGameSound.play()
 	
@@ -58,7 +58,7 @@ func _on_restart_button_pressed() -> void:
 	if get_tree().paused:
 		_pause_game(false)
 	else:
-		$Display.show_end(false)
+		$Display.show_end_versus(false)
 	_game.queue_free()
 	_start_game()
 
