@@ -16,7 +16,7 @@ func _ready() -> void:
 	super()
 	secondTimer = Timer.new()
 	secondTimer.connect("timeout", _on_second_timer_timeout)
-	_debug_print_health()
+	add_child(secondTimer)
 
 func begin() -> void:
 	secondTimer.start()
@@ -25,20 +25,16 @@ func begin() -> void:
 func _on_second_timer_timeout() -> void:
 	_time_elapsed += 1
 
-	print("DEBUG | Ball escaped via right wall!")
-	_ball_escaped_common_logic()
 func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
 	_ball_escaped_common_logic(is_invincible)
 
-	print("DEBUG | Ball escaped via left wall!")
-	_ball_escaped_common_logic()
 func _on_wall_goal_left_ball_escaped(is_invincible: bool) -> void:
 	_ball_escaped_common_logic(is_invincible)
 
 func _ball_escaped_common_logic(is_invincible: bool) -> void:
 	if not is_invincible && _health > 0:
 		_health -= 1
-	_debug_print_health()
+		$HUD.update_survival_health(_health)
 	_do_stuff_after_ball_escaped()
 
 func _do_stuff_after_ball_escaped() -> void:
@@ -47,10 +43,6 @@ func _do_stuff_after_ball_escaped() -> void:
 	elif get_tree().get_nodes_in_group("balls").size() <= 1:
 		_ball_spawner.spawn_ball()
 
-func _debug_print_health() -> void:
-	print("DEBUG | HP: " + str(_health))
-
 func _game_over() -> void:
 	secondTimer.stop()
-	print("DEBUG | Time elapsed: " + str(_time_elapsed))
 	super()
