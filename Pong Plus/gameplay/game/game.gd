@@ -1,7 +1,7 @@
 class_name Game
 extends Node2D
 
-signal ended(player_1_won: bool)
+signal ended(results: Results)
 
 enum GameMode {
 	VERSUS_1,
@@ -83,8 +83,13 @@ func _do_stuff_after_ball_escaped() -> void:
 	elif get_tree().get_nodes_in_group("balls").size() <= 1:
 		_ball_spawner.spawn_ball()
 
+func _compile_results() -> Results:
+	var results = Results.new()
+	results.set_player_1_won(_score_player_1 >= _score_player_2)
+	return results
+
 func _game_over() -> void:
 	$BallSpawnTimer.stop()
 	get_tree().call_group("paddles", "queue_free")
 	get_tree().call_group("balls", "queue_free")
-	ended.emit(_score_player_1 >= _score_player_2)
+	ended.emit(_compile_results())
