@@ -64,15 +64,15 @@ func _on_wall_goal_right_ball_escaped(can_score: bool) -> void:
 	if can_score:
 		_score_player_1 += 1
 		$HUD.update_score(_score_player_1, true)
-	_do_stuff_after_scoring()
+	_do_stuff_after_ball_escaped()
 
 func _on_wall_goal_left_ball_escaped(can_score: bool) -> void:
 	if can_score:
 		_score_player_2 += 1
 		$HUD.update_score(_score_player_2, false)
-	_do_stuff_after_scoring()
+	_do_stuff_after_ball_escaped()
 
-func _do_stuff_after_scoring() -> void:
+func _do_stuff_after_ball_escaped() -> void:
 	if _score_player_1 >= game_config.get_max_points() || _score_player_2 >= game_config.get_max_points():
 		_game_over()
 	elif get_tree().get_nodes_in_group("balls").size() <= 1:
