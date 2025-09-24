@@ -6,6 +6,7 @@ const TEXT_PLAYER_WIN := "YOU WIN"
 const TEXT_CPU_WIN := "YOU LOSE"
 const TEXT_PLAYER_1_WIN := "PLAYER 1 WINS"
 const TEXT_PLAYER_2_WIN := "PLAYER 2 WINS"
+const TEXT_SURVIVAL_END := "GAME OVER"
 
 func _input(event: InputEvent) -> void:
 	if get_viewport().gui_get_focus_owner() == null && $%ButtonContainer.visible:
@@ -42,6 +43,19 @@ func show_end_versus(status := true, is_multiplayer := true, player_1_won := tru
 				$%Message.text = TEXT_PLAYER_WIN
 			else:
 				$%Message.text = TEXT_CPU_WIN
+	_toggle_button_container_visibility_when_ending_game(status)
+
+func show_end_survival(status := true, score := 0, time_elapsed := 0):
+	$%MessageContainer.visible = status
+	if $%MessageContainer.visible:
+		$%Message.text = TEXT_SURVIVAL_END
+	$%ResultsContainer.visible = status
+	if $%ResultsContainer.visible:
+		$%Score.text = str(score) + " pts"
+		$%Time.text = str(time_elapsed) + " s"
+	_toggle_button_container_visibility_when_ending_game(status)
+
+func _toggle_button_container_visibility_when_ending_game(status := true):
 	$%ButtonContainer.visible = status
 	if %ButtonContainer.visible:
 		$%ResumeButton.visible = false
