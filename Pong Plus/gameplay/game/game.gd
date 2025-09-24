@@ -3,7 +3,7 @@ extends Node2D
 
 signal ended(player_1_won: bool)
 
-@export var _ball_spawner_scene: PackedScene
+var _ball_spawner_scene: PackedScene = load("res://gameplay/ball_spawner/ball_spawner.tscn")
 
 # Game configuration
 var is_multiplayer := true

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfodn8ia5n12i"]
+[gd_scene load_steps=7 format=3 uid="uid://dfodn8ia5n12i"]
 
 [ext_resource type="Script" uid="uid://dp56kl0rt3tjf" path="res://gameplay/game/game.gd" id="1_cxpw7"]
-[ext_resource type="PackedScene" uid="uid://cuuftl8hlxvux" path="res://gameplay/ball_spawner/ball_spawner.tscn" id="2_q0t4u"]
 [ext_resource type="Texture2D" uid="uid://crwb3wrl36uso" path="res://gameplay/game/arena.png" id="3_jxpyf"]
 [ext_resource type="PackedScene" uid="uid://dr8ssbcu7jksh" path="res://gameplay/wall_bounce/wall_bounce.tscn" id="4_ks5le"]
 [ext_resource type="PackedScene" uid="uid://5hrpxd7ci76s" path="res://gameplay/wall_goal/wall_goal.tscn" id="5_tp3gb"]
@@ -11,7 +10,6 @@
 [node name="Game" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_cxpw7")
-_ball_spawner_scene = ExtResource("2_q0t4u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_jxpyf")
