@@ -19,29 +19,29 @@ func _input(event: InputEvent) -> void:
 				$%ExitButton.grab_focus()
 
 func show_ready(status := true) -> void:
-	$%LabelContainer.visible = status
-	if $%LabelContainer.visible:
-		$%Label.text = TEXT_READY
+	$%MessageContainer.visible = status
+	if $%MessageContainer.visible:
+		$%Message.text = TEXT_READY
 		
 func show_pause(status := true) -> void:
-	$%LabelContainer.visible = status
-	if $%LabelContainer.visible:
-		$%Label.text = TEXT_PAUSED
+	$%MessageContainer.visible = status
+	if $%MessageContainer.visible:
+		$%Message.text = TEXT_PAUSED
 	$%ButtonContainer.visible = status
 	
 func show_end(status := true, is_multiplayer := true, player_1_won := true) -> void:
-	$%LabelContainer.visible = status
-	if $%LabelContainer.visible:
+	$%MessageContainer.visible = status
+	if $%MessageContainer.visible:
 		if is_multiplayer:
 			if player_1_won:
-				$%Label.text = TEXT_PLAYER_1_WIN
+				$%Message.text = TEXT_PLAYER_1_WIN
 			else:
-				$%Label.text = TEXT_PLAYER_2_WIN
+				$%Message.text = TEXT_PLAYER_2_WIN
 		else:
 			if player_1_won:
-				$%Label.text = TEXT_PLAYER_WIN
+				$%Message.text = TEXT_PLAYER_WIN
 			else:
-				$%Label.text = TEXT_CPU_WIN
+				$%Message.text = TEXT_CPU_WIN
 	$%ButtonContainer.visible = status
 	if %ButtonContainer.visible:
 		$%ResumeButton.visible = false
