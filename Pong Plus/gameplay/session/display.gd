@@ -19,19 +19,19 @@ func _input(event: InputEvent) -> void:
 			if event.is_action_pressed("ui_left") || event.is_action_pressed("ui_right"):
 				$%ExitButton.grab_focus()
 
-func show_ready(status := true) -> void:
-	$%MessageContainer.visible = status
+func show_ready(showing := true) -> void:
+	$%MessageContainer.visible = showing
 	if $%MessageContainer.visible:
 		$%Message.text = TEXT_READY
 		
-func show_pause(status := true) -> void:
-	$%MessageContainer.visible = status
+func show_pause(showing := true) -> void:
+	$%MessageContainer.visible = showing
 	if $%MessageContainer.visible:
 		$%Message.text = TEXT_PAUSED
-	$%ButtonContainer.visible = status
+	$%ButtonContainer.visible = showing
 
-func show_end(status := true, game_mode := Game.GameMode.VERSUS_1, results: Results = null):
-	$%MessageContainer.visible = status
+func show_end(showing := true, game_mode := Game.GameMode.VERSUS_1, results: Results = null):
+	$%MessageContainer.visible = showing
 	if $%MessageContainer.visible && results != null:
 		if game_mode == Game.GameMode.VERSUS_1:
 			if results.get_player_1_won():
@@ -45,14 +45,14 @@ func show_end(status := true, game_mode := Game.GameMode.VERSUS_1, results: Resu
 				$%Message.text = TEXT_PLAYER_2_WIN
 		elif game_mode == Game.GameMode.SURVIVAL:
 			$%Message.text = TEXT_SURVIVAL_END
-			
-	if game_mode == Game.GameMode.SURVIVAL:
-		$%ResultsContainer.visible = status
+	
+	if (showing && game_mode == Game.GameMode.SURVIVAL) || not showing:
+		$%ResultsContainer.visible = showing
 		if $%ResultsContainer.visible && results != null:
 			$%Score.text = str(results.get_score()) + " pts"
 			$%Time.text = str(results._time_elapsed) + " s"
 			
-	$%ButtonContainer.visible = status
+	$%ButtonContainer.visible = showing
 	if %ButtonContainer.visible:
 		$%ResumeButton.visible = false
 	else:
