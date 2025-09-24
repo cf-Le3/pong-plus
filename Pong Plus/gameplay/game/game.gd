@@ -4,14 +4,14 @@ extends Node2D
 signal ended(player_1_won: bool)
 
 enum GameMode {
-	VERSUS,
+	VERSUS_1,
+	VERSUS_2,
 	SURVIVAL
 }
 
 # Game configuration
-var is_multiplayer := true
-var game_config := GameConfig.new()
-var _game_mode := GameMode.VERSUS
+var game_mode: GameMode
+var game_config: GameConfig
 
 # Game state
 var _ball_spawner_scene: PackedScene = load("res://gameplay/ball_spawner/ball_spawner.tscn")
@@ -36,7 +36,7 @@ func _ready() -> void:
 	$Paddle1.global_position = Vector2((viewport_w-_ARENA_W)/2+32, viewport_h/2)
 	$Paddle1.player = Paddle.Player.PLAYER_1
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-_ARENA_W)/2-32, viewport_h/2)
-	if is_multiplayer:
+	if game_mode == GameMode.VERSUS_2 || game_mode == GameMode.SURVIVAL:
 		$Paddle2.player = Paddle.Player.PLAYER_2
 	else:
 		if game_config.get_difficulty() == GameConfig.Difficulty.EASY:
@@ -54,7 +54,7 @@ func _ready() -> void:
 	add_child(_ball_spawner)
 
 func begin() -> void:
-	$HUD.show_hud_elements(_game_mode)
+	$HUD.show_hud_elements(game_mode)
 	_ball_spawner.spawn_ball()
 
 func _on_ball_spawner_spawned(ball: Ball) -> void:

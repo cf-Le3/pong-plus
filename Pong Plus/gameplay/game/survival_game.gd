@@ -12,7 +12,6 @@ var _score := 0
 var _time_elapsed := 0
 
 func _ready() -> void:
-	_game_mode = GameMode.SURVIVAL
 	super()
 	secondTimer = Timer.new()
 	secondTimer.connect("timeout", _on_second_timer_timeout)

@@ -5,10 +5,10 @@ signal closed
 
 @export var _game_scene: PackedScene
 
-var is_multiplayer := false
-var game_config := GameConfig.new()
+var game_mode: Game.GameMode
+var game_config: GameConfig
 var _game: Game
-var _can_pause
+var _can_pause = false
 
 const TEXT_READY := "READY"
 const TEXT_PAUSED := "PAUSED"
@@ -22,10 +22,11 @@ func _ready() -> void:
 	
 func _start_game() -> void:
 	_game = _game_scene.instantiate()
-	_game.is_multiplayer = is_multiplayer
+	_game.game_mode = game_mode
 	_game.game_config = game_config
 	_game.connect("ended", _on_game_ended)
 	add_child(_game)
+	
 	_can_pause = false
 	$Display.show_ready()
 	$StartGameTimer.start()
@@ -50,7 +51,7 @@ func _on_resume_button_pressed() -> void:
 	_pause_game(false)
 
 func _on_game_ended(player_1_won) -> void:
-	$Display.show_end_versus(true, is_multiplayer, player_1_won)
+	$Display.show_end_versus(true, game_mode == Game.GameMode.VERSUS_2, player_1_won)
 	_can_pause = false
 	$EndGameSound.play()
 	
@@ -58,7 +59,10 @@ func _on_restart_button_pressed() -> void:
 	if get_tree().paused:
 		_pause_game(false)
 	else:
-		$Display.show_end_versus(false)
+		if game_mode == Game.GameMode.VERSUS_1 || game_mode == Game.GameMode.VERSUS_2:
+			$Display.show_end_versus(false)
+		elif game_mode == Game.GameMode.SURVIVAL:
+			$Display.show_end_survival(false)
 	_game.queue_free()
 	_start_game()
 

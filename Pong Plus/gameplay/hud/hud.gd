@@ -2,7 +2,7 @@ extends CanvasLayer
 
 func show_hud_elements(game_mode: Game.GameMode) -> void:
 	$ScoreLabel2.visible = true
-	if game_mode == Game.GameMode.VERSUS:
+	if game_mode == Game.GameMode.VERSUS_1 || game_mode == Game.GameMode.VERSUS_2:
 		$ScoreLabel1.visible = true
 	elif game_mode == Game.GameMode.SURVIVAL:
 		$HealthBar.visible = true
