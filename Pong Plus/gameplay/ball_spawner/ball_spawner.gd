@@ -9,10 +9,8 @@ var _initial_angles := [45*PI/180, 60*PI/180, 75*PI/180]
 var _initial_angles_offsets := [0, PI/2, PI, 3*PI/2]
 var _balls_spawned := 0
 var colliding_balls_enabled: bool
-var magic_balls_enabled: bool
 
 const _TEXTURES_NORMAL: Array[Texture] = [preload("res://gameplay/ball_spawner/assets_textures/ball1.png"), preload("res://gameplay/ball_spawner/assets_textures/ball2.png"), preload("res://gameplay/ball_spawner/assets_textures/ball3.png")]
-const _TEXTURES_MAGIC: Array[Texture] = [preload("res://gameplay/ball_spawner/assets_textures/ball_normal.png"), preload("res://gameplay/ball_spawner/assets_textures/ball_grow.png"), preload("res://gameplay/ball_spawner/assets_textures/ball_shrink.png")]
 const _NO_UNIQUE_BALLS := 3
 
 func spawn_ball() -> void:
@@ -25,15 +23,9 @@ func _generate_ball() -> Ball:
 	
 	ball.init_pos = $BallSpawnPoint.global_position
 	ball.init_dir = _initial_angles[_balls_spawned%_NO_UNIQUE_BALLS] + _initial_angles_offsets.pick_random()
+	ball.texture = _TEXTURES_NORMAL[_balls_spawned%_NO_UNIQUE_BALLS]
 
 	if colliding_balls_enabled:
 		ball.enable_ball_collisions()
-
-	if magic_balls_enabled:
-		ball.magic_effect = Ball.Effect[Ball.Effect.keys()[rand_index]]
-		ball.texture = _TEXTURES_MAGIC[rand_index]
-	else:
-		ball.magic_effect = Ball.Effect.NORMAL
-		ball.texture = _TEXTURES_NORMAL[_balls_spawned%_NO_UNIQUE_BALLS]
 
 	return ball

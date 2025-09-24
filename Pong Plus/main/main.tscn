@@ -47,4 +47,5 @@ bus = &"Music"
 [connection signal="license_opened" from="Title" to="." method="_on_title_license_opened"]
 [connection signal="multi_player_game_started" from="Title" to="." method="_on_title_multi_player_game_started"]
 [connection signal="single_player_game_started" from="Title" to="." method="_on_title_single_player_game_started"]
+[connection signal="survival_game_started" from="Title" to="." method="_on_title_survival_game_started"]
 [connection signal="volume_settings_opened" from="Title" to="." method="_on_title_volume_settings_opened"]

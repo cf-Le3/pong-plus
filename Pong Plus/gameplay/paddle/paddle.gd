@@ -10,13 +10,9 @@ enum Player {
 }
 
 var player: Player
-var _terminal_speed := 300.0
 
+const _MAXIMUM_SPEED := 300.0
 const _ACCELERATION := 10.0
-const _SCALE_INCREMENT := 0.05
-const _SPEED_INCREMENT := 25.0
-const _SCALE_MIN := 0.75
-const _SCALE_MAX := 1.25
 
 func _physics_process(delta: float) -> void:
 	if player == Player.PLAYER_1 || player == Player.PLAYER_2:
@@ -81,10 +77,10 @@ func _perform_action_ai() -> void:
 	_slow_to_halt()
 	
 func _move_up() -> void:
-	velocity.y = max(velocity.y - _ACCELERATION, -_terminal_speed)
+	velocity.y = max(velocity.y - _ACCELERATION, -_MAXIMUM_SPEED)
 	
 func _move_down() -> void:
-	velocity.y = min(velocity.y + _ACCELERATION, _terminal_speed)
+	velocity.y = min(velocity.y + _ACCELERATION, _MAXIMUM_SPEED)
 	
 func _slow_to_halt() -> void:
 	velocity.y = lerp(velocity.y, 0.0, 0.05)
@@ -94,15 +90,3 @@ func get_high_marker_position() -> float:
 	
 func get_low_marker_position() -> float:
 	return $LowMarker2D.global_position.y
-
-func grow() -> void:
-	if scale.y < _SCALE_MAX:
-		scale.y += _SCALE_INCREMENT
-		_terminal_speed -= _SPEED_INCREMENT
-		$GrowSound.play()
-		
-func shrink() -> void:
-	if scale.y > _SCALE_MIN:
-		scale.y -= _SCALE_INCREMENT
-		_terminal_speed += _SPEED_INCREMENT
-		$ShrinkSound.play()

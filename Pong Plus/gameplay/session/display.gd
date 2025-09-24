@@ -6,6 +6,7 @@ const TEXT_PLAYER_WIN := "YOU WIN"
 const TEXT_CPU_WIN := "YOU LOSE"
 const TEXT_PLAYER_1_WIN := "PLAYER 1 WINS"
 const TEXT_PLAYER_2_WIN := "PLAYER 2 WINS"
+const TEXT_SURVIVAL_END := "GAME OVER"
 
 func _input(event: InputEvent) -> void:
 	if get_viewport().gui_get_focus_owner() == null && $%ButtonContainer.visible:
@@ -18,31 +19,40 @@ func _input(event: InputEvent) -> void:
 			if event.is_action_pressed("ui_left") || event.is_action_pressed("ui_right"):
 				$%ExitButton.grab_focus()
 
-func show_ready(status := true) -> void:
-	$%LabelContainer.visible = status
-	if $%LabelContainer.visible:
-		$%Label.text = TEXT_READY
+func show_ready(showing := true) -> void:
+	$%MessageContainer.visible = showing
+	if $%MessageContainer.visible:
+		$%Message.text = TEXT_READY
 		
-func show_pause(status := true) -> void:
-	$%LabelContainer.visible = status
-	if $%LabelContainer.visible:
-		$%Label.text = TEXT_PAUSED
-	$%ButtonContainer.visible = status
+func show_pause(showing := true) -> void:
+	$%MessageContainer.visible = showing
+	if $%MessageContainer.visible:
+		$%Message.text = TEXT_PAUSED
+	$%ButtonContainer.visible = showing
+
+func show_end(showing := true, game_mode := Game.GameMode.VERSUS_1, results: Results = null):
+	$%MessageContainer.visible = showing
+	if $%MessageContainer.visible && results != null:
+		if game_mode == Game.GameMode.VERSUS_1:
+			if results.get_player_1_won():
+				$%Message.text = TEXT_PLAYER_WIN
+			else:
+				$%Message.text = TEXT_CPU_WIN
+		elif game_mode == Game.GameMode.VERSUS_2:
+			if results.get_player_1_won():
+				$%Message.text = TEXT_PLAYER_1_WIN
+			else:
+				$%Message.text = TEXT_PLAYER_2_WIN
+		elif game_mode == Game.GameMode.SURVIVAL:
+			$%Message.text = TEXT_SURVIVAL_END
 	
-func show_end(status := true, is_multiplayer := true, player_1_won := true) -> void:
-	$%LabelContainer.visible = status
-	if $%LabelContainer.visible:
-		if is_multiplayer:
-			if player_1_won:
-				$%Label.text = TEXT_PLAYER_1_WIN
-			else:
-				$%Label.text = TEXT_PLAYER_2_WIN
-		else:
-			if player_1_won:
-				$%Label.text = TEXT_PLAYER_WIN
-			else:
-				$%Label.text = TEXT_CPU_WIN
-	$%ButtonContainer.visible = status
+	if (showing && game_mode == Game.GameMode.SURVIVAL) || not showing:
+		$%ResultsContainer.visible = showing
+		if $%ResultsContainer.visible && results != null:
+			$%Score.text = str(results.get_score()) + " pts"
+			$%Time.text = str(results._time_elapsed) + " s"
+			
+	$%ButtonContainer.visible = showing
 	if %ButtonContainer.visible:
 		$%ResumeButton.visible = false
 	else:

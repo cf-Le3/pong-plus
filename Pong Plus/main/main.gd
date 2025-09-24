@@ -35,16 +35,23 @@ func _on_viewport_gui_focus_changed(node: Control):
 	ButtonSfxManager.play_select_sound()
 
 func _on_title_single_player_game_started() -> void:
-	_create_new_session(false)
+	_create_new_session(Game.GameMode.VERSUS_1)
 
 func _on_title_multi_player_game_started() -> void:
-	_create_new_session(true)
+	_create_new_session(Game.GameMode.VERSUS_2)
 
-func _create_new_session(is_multiplayer: bool) -> void:
+func _on_title_survival_game_started() -> void:
+	_create_new_session(Game.GameMode.SURVIVAL)
+
+func _create_new_session(game_mode: Game.GameMode) -> void:
 	_enable_title(false)
 	_session = _session_scene.instantiate()
-	_session.is_multiplayer = is_multiplayer
-	_session.game_config = _game_config
+	_session.game_mode = game_mode
+
+	# Survival Mode uses its own configuration.
+	if game_mode != Game.GameMode.SURVIVAL:
+		_session.game_config = _game_config
+
 	_session.connect("closed", _on_session_closed)
 	add_child(_session)
 	

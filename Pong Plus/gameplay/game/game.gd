@@ -1,15 +1,20 @@
 class_name Game
 extends Node2D
 
-signal ended(player_1_won: bool)
+signal ended(results: Results)
 
-@export var _ball_spawner_scene: PackedScene
+enum GameMode {
+	VERSUS_1,
+	VERSUS_2,
+	SURVIVAL
+}
 
 # Game configuration
-var is_multiplayer := true
-var game_config := GameConfig.new()
+var game_mode: GameMode
+var game_config: GameConfig
 
 # Game state
+var _ball_spawner_scene: PackedScene = load("res://gameplay/ball_spawner/ball_spawner.tscn")
 var _ball_spawner: BallSpawner
 var _score_player_1 := 0
 var _score_player_2 := 0
@@ -31,7 +36,7 @@ func _ready() -> void:
 	$Paddle1.global_position = Vector2((viewport_w-_ARENA_W)/2+32, viewport_h/2)
 	$Paddle1.player = Paddle.Player.PLAYER_1
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-_ARENA_W)/2-32, viewport_h/2)
-	if is_multiplayer:
+	if game_mode == GameMode.VERSUS_2 || game_mode == GameMode.SURVIVAL:
 		$Paddle2.player = Paddle.Player.PLAYER_2
 	else:
 		if game_config.get_difficulty() == GameConfig.Difficulty.EASY:
@@ -43,13 +48,12 @@ func _ready() -> void:
 	
 	_ball_spawner = _ball_spawner_scene.instantiate()
 	_ball_spawner.colliding_balls_enabled = game_config.get_ball_collisions_enabled()
-	_ball_spawner.magic_balls_enabled = game_config.get_magic_balls_enabled()
 	_ball_spawner.connect("spawned", _on_ball_spawner_spawned)
 	_ball_spawner.global_position = Vector2(viewport_w/2, viewport_h/2)
 	add_child(_ball_spawner)
 
 func begin() -> void:
-	$HUD.show_score()
+	$HUD.show_hud_elements(game_mode)
 	_ball_spawner.spawn_ball()
 
 func _on_ball_spawner_spawned(ball: Ball) -> void:
@@ -60,26 +64,31 @@ func _on_ball_spawn_timer_timeout() -> void:
 	if get_tree().get_nodes_in_group("balls").size() < game_config.get_max_balls():
 		_ball_spawner.spawn_ball()
 
-func _on_wall_goal_right_ball_escaped(can_score: bool) -> void:
-	if can_score:
+func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
+	if not is_invincible:
 		_score_player_1 += 1
-		$HUD.update_score(_score_player_1, true)
-	_do_stuff_after_scoring()
+		$HUD.update_versus_score(_score_player_1, true)
+	_do_stuff_after_ball_escaped()
 
-func _on_wall_goal_left_ball_escaped(can_score: bool) -> void:
-	if can_score:
+func _on_wall_goal_left_ball_escaped(is_invincible: bool) -> void:
+	if not is_invincible:
 		_score_player_2 += 1
-		$HUD.update_score(_score_player_2, false)
-	_do_stuff_after_scoring()
+		$HUD.update_versus_score(_score_player_2, false)
+	_do_stuff_after_ball_escaped()
 
-func _do_stuff_after_scoring() -> void:
+func _do_stuff_after_ball_escaped() -> void:
 	if _score_player_1 >= game_config.get_max_points() || _score_player_2 >= game_config.get_max_points():
 		_game_over()
 	elif get_tree().get_nodes_in_group("balls").size() <= 1:
 		_ball_spawner.spawn_ball()
 
+func _compile_results() -> Results:
+	var results = Results.new()
+	results.set_player_1_won(_score_player_1 >= _score_player_2)
+	return results
+
 func _game_over() -> void:
 	$BallSpawnTimer.stop()
 	get_tree().call_group("paddles", "queue_free")
 	get_tree().call_group("balls", "queue_free")
-	ended.emit(_score_player_1 >= _score_player_2)
+	ended.emit(_compile_results())

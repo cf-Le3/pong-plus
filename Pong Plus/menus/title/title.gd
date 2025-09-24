@@ -3,6 +3,7 @@ extends CanvasLayer
 
 signal single_player_game_started
 signal multi_player_game_started
+signal survival_game_started
 signal volume_settings_opened
 signal game_settings_opened
 signal license_opened
@@ -67,7 +68,7 @@ func _on_vs_player_button_pressed() -> void:
 	multi_player_game_started.emit()
 
 func _on_survival_button_pressed() -> void:
-	pass # Replace with function body.
+	survival_game_started.emit()
 
 func _on_settings_button_pressed() -> void:
 	switch_menu(ActiveMenu.SETTINGS)

@@ -1,16 +1,9 @@
 class_name Ball
 extends CharacterBody2D
 
-enum Effect {
-	NORMAL,
-	GROW,
-	SHRINK
-}
-
 var init_pos: Vector2
 var init_dir: float
 var texture: Texture
-var magic_effect: Effect
 var _can_collide_with_other_balls := true
 
 const _INIT_SPEED := 200.0
@@ -40,8 +33,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 	elif body.is_in_group("balls") && _can_collide_with_other_balls && body != self:
 		_handle_ball_collision(body)
-		_randomly_tilt_velocity()
-		$WallHit.play()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("paddles"):
@@ -52,10 +43,6 @@ func _handle_paddle_collision(paddle: Paddle) -> void:
 		
 		if (velocity.y > 0 && global_position.y < paddle.get_high_marker_position()) || (velocity.y < 0 && global_position.y > paddle.get_low_marker_position()):
 			velocity.y = -1*velocity.y
-			if magic_effect == Effect.GROW:
-				paddle.grow()
-			elif magic_effect == Effect.SHRINK:
-				paddle.shrink()
 
 		# Align acceleration vector with ball's velocity before adding to ball's velocity.
 		velocity = velocity + _ACCELERATION_BY_PADDLE.rotated(velocity.angle())

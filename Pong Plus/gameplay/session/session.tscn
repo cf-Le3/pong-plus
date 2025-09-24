@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dx7p0spr0qeep"]
+[gd_scene load_steps=16 format=3 uid="uid://dx7p0spr0qeep"]
 
 [ext_resource type="Script" uid="uid://cgcnjcugajyme" path="res://gameplay/session/session.gd" id="1_vob28"]
 [ext_resource type="PackedScene" uid="uid://dfodn8ia5n12i" path="res://gameplay/game/game.tscn" id="2_xcp3g"]
@@ -7,7 +7,9 @@
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="4_stq55"]
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="5_5cnlg"]
 [ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="5_p7x2w"]
+[ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="5_t24i5"]
 [ext_resource type="AudioStream" uid="uid://cfkunww8ixa22" path="res://gameplay/session/assets_audio/Balloon start riding 1.wav" id="6_5cnlg"]
+[ext_resource type="Theme" uid="uid://cma8plh8jdkxh" path="res://menus/assets_themes/settings_control_label.tres" id="6_l4r5l"]
 [ext_resource type="AudioStream" uid="uid://b6pw1bmskjkmw" path="res://gameplay/session/assets_audio/Big Egg collect 1.wav" id="7_b7cr8"]
 [ext_resource type="AudioStream" uid="uid://dpy3px88wk86o" path="res://gameplay/session/assets_audio/Fruit collect 1.wav" id="8_1domg"]
 
@@ -17,6 +19,9 @@ bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
 [sub_resource type="Theme" id="Theme_1domg"]
 Label/font_sizes/font_size = 96
 Label/fonts/font = ExtResource("3_srpmx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t24i5"]
+bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
 
 [node name="Session" type="Node"]
 process_mode = 3
@@ -40,25 +45,64 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 
-[node name="LabelContainer" type="PanelContainer" parent="Display/VBoxContainer"]
+[node name="MessageContainer" type="PanelContainer" parent="Display/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_b7cr8")
 
-[node name="MarginContainer" type="MarginContainer" parent="Display/VBoxContainer/LabelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Display/VBoxContainer/MessageContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 0
 
-[node name="Label" type="Label" parent="Display/VBoxContainer/LabelContainer/MarginContainer"]
+[node name="Message" type="Label" parent="Display/VBoxContainer/MessageContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_1domg")
+
+[node name="ResultsContainer" type="PanelContainer" parent="Display/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t24i5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Display/VBoxContainer/ResultsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 64
+
+[node name="ScoreHBox" type="HBoxContainer" parent="Display/VBoxContainer/ResultsContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="LabelScore" type="Label" parent="Display/VBoxContainer/ResultsContainer/HBoxContainer/ScoreHBox"]
+layout_mode = 2
+theme = ExtResource("5_t24i5")
+text = "SCORE:"
+
+[node name="Score" type="Label" parent="Display/VBoxContainer/ResultsContainer/HBoxContainer/ScoreHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_l4r5l")
+text = "0"
+
+[node name="TimeHBox" type="HBoxContainer" parent="Display/VBoxContainer/ResultsContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="LabelTime" type="Label" parent="Display/VBoxContainer/ResultsContainer/HBoxContainer/TimeHBox"]
+layout_mode = 2
+theme = ExtResource("5_t24i5")
+text = "TIME:"
+
+[node name="Time" type="Label" parent="Display/VBoxContainer/ResultsContainer/HBoxContainer/TimeHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_l4r5l")
+text = "0"
 
 [node name="ButtonContainer" type="CenterContainer" parent="Display/VBoxContainer"]
 unique_name_in_owner = true
