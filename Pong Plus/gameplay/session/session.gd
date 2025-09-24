@@ -22,6 +22,13 @@ func _ready() -> void:
 	
 func _start_game() -> void:
 	_game = _game_scene.instantiate()
+	
+	if game_mode == Game.GameMode.SURVIVAL:
+		_game.set_script(load("res://gameplay/game/survival_game.gd"))
+		if game_config == null:
+			game_config = GameConfig.new()
+		game_config.set_max_balls(3)
+			
 	_game.game_mode = game_mode
 	_game.game_config = game_config
 	_game.connect("ended", _on_game_ended)

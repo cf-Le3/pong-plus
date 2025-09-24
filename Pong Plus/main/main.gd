@@ -47,8 +47,11 @@ func _create_new_session(game_mode: Game.GameMode) -> void:
 	_enable_title(false)
 	_session = _session_scene.instantiate()
 	_session.game_mode = game_mode
+
+	# Survival Mode uses its own configuration.
 	if game_mode != Game.GameMode.SURVIVAL:
 		_session.game_config = _game_config
+
 	_session.connect("closed", _on_session_closed)
 	add_child(_session)
 	
