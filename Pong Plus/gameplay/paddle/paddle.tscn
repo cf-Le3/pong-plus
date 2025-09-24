@@ -1,16 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cj3pwg27ip3fb"]
+[gd_scene load_steps=4 format=3 uid="uid://cj3pwg27ip3fb"]
 
 [ext_resource type="Script" uid="uid://dwrokhrxxaubo" path="res://gameplay/paddle/paddle.gd" id="1_s1ttm"]
 [ext_resource type="Texture2D" uid="uid://djfvs8uih53ex" path="res://gameplay/paddle/paddle.png" id="2_st0or"]
-[ext_resource type="AudioStream" uid="uid://cr1r7lhhuoso5" path="res://gameplay/paddle/assets_audio/Cancel 1.wav" id="3_ahuv0"]
-[ext_resource type="AudioStream" uid="uid://bl7vcft6ggam5" path="res://gameplay/paddle/assets_audio/Confirm 1.wav" id="4_y2mxq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jy6pc"]
 radius = 16.0
 height = 128.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2emja"]
-radius = 16.0
 
 [node name="Paddle" type="CharacterBody2D" groups=["paddles"]]
 collision_layer = 2
@@ -22,26 +17,6 @@ texture = ExtResource("2_st0or")
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jy6pc")
-
-[node name="TopCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -50)
-shape = SubResource("CircleShape2D_2emja")
-disabled = true
-
-[node name="BottomCollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 50)
-shape = SubResource("CircleShape2D_2emja")
-disabled = true
-
-[node name="GrowSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ahuv0")
-bus = &"SFX"
-
-[node name="ShrinkSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_y2mxq")
-bus = &"SFX"
 
 [node name="HighMarker2D" type="Marker2D" parent="."]
 position = Vector2(0, -48)
