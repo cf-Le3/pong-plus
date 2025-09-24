@@ -1,24 +1,24 @@
 class_name SurvivalGame
 extends Game
 
-const MAX_HEALTH := 5
+const _MAX_HEALTH := 5
 
 # Nodes
-var secondTimer: Timer
+var _secondElapsedTimer: Timer
 
 # Game state
-var _health := MAX_HEALTH
+var _health := _MAX_HEALTH
 var _score := 0
 var _time_elapsed := 0
 
 func _ready() -> void:
 	super()
-	secondTimer = Timer.new()
-	secondTimer.connect("timeout", _on_second_timer_timeout)
-	add_child(secondTimer)
+	_secondElapsedTimer = Timer.new()
+	_secondElapsedTimer.connect("timeout", _on_second_timer_timeout)
+	add_child(_secondElapsedTimer)
 
 func begin() -> void:
-	secondTimer.start()
+	_secondElapsedTimer.start()
 	super()
 
 func _on_second_timer_timeout() -> void:
@@ -43,5 +43,5 @@ func _do_stuff_after_ball_escaped() -> void:
 		_ball_spawner.spawn_ball()
 
 func _game_over() -> void:
-	secondTimer.stop()
+	_secondElapsedTimer.stop()
 	super()
