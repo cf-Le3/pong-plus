@@ -29,33 +29,29 @@ func show_pause(status := true) -> void:
 	if $%MessageContainer.visible:
 		$%Message.text = TEXT_PAUSED
 	$%ButtonContainer.visible = status
-	
-func show_end_versus(status := true, is_multiplayer := true, player_1_won := true) -> void:
+
+func show_end(status := true, game_mode := Game.GameMode.VERSUS_1, results: Results = null):
 	$%MessageContainer.visible = status
-	if $%MessageContainer.visible:
-		if is_multiplayer:
-			if player_1_won:
-				$%Message.text = TEXT_PLAYER_1_WIN
-			else:
-				$%Message.text = TEXT_PLAYER_2_WIN
-		else:
-			if player_1_won:
+	if $%MessageContainer.visible && results != null:
+		if game_mode == Game.GameMode.VERSUS_1:
+			if results.get_player_1_won():
 				$%Message.text = TEXT_PLAYER_WIN
 			else:
 				$%Message.text = TEXT_CPU_WIN
-	_toggle_button_container_visibility_when_ending_game(status)
-
-func show_end_survival(status := true, score := 0, time_elapsed := 0):
-	$%MessageContainer.visible = status
-	if $%MessageContainer.visible:
-		$%Message.text = TEXT_SURVIVAL_END
-	$%ResultsContainer.visible = status
-	if $%ResultsContainer.visible:
-		$%Score.text = str(score) + " pts"
-		$%Time.text = str(time_elapsed) + " s"
-	_toggle_button_container_visibility_when_ending_game(status)
-
-func _toggle_button_container_visibility_when_ending_game(status := true):
+		elif game_mode == Game.GameMode.VERSUS_2:
+			if results.get_player_1_won():
+				$%Message.text = TEXT_PLAYER_1_WIN
+			else:
+				$%Message.text = TEXT_PLAYER_2_WIN
+		elif game_mode == Game.GameMode.SURVIVAL:
+			$%Message.text = TEXT_SURVIVAL_END
+			
+	if game_mode == Game.GameMode.SURVIVAL:
+		$%ResultsContainer.visible = status
+		if $%ResultsContainer.visible && results != null:
+			$%Score.text = str(results.get_score()) + " pts"
+			$%Time.text = str(results._time_elapsed) + " s"
+			
 	$%ButtonContainer.visible = status
 	if %ButtonContainer.visible:
 		$%ResumeButton.visible = false

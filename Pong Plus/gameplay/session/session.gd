@@ -57,8 +57,8 @@ func _on_resume_button_pressed() -> void:
 	assert(get_tree().paused)
 	_pause_game(false)
 
-func _on_game_ended(player_1_won) -> void:
-	$Display.show_end_versus(true, game_mode == Game.GameMode.VERSUS_2, player_1_won)
+func _on_game_ended(results: Results) -> void:
+	$Display.show_end(true, game_mode, results)
 	_can_pause = false
 	$EndGameSound.play()
 	
@@ -66,10 +66,7 @@ func _on_restart_button_pressed() -> void:
 	if get_tree().paused:
 		_pause_game(false)
 	else:
-		if game_mode == Game.GameMode.VERSUS_1 || game_mode == Game.GameMode.VERSUS_2:
-			$Display.show_end_versus(false)
-		elif game_mode == Game.GameMode.SURVIVAL:
-			$Display.show_end_survival(false)
+		$Display.show_end(false)
 	_game.queue_free()
 	_start_game()
 
