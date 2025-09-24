@@ -23,6 +23,8 @@ func begin() -> void:
 
 func _on_second_timer_timeout() -> void:
 	_time_elapsed += 1
+	if _time_elapsed % 10 == 0:
+		game_config.set_max_balls(game_config.get_max_balls()+1)
 
 func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
 	_respond_to_ball_escaped(is_invincible)
