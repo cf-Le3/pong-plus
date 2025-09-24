@@ -25,16 +25,18 @@ func begin() -> void:
 func _on_second_timer_timeout() -> void:
 	_time_elapsed += 1
 
-func _on_wall_goal_right_ball_escaped(can_score: bool) -> void:
 	print("DEBUG | Ball escaped via right wall!")
 	_ball_escaped_common_logic()
+func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
+	_ball_escaped_common_logic(is_invincible)
 
-func _on_wall_goal_left_ball_escaped(can_score: bool) -> void:
 	print("DEBUG | Ball escaped via left wall!")
 	_ball_escaped_common_logic()
+func _on_wall_goal_left_ball_escaped(is_invincible: bool) -> void:
+	_ball_escaped_common_logic(is_invincible)
 
-func _ball_escaped_common_logic() -> void:
-	if _health > 0:
+func _ball_escaped_common_logic(is_invincible: bool) -> void:
+	if not is_invincible && _health > 0:
 		_health -= 1
 	_debug_print_health()
 	_do_stuff_after_ball_escaped()
