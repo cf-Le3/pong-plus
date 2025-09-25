@@ -36,5 +36,6 @@ offset_right = 589.0
 offset_bottom = 150.0
 max_value = 5.0
 value = 5.0
+rounded = true
 fill_mode = 1
 texture_progress = ExtResource("3_2048h")

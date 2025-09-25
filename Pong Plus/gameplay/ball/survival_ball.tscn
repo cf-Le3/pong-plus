@@ -25,5 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 6.0
 value = 6.0
+rounded = true
 fill_mode = 5
 texture_progress = ExtResource("3_n8j10")
