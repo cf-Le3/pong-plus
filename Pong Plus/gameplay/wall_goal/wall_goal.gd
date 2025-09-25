@@ -10,7 +10,6 @@ func _on_body_exited(body: Node2D) -> void:
 	ball_escaped.emit(_is_invincible)
 	if not _is_invincible:
 		enable_invincibility()
-		$GoalSound.play()
 
 func enable_invincibility() -> void:
 	_is_invincible = true

@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="4_op1sk"]
 [ext_resource type="Theme" uid="uid://cln0vq5h8pqqn" path="res://menus/assets_themes/button_normal_general.tres" id="5_icfaq"]
 [ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="5_ip2bh"]
-[ext_resource type="AudioStream" uid="uid://cb7500kskujnx" path="res://gameplay/wall_goal/Fruit collect 1.wav" id="7_bf36o"]
+[ext_resource type="AudioStream" uid="uid://ch5snno6ttd8b" path="res://menus/settings/volume_settings/Fruit collect 1.wav" id="8_1np7g"]
 
 [node name="VolumeSettings" type="CanvasLayer"]
 script = ExtResource("1_icfaq")
@@ -125,7 +125,8 @@ theme = ExtResource("5_icfaq")
 text = "CONFIRM"
 
 [node name="SFXTestSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_bf36o")
+stream = ExtResource("8_1np7g")
+bus = &"SFX"
 
 [connection signal="drag_ended" from="MarginContainer/VBoxContainer/GridContainer/SFXControl/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_drag_ended"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
