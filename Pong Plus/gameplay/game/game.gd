@@ -47,6 +47,7 @@ func _ready() -> void:
 			$Paddle2.player = Paddle.Player.CPU_HARD
 	
 	_ball_spawner = _ball_spawner_scene.instantiate()
+	_ball_spawner.game_mode = game_mode
 	_ball_spawner.colliding_balls_enabled = game_config.get_ball_collisions_enabled()
 	_ball_spawner.connect("spawned", _on_ball_spawner_spawned)
 	_ball_spawner.global_position = Vector2(viewport_w/2, viewport_h/2)

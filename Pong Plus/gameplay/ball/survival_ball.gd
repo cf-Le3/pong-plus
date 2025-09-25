@@ -10,7 +10,12 @@ const _POINTS_VALUE_MED = 2
 const _POINTS_VALUE_LOW = 1
 
 var _health := _MAX_HEALTH
+var texture_progress: Texture
 
+func _ready() -> void:
+	super()
+	$HealthBar.texture_progress = texture_progress
+	
 func _handle_paddle_collision(paddle: Paddle) -> void:
 	super(paddle)
 	_deduct_health()
