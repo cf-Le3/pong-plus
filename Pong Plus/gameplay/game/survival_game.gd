@@ -5,6 +5,7 @@ const _MAX_HEALTH := 5
 
 # Nodes
 var _secondElapsedTimer: Timer
+var _damageSound: AudioStreamPlayer2D
 
 # Game state
 var _health := _MAX_HEALTH
@@ -13,9 +14,17 @@ var _time_elapsed := 0
 
 func _ready() -> void:
 	super()
+	_initialize_unique_nodes()
+
+func _initialize_unique_nodes() -> void:
 	_secondElapsedTimer = Timer.new()
 	_secondElapsedTimer.connect("timeout", _on_second_timer_timeout)
 	add_child(_secondElapsedTimer)
+	
+	_damageSound = AudioStreamPlayer2D.new()
+	_damageSound.stream = preload("res://gameplay/game/assets_audio/Boss hit 1.wav")
+	_damageSound.bus = &"SFX"
+	add_child(_damageSound)
 
 func begin() -> void:
 	_secondElapsedTimer.start()
@@ -50,6 +59,7 @@ func _update_health(hit_points: int) -> void:
 func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
 	if not is_invincible && _health > 0:
 		_update_health(-1)
+		_damageSound.play()
 	_do_stuff_after_ball_escaped()
 
 func _on_wall_goal_left_ball_escaped(is_invincible: bool) -> void:
