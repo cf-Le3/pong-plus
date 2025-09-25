@@ -27,15 +27,16 @@ func _on_second_timer_timeout() -> void:
 		game_config.set_max_balls(game_config.get_max_balls()+1)
 
 func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
-	_respond_to_ball_escaped(is_invincible)
+	if not is_invincible && _health > 0:
+		_update_health(-1)
+	_do_stuff_after_ball_escaped()
 
 func _on_wall_goal_left_ball_escaped(is_invincible: bool) -> void:
-	_respond_to_ball_escaped(is_invincible)
-
-func _respond_to_ball_escaped(is_invincible: bool) -> void:
 	if not is_invincible && _health > 0:
-		_health -= 1
-		$HUD.update_survival_health(_health)
+		_update_health(-1)
+	_do_stuff_after_ball_escaped()
+
+func _do_stuff_after_ball_escaped() -> void:
 	if _health == 0:
 		_game_over()
 	elif get_tree().get_nodes_in_group("balls").size() <= 1:
