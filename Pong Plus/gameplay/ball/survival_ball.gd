@@ -22,7 +22,6 @@ func _handle_paddle_collision(paddle: Paddle) -> void:
 	if _health > 0:
 		collided_with_paddle.emit(_calculate_points_value())
 	else:
-		#TODO: Play a unique animation. Pause physics and collisions before removing.
 		destroyed.emit(_calculate_points_value())
 		queue_free()
 		

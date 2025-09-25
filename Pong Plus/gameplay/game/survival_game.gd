@@ -26,6 +26,26 @@ func _on_second_timer_timeout() -> void:
 	if _time_elapsed % 10 == 0:
 		game_config.set_max_balls(game_config.get_max_balls()+1)
 
+func _on_ball_spawner_spawned(ball: Ball) -> void:
+	ball.connect("collided_with_paddle", _on_ball_collided_with_paddle)
+	ball.connect("destroyed", _on_ball_destroyed)
+	super(ball)
+
+func _on_ball_collided_with_paddle(points: int) -> void:
+	_update_score(points)
+
+func _on_ball_destroyed(points: int) -> void:
+	_update_score(points)
+	_update_health(1)
+
+func _update_score(points: int) -> void:
+	_score += points
+	$HUD.update_survival_score(_score)
+
+func _update_health(hit_points: int) -> void:
+	_health += hit_points
+	$HUD.update_survival_health(_health)
+
 func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
 	if not is_invincible && _health > 0:
 		_update_health(-1)
