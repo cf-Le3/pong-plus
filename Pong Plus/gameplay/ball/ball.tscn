@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3k2sxndgmaue"]
 
 [ext_resource type="Script" uid="uid://bmfgbkdcpnssv" path="res://gameplay/ball/ball.gd" id="1_2ml3n"]
-[ext_resource type="Texture2D" uid="uid://0nufo7e0bxg4" path="res://gameplay/ball_spawner/assets_textures/ball1.png" id="1_k2q1g"]
+[ext_resource type="Texture2D" uid="uid://0nufo7e0bxg4" path="res://gameplay/ball_spawner/assets_textures/ball_1.png" id="1_k2q1g"]
 [ext_resource type="AudioStream" uid="uid://55cdi3e3vxmv" path="res://gameplay/ball/assets_audio/Hit damage 1.wav" id="3_wy28e"]
 [ext_resource type="AudioStream" uid="uid://cswb4vlmilq02" path="res://gameplay/ball/assets_audio/Balloon Pop 1.wav" id="4_8h4je"]
 [ext_resource type="AudioStream" uid="uid://3ikev7c220qg" path="res://gameplay/ball/assets_audio/Bubble 1.wav" id="5_llafm"]

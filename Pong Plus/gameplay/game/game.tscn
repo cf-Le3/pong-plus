@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfodn8ia5n12i"]
+[gd_scene load_steps=8 format=3 uid="uid://dfodn8ia5n12i"]
 
 [ext_resource type="Script" uid="uid://dp56kl0rt3tjf" path="res://gameplay/game/game.gd" id="1_cxpw7"]
 [ext_resource type="Texture2D" uid="uid://crwb3wrl36uso" path="res://gameplay/game/arena.png" id="3_jxpyf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5hrpxd7ci76s" path="res://gameplay/wall_goal/wall_goal.tscn" id="5_tp3gb"]
 [ext_resource type="PackedScene" uid="uid://cj3pwg27ip3fb" path="res://gameplay/paddle/paddle.tscn" id="6_5cgph"]
 [ext_resource type="PackedScene" uid="uid://dcktngg6b8fyk" path="res://gameplay/hud/hud.tscn" id="7_wr3ym"]
+[ext_resource type="AudioStream" uid="uid://cb7500kskujnx" path="res://gameplay/game/assets_audio/Fruit collect 1.wav" id="7_ye0af"]
 
 [node name="Game" type="Node2D"]
 process_mode = 1
@@ -30,6 +31,10 @@ texture = ExtResource("3_jxpyf")
 wait_time = 5.0
 
 [node name="HUD" parent="." instance=ExtResource("7_wr3ym")]
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ye0af")
+bus = &"SFX"
 
 [connection signal="ball_escaped" from="WallGoalLeft" to="." method="_on_wall_goal_left_ball_escaped"]
 [connection signal="ball_escaped" from="WallGoalRight" to="." method="_on_wall_goal_right_ball_escaped"]

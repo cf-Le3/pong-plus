@@ -47,6 +47,7 @@ func _ready() -> void:
 			$Paddle2.player = Paddle.Player.CPU_HARD
 	
 	_ball_spawner = _ball_spawner_scene.instantiate()
+	_ball_spawner.game_mode = game_mode
 	_ball_spawner.colliding_balls_enabled = game_config.get_ball_collisions_enabled()
 	_ball_spawner.connect("spawned", _on_ball_spawner_spawned)
 	_ball_spawner.global_position = Vector2(viewport_w/2, viewport_h/2)
@@ -68,12 +69,14 @@ func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
 	if not is_invincible:
 		_score_player_1 += 1
 		$HUD.update_versus_score(_score_player_1, true)
+		$ScoreSound.play()
 	_do_stuff_after_ball_escaped()
 
 func _on_wall_goal_left_ball_escaped(is_invincible: bool) -> void:
 	if not is_invincible:
 		_score_player_2 += 1
 		$HUD.update_versus_score(_score_player_2, false)
+		$ScoreSound.play()
 	_do_stuff_after_ball_escaped()
 
 func _do_stuff_after_ball_escaped() -> void:

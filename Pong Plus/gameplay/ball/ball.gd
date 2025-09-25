@@ -47,7 +47,7 @@ func _handle_paddle_collision(paddle: Paddle) -> void:
 		# Align acceleration vector with ball's velocity before adding to ball's velocity.
 		velocity = velocity + _ACCELERATION_BY_PADDLE.rotated(velocity.angle())
 		_randomly_tilt_velocity()
-		$PaddleHit.play()				
+		$PaddleHit.play()
 
 func _handle_ball_collision(other_ball: Ball) -> void:
 	if !_is_matching_x_polarity_with(other_ball) && !_is_matching_y_polarity_with(other_ball):

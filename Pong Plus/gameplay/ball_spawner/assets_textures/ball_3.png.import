@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://86haboy5ofk5"
-path="res://.godot/imported/ball2.png-dab3756685fdbece3ac7f88455ccb339.ctex"
+uid="uid://ulplrk267eow"
+path="res://.godot/imported/ball_3.png-efe2f551c211796da542ac07013500d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/ball_spawner/assets_textures/ball2.png"
-dest_files=["res://.godot/imported/ball2.png-dab3756685fdbece3ac7f88455ccb339.ctex"]
+source_file="res://gameplay/ball_spawner/assets_textures/ball_3.png"
+dest_files=["res://.godot/imported/ball_3.png-efe2f551c211796da542ac07013500d6.ctex"]
 
 [params]
 
