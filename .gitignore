@@ -16,3 +16,4 @@ data_*/
 mono_crash.*.json
 /Pong Plus/.vscode
 /CSP
+.vscode/settings.json
