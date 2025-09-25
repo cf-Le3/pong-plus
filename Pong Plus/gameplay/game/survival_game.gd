@@ -81,4 +81,5 @@ func _compile_results() -> Results:
 
 func _game_over() -> void:
 	_secondElapsedTimer.stop()
+	$HUD.hide()
 	super()
