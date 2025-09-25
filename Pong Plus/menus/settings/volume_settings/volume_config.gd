@@ -1,7 +1,7 @@
 class_name VolumeConfig
 
 var _master_vol_value := 1.0
-var _music_vol_value := 0.5
+var _music_vol_value := 0.4
 var _sfx_vol_value := 1.0
 
 func get_master_vol_value() -> float:
