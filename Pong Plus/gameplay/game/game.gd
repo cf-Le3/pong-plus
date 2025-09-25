@@ -69,12 +69,14 @@ func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
 	if not is_invincible:
 		_score_player_1 += 1
 		$HUD.update_versus_score(_score_player_1, true)
+		$ScoreSound.play()
 	_do_stuff_after_ball_escaped()
 
 func _on_wall_goal_left_ball_escaped(is_invincible: bool) -> void:
 	if not is_invincible:
 		_score_player_2 += 1
 		$HUD.update_versus_score(_score_player_2, false)
+		$ScoreSound.play()
 	_do_stuff_after_ball_escaped()
 
 func _do_stuff_after_ball_escaped() -> void:

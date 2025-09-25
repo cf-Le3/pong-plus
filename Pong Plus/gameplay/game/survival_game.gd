@@ -37,6 +37,7 @@ func _on_ball_collided_with_paddle(points: int) -> void:
 func _on_ball_destroyed(points: int) -> void:
 	_update_score(points)
 	_update_health(1)
+	$ScoreSound.play()
 
 func _update_score(points: int) -> void:
 	_score += points
