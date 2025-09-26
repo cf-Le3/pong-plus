@@ -28,7 +28,7 @@ texture = ExtResource("3_jxpyf")
 [node name="Paddle2" parent="." instance=ExtResource("6_5cgph")]
 
 [node name="BallSpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 
 [node name="HUD" parent="." instance=ExtResource("7_wr3ym")]
 
