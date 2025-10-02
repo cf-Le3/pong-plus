@@ -34,8 +34,10 @@ func _ready() -> void:
 	$Sprite2D.global_position = Vector2(viewport_w/2, viewport_h/2)
 	
 	$Paddle1.global_position = Vector2((viewport_w-_ARENA_W)/2+32, viewport_h/2)
-	$Paddle1.player = Paddle.Player.PLAYER_1
 	$Paddle2.global_position = Vector2(viewport_w-(viewport_w-_ARENA_W)/2-32, viewport_h/2)
+	$Paddle1.player = Paddle.Player.PLAYER_1
+	if game_mode == GameMode.VERSUS_1 && !game_config.get_single_player_default_controls():
+		$Paddle1.player = Paddle.Player.PLAYER_2
 	if game_mode == GameMode.VERSUS_2 || game_mode == GameMode.SURVIVAL:
 		$Paddle2.player = Paddle.Player.PLAYER_2
 	else:
