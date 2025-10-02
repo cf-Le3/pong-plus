@@ -10,6 +10,7 @@ var _max_points := 5
 var _max_balls := 5
 var _difficulty := Difficulty.NORMAL
 var _ball_collisions_enabled := false
+var _single_player_default_controls := true
 
 const _MAX_POINTS_MIN := 1
 const _MAX_POINTS_MAX := 9
@@ -28,6 +29,9 @@ func get_difficulty() -> Difficulty:
 func get_ball_collisions_enabled() -> bool:
 	return _ball_collisions_enabled
 
+func get_single_player_default_controls() -> bool:
+	return _single_player_default_controls
+
 func set_max_points(max_points: int) -> void:
 	if max_points >= _MAX_POINTS_MIN && max_points <= _MAX_POINTS_MAX:
 		_max_points = max_points
@@ -43,3 +47,6 @@ func set_difficulty(difficulty: Difficulty) -> void:
 	
 func set_ball_collisions_enabled(status: bool) -> void:
 	_ball_collisions_enabled = status
+
+func set_single_player_default_controls(status: bool) -> void:
+	_single_player_default_controls = status
