@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d326nye68tuyp"]
+
+[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://assets_fonts/Jost-800-Heavy.ttf" id="1_ro3qi"]
+[ext_resource type="FontFile" uid="uid://bpjr4h7yirl4t" path="res://assets_fonts/Jost-700-Bold.ttf" id="2_yuwwn"]
+[ext_resource type="FontFile" uid="uid://svm0mg56gi6u" path="res://assets_fonts/Jost-700-BoldItalic.ttf" id="3_j380y"]
+[ext_resource type="FontFile" uid="uid://cbe2scps4khr8" path="res://assets_fonts/Jost-500-MediumItalic.ttf" id="4_e63tx"]
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://assets_fonts/Jost-500-Medium.ttf" id="5_jc6r5"]
+
+[resource]
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_ro3qi")
+RichTextLabel/font_sizes/bold_font_size = 20
+RichTextLabel/font_sizes/bold_italics_font_size = 20
+RichTextLabel/font_sizes/italics_font_size = 20
+RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/fonts/bold_font = ExtResource("2_yuwwn")
+RichTextLabel/fonts/bold_italics_font = ExtResource("3_j380y")
+RichTextLabel/fonts/italics_font = ExtResource("4_e63tx")
+RichTextLabel/fonts/normal_font = ExtResource("5_jc6r5")
