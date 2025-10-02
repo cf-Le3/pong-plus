@@ -154,7 +154,7 @@ size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../VsPlayerButton")
 focus_neighbor_bottom = NodePath("../PlayBackButton")
 theme = ExtResource("5_nsibk")
-text = "SURVIVAL"
+text = "ENDURANCE"
 alignment = 0
 
 [node name="PlayBackButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxPlayButtons" instance=ExtResource("9_4mel8")]

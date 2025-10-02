@@ -16,7 +16,7 @@ var _game_settings: GameSettings
 var _license: License
 var _help: Help
 var _credits: Credits
-var _version := "v1.1.0"
+var _version := "v1.2.0-beta"
 var _last_focused: Control
 
 func _ready() -> void:
