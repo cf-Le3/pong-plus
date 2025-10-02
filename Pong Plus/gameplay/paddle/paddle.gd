@@ -11,8 +11,8 @@ enum Player {
 
 var player: Player
 
-const _MAXIMUM_SPEED := 300.0
-const _ACCELERATION := 10.0
+const _MAXIMUM_SPEED := 350.0
+const _ACCELERATION := 12.0
 
 func _physics_process(delta: float) -> void:
 	if player == Player.PLAYER_1 || player == Player.PLAYER_2:
