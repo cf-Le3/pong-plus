@@ -19,6 +19,11 @@ func _ready() -> void:
 		$%CollisionsEnabledButton.button_pressed = true
 	else:
 		$%CollisionsDisabledButton.button_pressed = true
+		
+	if game_config.get_single_player_default_controls():
+		$%WASDButton.button_pressed = true
+	else:
+		$%ArrowButton.button_pressed = true
 
 	$%PointsButtonR.grab_focus()
 
@@ -71,10 +76,19 @@ func _on_collisions_disabled_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		game_config.set_ball_collisions_enabled(false)
 
+func _on_wasd_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		game_config.set_single_player_default_controls(true)
+
+func _on_arrow_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		game_config.set_single_player_default_controls(false)
+
 func _on_default_button_pressed() -> void:
 	game_config = GameConfig.new()
 	$%NormalButton.button_pressed = true
 	$%CollisionsDisabledButton.button_pressed = true
+	$%WASDButton.button_pressed = true
 	_update_counters()
 
 func _on_confirm_button_pressed() -> void:
