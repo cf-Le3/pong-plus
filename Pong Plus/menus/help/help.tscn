@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d10o4jsqbjw5g" path="res://menus/assets_textures/arrow_button_l.png" id="5_tcuxl"]
 [ext_resource type="Texture2D" uid="uid://dcoo2lt8pxgkn" path="res://menus/assets_textures/arrow_button_r_alt.png" id="7_bs6y8"]
 [ext_resource type="Texture2D" uid="uid://d2r0yshvqy6hc" path="res://menus/assets_textures/arrow_button_l_focus.png" id="7_yfsh2"]
-[ext_resource type="Theme" uid="uid://d326nye68tuyp" path="res://menus/assets_themes/help_menu_text.tres" id="8_bs6y8"]
+[ext_resource type="Theme" uid="uid://d326nye68tuyp" path="res://menus/help/help_menu_text.tres" id="8_bs6y8"]
 [ext_resource type="Texture2D" uid="uid://d13a1hucll5b3" path="res://menus/assets_textures/arrow_button_r.png" id="9_02lel"]
 [ext_resource type="Texture2D" uid="uid://db4lhng1mvbh6" path="res://menus/help/assets_textures/health_bar.png" id="9_blt6l"]
 [ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/assets_textures/arrow_button_r_focus.png" id="9_tcuxl"]
