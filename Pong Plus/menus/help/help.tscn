@@ -1,14 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://twat68vd8dnc"]
+[gd_scene load_steps=15 format=3 uid="uid://twat68vd8dnc"]
 
 [ext_resource type="Script" uid="uid://bdqu7by2vy1u6" path="res://menus/help/help.gd" id="1_a4low"]
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="2_acsg6"]
 [ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="2_h10xx"]
 [ext_resource type="Texture2D" uid="uid://bueoed61eci0q" path="res://menus/assets_textures/arrow_button_l_alt.png" id="5_blt6l"]
 [ext_resource type="PackedScene" uid="uid://bd3jxko5kcdnq" path="res://menus/noisy_buttons/noisy_texture_button/noisy_texture_button.tscn" id="5_bs6y8"]
+[ext_resource type="Texture2D" uid="uid://d10o4jsqbjw5g" path="res://menus/assets_textures/arrow_button_l.png" id="5_tcuxl"]
 [ext_resource type="Texture2D" uid="uid://dcoo2lt8pxgkn" path="res://menus/assets_textures/arrow_button_r_alt.png" id="7_bs6y8"]
 [ext_resource type="Texture2D" uid="uid://d2r0yshvqy6hc" path="res://menus/assets_textures/arrow_button_l_focus.png" id="7_yfsh2"]
 [ext_resource type="Theme" uid="uid://d326nye68tuyp" path="res://menus/assets_themes/help_menu_text.tres" id="8_bs6y8"]
+[ext_resource type="Texture2D" uid="uid://d13a1hucll5b3" path="res://menus/assets_textures/arrow_button_r.png" id="9_02lel"]
+[ext_resource type="Texture2D" uid="uid://db4lhng1mvbh6" path="res://menus/help/assets_textures/health_bar.png" id="9_blt6l"]
 [ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/assets_textures/arrow_button_r_focus.png" id="9_tcuxl"]
+[ext_resource type="Texture2D" uid="uid://d4hgcm4fuj2pg" path="res://menus/help/assets_textures/ball_transform.png" id="10_yfsh2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acsg6"]
 bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
@@ -36,6 +40,7 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 554)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_acsg6")
@@ -58,16 +63,17 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_left = NodePath(".")
-focus_neighbor_right = NodePath("../RightButton")
 focus_neighbor_bottom = NodePath("../../../../../BackButton")
+disabled = true
 texture_normal = ExtResource("5_blt6l")
 texture_pressed = ExtResource("7_yfsh2")
 texture_hover = ExtResource("7_yfsh2")
+texture_disabled = ExtResource("5_tcuxl")
 texture_focused = ExtResource("7_yfsh2")
 button_type = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_h10xx")
 text = "HOW TO PLAY"
@@ -76,12 +82,11 @@ text = "HOW TO PLAY"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
-focus_neighbor_left = NodePath("../LeftButton")
-focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../../../../BackButton")
 texture_normal = ExtResource("7_bs6y8")
 texture_pressed = ExtResource("9_tcuxl")
 texture_hover = ExtResource("9_tcuxl")
+texture_disabled = ExtResource("9_02lel")
 texture_focused = ExtResource("9_tcuxl")
 
 [node name="BasicsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -232,6 +237,86 @@ layout_mode = 2
 theme = ExtResource("8_bs6y8")
 bbcode_enabled = true
 text = "[img]res://menus/help/assets_textures/keyboard_arrow_down.svg[/img] / [img]res://menus/help/assets_textures/keyboard_arrow_right.svg[/img]"
+fit_content = true
+
+[node name="EnduranceContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Text1" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Wield BOTH paddles to rack up points while holding out against an unending onslaught of balls!"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Texture1" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("9_blt6l")
+stretch_mode = 3
+
+[node name="Text2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.22
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "This is your HP bar. You lose [b]1 HP[/b] whenever a ball escapes the arena.
+The game ends when you run out of HP."
+fit_content = true
+
+[node name="Text3" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "You're awarded points whenever a ball strikes a paddle.
+If the same ball strikes a paddle [b]6 times[/b], it'll be \"destroyed\" and you'll even recover [b]1 HP[/b]!"
+fit_content = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Texture2" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_yfsh2")
+stretch_mode = 3
+
+[node name="Text4" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "You can tell how close a ball is to destruction based on the circle pattern inside."
+fit_content = true
+
+[node name="Text5" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Feeling overwhelmed? Prioritize balls that are close to being destroyed so you can keep your HP topped up!"
+fit_content = true
+
+[node name="Text6" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Watch out! The maximum number of balls* in the arena will increase every [b]10 seconds[/b]!"
+fit_content = true
+
+[node name="Text7" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "[i]* Endurance Mode uses its own unique configuration that cannot be modified in [b]Settings[/b].[/i]"
 fit_content = true
 
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
