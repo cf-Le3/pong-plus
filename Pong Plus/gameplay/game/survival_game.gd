@@ -53,7 +53,8 @@ func _update_score(points: int) -> void:
 	$HUD.update_survival_score(_score)
 
 func _update_health(hit_points: int) -> void:
-	_health += hit_points
+	if hit_points < 0 || (hit_points > 0 && _health < _MAX_HEALTH):
+		_health += hit_points
 	$HUD.update_survival_health(_health)
 
 func _on_wall_goal_right_ball_escaped(is_invincible: bool) -> void:
