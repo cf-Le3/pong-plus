@@ -328,4 +328,6 @@ focus_neighbor_top = NodePath("../PanelContainer/MarginContainer/VBoxContainer/H
 theme = ExtResource("2_acsg6")
 text = "BACK"
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RightButton" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
