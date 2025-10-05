@@ -31,30 +31,30 @@ show_behind_parent = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ojvsv")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="LicenseTextLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="LicenseTextLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_ieltd")
 theme_override_font_sizes/font_size = 20
 
-[node name="BackButton" parent="MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_hf8la")]
+[node name="BackButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_hf8la")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
@@ -63,4 +63,4 @@ theme = ExtResource("4_av0uy")
 text = "BACK"
 button_type = 1
 
-[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

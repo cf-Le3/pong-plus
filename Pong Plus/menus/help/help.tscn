@@ -1,238 +1,333 @@
-[gd_scene load_steps=9 format=3 uid="uid://twat68vd8dnc"]
+[gd_scene load_steps=15 format=3 uid="uid://twat68vd8dnc"]
 
 [ext_resource type="Script" uid="uid://bdqu7by2vy1u6" path="res://menus/help/help.gd" id="1_a4low"]
-[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://assets_fonts/Jost-800-Heavy.ttf" id="1_jkucu"]
-[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://assets_fonts/Jost-500-Medium.ttf" id="2_vkxn4"]
+[ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="2_acsg6"]
+[ext_resource type="Theme" uid="uid://bebmaum0nxo2t" path="res://menus/assets_themes/settings_title_label.tres" id="2_h10xx"]
+[ext_resource type="Texture2D" uid="uid://bueoed61eci0q" path="res://menus/assets_textures/arrow_button_l_alt.png" id="5_blt6l"]
+[ext_resource type="PackedScene" uid="uid://bd3jxko5kcdnq" path="res://menus/noisy_buttons/noisy_texture_button/noisy_texture_button.tscn" id="5_bs6y8"]
+[ext_resource type="Texture2D" uid="uid://d10o4jsqbjw5g" path="res://menus/assets_textures/arrow_button_l.png" id="5_tcuxl"]
+[ext_resource type="Texture2D" uid="uid://dcoo2lt8pxgkn" path="res://menus/assets_textures/arrow_button_r_alt.png" id="7_bs6y8"]
+[ext_resource type="Texture2D" uid="uid://d2r0yshvqy6hc" path="res://menus/assets_textures/arrow_button_l_focus.png" id="7_yfsh2"]
+[ext_resource type="Theme" uid="uid://d326nye68tuyp" path="res://menus/help/help_menu_text.tres" id="8_bs6y8"]
+[ext_resource type="Texture2D" uid="uid://d13a1hucll5b3" path="res://menus/assets_textures/arrow_button_r.png" id="9_02lel"]
+[ext_resource type="Texture2D" uid="uid://db4lhng1mvbh6" path="res://menus/help/assets_textures/health_bar.png" id="9_blt6l"]
+[ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/assets_textures/arrow_button_r_focus.png" id="9_tcuxl"]
+[ext_resource type="Texture2D" uid="uid://d4hgcm4fuj2pg" path="res://menus/help/assets_textures/ball_transform.png" id="10_yfsh2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_507r0"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6dby"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhki3"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1gd5"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llcyu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acsg6"]
 bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [node name="Help" type="CanvasLayer"]
 script = ExtResource("1_a4low")
 
-[node name="How ToPlayLabel" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -600.0
-offset_top = 16.0
-offset_right = -135.0
-offset_bottom = 109.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_jkucu")
-theme_override_font_sizes/font_size = 64
+grow_vertical = 2
+theme_override_constants/margin_left = 72
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 72
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 554)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_acsg6")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LeftButton" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_bs6y8")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_bottom = NodePath("../../../../../BackButton")
+disabled = true
+texture_normal = ExtResource("5_blt6l")
+texture_pressed = ExtResource("7_yfsh2")
+texture_hover = ExtResource("7_yfsh2")
+texture_disabled = ExtResource("5_tcuxl")
+texture_focused = ExtResource("7_yfsh2")
+button_type = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_h10xx")
 text = "HOW TO PLAY"
+
+[node name="RightButton" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_bs6y8")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+focus_neighbor_bottom = NodePath("../../../../../BackButton")
+texture_normal = ExtResource("7_bs6y8")
+texture_pressed = ExtResource("9_tcuxl")
+texture_hover = ExtResource("9_tcuxl")
+texture_disabled = ExtResource("9_02lel")
+texture_focused = ExtResource("9_tcuxl")
+
+[node name="BasicsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Label1" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+text = "It's plain old pong!"
+
+[node name="Text1" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+text = "Move your paddle to repel incoming balls before they slip past!
+You score a point if a ball leaves the arena from behind your opponent.  
+Reach the target score* first to win!"
+fit_content = true
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+text = "...Or is it?"
+
+[node name="Text2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Watch out! A new ball will spawn every [b]5 seconds[/b].
+Balls will keep spawning* until the game ends. So stay on your toes!"
+fit_content = true
+
+[node name="Text3" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "[i]* The win condition, maximum number of balls and various other game parameters can be configured in [b]Settings[/b].[/i]"
+fit_content = true
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.51
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+text = "CONTROLS"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="."]
-offset_left = 920.0
-offset_top = 32.0
-offset_right = 1240.0
-offset_bottom = 90.0
-theme_override_fonts/font = ExtResource("2_vkxn4")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_507r0")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_m6dby")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yhki3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_j1gd5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_llcyu")
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Text1" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer1"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "[b][u]PLAYER 1[/u][/b]"
+fit_content = true
+
+[node name="GridContainer1er" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer1"]
+layout_mode = 2
+columns = 2
+
+[node name="Text1" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer1/GridContainer1er"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Move Up:"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer1/GridContainer1er"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "[img]res://menus/help/assets_textures/keyboard_w.svg[/img] / [img]res://menus/help/assets_textures/keyboard_a.svg[/img]"
+fit_content = true
+
+[node name="Text3" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer1/GridContainer1er"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+text = "Move Down:"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Text4" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer1/GridContainer1er"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "[img]res://menus/help/assets_textures/keyboard_s.svg[/img] / [img]res://menus/help/assets_textures/keyboard_d.svg[/img]"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Text2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_h10xx")
+bbcode_enabled = true
+text = "[b][u]PLAYER 2[/u][/b]"
+fit_content = true
+
+[node name="GridContainer1er2" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Text1" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer/GridContainer1er2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Move Up:"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer/GridContainer1er2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "[img]res://menus/help/assets_textures/keyboard_arrow_up.svg[/img] / [img]res://menus/help/assets_textures/keyboard_arrow_left.svg[/img]"
+fit_content = true
+
+[node name="Text3" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer/GridContainer1er2"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+text = "Move Down:"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Text4" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BasicsContainer/VBoxContainer2/VBoxContainer/GridContainer1er2"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "[img]res://menus/help/assets_textures/keyboard_arrow_down.svg[/img] / [img]res://menus/help/assets_textures/keyboard_arrow_right.svg[/img]"
+fit_content = true
+
+[node name="EnduranceContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Text1" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Wield BOTH paddles to rack up points while holding out against an unending onslaught of balls!"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Texture1" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("9_blt6l")
+stretch_mode = 3
+
+[node name="Text2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.22
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "This is your HP bar. You lose [b]1 HP[/b] whenever a ball escapes the arena.
+The game ends when you run out of HP."
+fit_content = true
+
+[node name="Text3" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "You're awarded points whenever a ball strikes a paddle.
+If the same ball strikes a paddle [b]6 times[/b], it'll be \"destroyed\" and you'll even recover [b]1 HP[/b]!"
+fit_content = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Texture2" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_yfsh2")
+stretch_mode = 3
+
+[node name="Text4" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "You can tell how close a ball is to destruction based on the circle pattern inside."
+fit_content = true
+
+[node name="Text5" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Feeling overwhelmed? Prioritize balls that are close to being destroyed so you can keep your HP topped up!"
+fit_content = true
+
+[node name="Text6" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "Watch out! The maximum number of balls* in the arena will increase every [b]10 seconds[/b]!"
+fit_content = true
+
+[node name="Text7" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/EnduranceContainer"]
+layout_mode = 2
+theme = ExtResource("8_bs6y8")
+bbcode_enabled = true
+text = "[i]* Endurance Mode uses its own unique configuration that cannot be modified in [b]Settings[/b].[/i]"
+fit_content = true
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_neighbor_top = NodePath("../PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RightButton")
+theme = ExtResource("2_acsg6")
 text = "BACK"
 
-[node name="Instructions" type="ColorRect" parent="."]
-offset_left = 40.0
-offset_top = 128.0
-offset_right = 728.0
-offset_bottom = 584.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
-
-[node name="PongLabel" type="Label" parent="Instructions"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -312.0
-offset_top = 16.0
-offset_right = 72.0
-offset_bottom = 80.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_jkucu")
-theme_override_font_sizes/font_size = 40
-text = "It's plain old Pong!"
-vertical_alignment = 1
-
-[node name="Body1" type="Label" parent="Instructions/PongLabel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = 32.0
-offset_right = 448.0
-offset_bottom = 152.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_vkxn4")
-theme_override_font_sizes/font_size = 24
-text = "Move your paddle to repel the balls. Your score a point if a ball leaves the playing field from behind your opponent.
-Score five points first to win!"
-autowrap_mode = 3
-
-[node name="DifferenceLabel" type="Label" parent="Instructions"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 208.0
-offset_right = 416.0
-offset_bottom = 272.0
-theme_override_fonts/font = ExtResource("1_jkucu")
-theme_override_font_sizes/font_size = 40
-text = "...Or is it?"
-vertical_alignment = 1
-
-[node name="Body2" type="Label" parent="Instructions/DifferenceLabel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = 40.0
-offset_right = 448.0
-offset_bottom = 192.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_vkxn4")
-theme_override_font_sizes/font_size = 24
-text = "Watch out! A new ball will spawn every five seconds. There can be up to five balls bouncing around at a time.
-There are no breaks to serve either. Balls will keep spawning until somebody wins. Stay on your toes!"
-autowrap_mode = 3
-
-[node name="Controls" type="ColorRect" parent="."]
-offset_left = 760.0
-offset_top = 128.0
-offset_right = 1240.0
-offset_bottom = 200.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
-
-[node name="ControlsLabel" type="Label" parent="Controls"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -208.0
-offset_top = 8.0
-offset_right = 24.0
-offset_bottom = 66.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_jkucu")
-theme_override_font_sizes/font_size = 40
-text = "CONTROLS"
-vertical_alignment = 1
-
-[node name="Player1" type="ColorRect" parent="."]
-offset_left = 760.0
-offset_top = 224.0
-offset_right = 1240.0
-offset_bottom = 392.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
-
-[node name="Player1Label" type="Label" parent="Player1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -64.0
-offset_right = -80.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_jkucu")
-theme_override_font_sizes/font_size = 24
-text = "PLAYER 1
-"
-autowrap_mode = 3
-
-[node name="Body3" type="Label" parent="Player1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -16.0
-offset_right = 120.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_vkxn4")
-theme_override_font_sizes/font_size = 24
-text = "Move Up:       W key / A key
-Move Down:   S key / D key
-"
-autowrap_mode = 3
-
-[node name="Player 2" type="ColorRect" parent="."]
-offset_left = 760.0
-offset_top = 416.0
-offset_right = 1240.0
-offset_bottom = 584.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
-
-[node name="Player2Label" type="Label" parent="Player 2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -64.0
-offset_right = -80.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_jkucu")
-theme_override_font_sizes/font_size = 24
-text = "PLAYER 2
-"
-autowrap_mode = 3
-
-[node name="Body4" type="Label" parent="Player 2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -16.0
-offset_right = 224.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_vkxn4")
-theme_override_font_sizes/font_size = 24
-text = "Move Up:       UP key / LEFT key
-Move Down:   DOWN key / RIGHT key
-"
-autowrap_mode = 3
-
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
