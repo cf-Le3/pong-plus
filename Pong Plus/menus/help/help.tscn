@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://twat68vd8dnc"]
+[gd_scene load_steps=16 format=3 uid="uid://twat68vd8dnc"]
 
 [ext_resource type="Script" uid="uid://bdqu7by2vy1u6" path="res://menus/help/help.gd" id="1_a4low"]
 [ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="2_acsg6"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://db4lhng1mvbh6" path="res://menus/help/assets_textures/health_bar.png" id="9_blt6l"]
 [ext_resource type="Texture2D" uid="uid://clcosfdya4cnp" path="res://menus/assets_textures/arrow_button_r_focus.png" id="9_tcuxl"]
 [ext_resource type="Texture2D" uid="uid://d4hgcm4fuj2pg" path="res://menus/help/assets_textures/ball_transform.png" id="10_yfsh2"]
+[ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="13_02lel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acsg6"]
 bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
@@ -31,26 +32,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 72
-theme_override_constants/margin_top = 64
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 72
-theme_override_constants/margin_bottom = 64
+theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 554)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_acsg6")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 538)
 layout_mode = 2
 theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -63,7 +64,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_bottom = NodePath("../../../../../BackButton")
 disabled = true
 texture_normal = ExtResource("5_blt6l")
 texture_pressed = ExtResource("7_yfsh2")
@@ -82,7 +82,6 @@ text = "HOW TO PLAY"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
-focus_neighbor_bottom = NodePath("../../../../../BackButton")
 texture_normal = ExtResource("7_bs6y8")
 texture_pressed = ExtResource("9_tcuxl")
 texture_hover = ExtResource("9_tcuxl")
@@ -319,14 +318,14 @@ bbcode_enabled = true
 text = "[i]* Endurance Mode uses its own unique configuration that cannot be modified in [b]Settings[/b].[/i]"
 fit_content = true
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("13_02lel")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 8
-focus_neighbor_top = NodePath("../PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RightButton")
 theme = ExtResource("2_acsg6")
 text = "BACK"
+button_type = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/RightButton" to="." method="_on_right_button_pressed"]

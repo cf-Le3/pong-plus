@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2pw5n83w74j7"
-path="res://.godot/imported/logo_large_color_dark.svg-bd652f0f5d1562c611b836b585336f69.ctex"
+uid="uid://d2bvi8pmyo23u"
+path="res://.godot/imported/logo_vertical_color_dark.svg-021c6ced1b878fa5d79f1def92078d8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menus/credits/logo_large_color_dark.svg"
-dest_files=["res://.godot/imported/logo_large_color_dark.svg-bd652f0f5d1562c611b836b585336f69.ctex"]
+source_file="res://menus/credits/logo_vertical_color_dark.svg"
+dest_files=["res://.godot/imported/logo_vertical_color_dark.svg-021c6ced1b878fa5d79f1def92078d8c.ctex"]
 
 [params]
 
