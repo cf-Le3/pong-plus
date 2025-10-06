@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://vxoha6g841s4"]
+
+[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://assets_fonts/Jost-500-Medium.ttf" id="1_0wlwa"]
+
+[resource]
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_0wlwa")

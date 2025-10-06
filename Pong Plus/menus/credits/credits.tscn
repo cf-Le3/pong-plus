@@ -1,437 +1,271 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd4eh3jh7j4ei"]
+[gd_scene load_steps=9 format=3 uid="uid://dd4eh3jh7j4ei"]
 
 [ext_resource type="Script" uid="uid://kjb07mr8gkwb" path="res://menus/credits/credits.gd" id="1_nxg04"]
-[ext_resource type="FontFile" uid="uid://t6tpeuhov8xb" path="res://assets_fonts/Jost-800-Heavy.ttf" id="1_udukd"]
-[ext_resource type="Texture2D" uid="uid://d2pw5n83w74j7" path="res://menus/credits/logo_large_color_dark.svg" id="2_iccok"]
-[ext_resource type="FontFile" uid="uid://3bakknuabxrn" path="res://assets_fonts/Jost-500-Medium.ttf" id="2_n867l"]
+[ext_resource type="Theme" uid="uid://bsg2picn1jtfd" path="res://menus/credits/assets_themes/credits_title.tres" id="2_de1vr"]
+[ext_resource type="PackedScene" uid="uid://b5af1yx4alfdc" path="res://menus/noisy_buttons/noisy_button/noisy_button.tscn" id="2_v68ex"]
+[ext_resource type="Theme" uid="uid://vxoha6g841s4" path="res://menus/credits/assets_themes/credits_content_main.tres" id="3_56q1u"]
+[ext_resource type="Theme" uid="uid://dvkknqaldhwsk" path="res://menus/assets_themes/button_cancel_general.tres" id="3_rl7hp"]
+[ext_resource type="Theme" uid="uid://be5syeatswxqx" path="res://menus/credits/assets_themes/credits_content_sub.tres" id="4_56q1u"]
+[ext_resource type="Texture2D" uid="uid://d2bvi8pmyo23u" path="res://menus/credits/logo_vertical_color_dark.svg" id="5_33gsg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rttxh"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dowol"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbmwf"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_274l5"]
-bg_color = Color(0.192157, 0.521569, 0.560784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n48rk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de1vr"]
 bg_color = Color(0.0235294, 0.172549, 0.239216, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [node name="Credits" type="CanvasLayer"]
 script = ExtResource("1_nxg04")
 
-[node name="BackButton" type="Button" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -384.0
-offset_top = 543.0
-offset_right = -64.0
-offset_bottom = 601.0
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_rttxh")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_dowol")
-theme_override_styles/hover = SubResource("StyleBoxFlat_bbmwf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_274l5")
-theme_override_styles/normal = SubResource("StyleBoxFlat_n48rk")
-text = "BACK"
-
-[node name="Engine" type="ColorRect" parent="."]
-offset_left = 64.0
-offset_top = 40.0
-offset_right = 416.0
-offset_bottom = 200.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Engine"]
-position = Vector2(176, 80)
-scale = Vector2(0.333031, 0.333031)
-texture = ExtResource("2_iccok")
-
-[node name="Programming" type="ColorRect" parent="."]
-offset_left = 464.0
-offset_top = 40.0
-offset_right = 816.0
-offset_bottom = 200.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
-
-[node name="ContributionLabel" type="Label" parent="Programming"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 16.0
-offset_right = 94.0
-offset_bottom = 51.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_udukd")
-theme_override_font_sizes/font_size = 24
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_de1vr")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 32
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 40
+
+[node name="Programming" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Programming"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
 text = "PROGRAMMING"
 horizontal_alignment = 1
 
-[node name="ContentLabel" type="Label" parent="Programming"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -8.0
-offset_right = 87.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 24
-text = "coelaphon (Fray)"
+[node name="Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Programming"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
+text = "coelaphon"
 horizontal_alignment = 1
 
-[node name="Sprites" type="ColorRect" parent="."]
-offset_left = 864.0
-offset_top = 40.0
-offset_right = 1216.0
-offset_bottom = 200.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
+[node name="Sprites" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
 
-[node name="ContributionLabel" type="Label" parent="Sprites"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 16.0
-offset_right = 94.0
-offset_bottom = 51.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_udukd")
-theme_override_font_sizes/font_size = 24
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Sprites"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
 text = "SPRITES"
 horizontal_alignment = 1
 
-[node name="ContentLabel1" type="Label" parent="Sprites"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -8.0
-offset_right = 68.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 24
-text = "coelaphon (Fray)"
+[node name="Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Sprites"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
+text = "coelaphon"
 horizontal_alignment = 1
 
-[node name="Font" type="ColorRect" parent="."]
-offset_left = 64.0
-offset_top = 240.0
-offset_right = 416.0
-offset_bottom = 400.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
+[node name="Font" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
 
-[node name="ContributionLabel" type="Label" parent="Font"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 16.0
-offset_right = 94.0
-offset_bottom = 51.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_udukd")
-theme_override_font_sizes/font_size = 24
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Font"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
 text = "FONT"
 horizontal_alignment = 1
 
-[node name="ContentLabel1" type="Label" parent="Font"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -17.5
-offset_right = 112.0
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 24
+[node name="Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Font"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
 text = "\"Jost*\" by Owen Earl"
 horizontal_alignment = 1
 
-[node name="ContentLabel2" type="Label" parent="Font"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -107.5
-offset_top = 20.0
-offset_right = 107.5
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 16
+[node name="Sub-Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Font"]
+layout_mode = 2
+theme = ExtResource("4_56q1u")
 text = "Indestructible Type"
 horizontal_alignment = 1
 
-[node name="Music" type="ColorRect" parent="."]
-offset_left = 464.0
-offset_top = 240.0
-offset_right = 816.0
-offset_bottom = 400.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
+[node name="Music" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
 
-[node name="ContributionLabel" type="Label" parent="Music"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 16.0
-offset_right = 94.0
-offset_bottom = 51.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_udukd")
-theme_override_font_sizes/font_size = 24
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
 text = "MUSIC"
 horizontal_alignment = 1
 
-[node name="ContentLabel1" type="Label" parent="Music"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -163.0
-offset_top = -17.5
-offset_right = 163.0
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 24
+[node name="Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
 text = "\"Puzzle Pieces\" by Abstraction"
 horizontal_alignment = 1
 
-[node name="ContentLabel2" type="Label" parent="Music"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -131.0
-offset_top = 20.0
-offset_right = 131.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 16
-text = "from \"Three Red Hearts\""
+[node name="Sub-Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme = ExtResource("4_56q1u")
+text = "from \"Three Red Hearts\" album"
 horizontal_alignment = 1
 
-[node name="Sound" type="ColorRect" parent="."]
-offset_left = 864.0
-offset_top = 240.0
-offset_right = 1216.0
-offset_bottom = 400.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
+[node name="Sound" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
 
-[node name="ContributionLabel" type="Label" parent="Sound"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 16.0
-offset_right = 94.0
-offset_bottom = 51.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_udukd")
-theme_override_font_sizes/font_size = 24
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Sound"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
 text = "SOUND"
 horizontal_alignment = 1
 
-[node name="ContentLabel1" type="Label" parent="Sound"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -17.5
-offset_right = 50.0
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 24
+[node name="Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Sound"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
 text = "JDWasabi"
 horizontal_alignment = 1
 
-[node name="ContentLabel2" type="Label" parent="Sound"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = 18.0
-offset_right = 153.0
-offset_bottom = 53.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 16
-text = "from \"8-bit/16-bit Sound Effects (x25) pack"
+[node name="Sub-Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Sound"]
+layout_mode = 2
+theme = ExtResource("4_56q1u")
+text = "\"8-bit/16-bit Sound Effects (x25)\" pack"
 horizontal_alignment = 1
 
-[node name="Special" type="ColorRect" parent="."]
-offset_left = 64.0
-offset_top = 440.0
-offset_right = 416.0
-offset_bottom = 600.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
+[node name="InputPromptSprites" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
 
-[node name="ContributionLabel" type="Label" parent="Special"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 16.0
-offset_right = 94.0
-offset_bottom = 51.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_udukd")
-theme_override_font_sizes/font_size = 24
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InputPromptSprites"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
+text = "INPUT PROMPT SPRITES"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InputPromptSprites"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
+text = "Kenney"
+horizontal_alignment = 1
+
+[node name="Sub-Content" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InputPromptSprites"]
+layout_mode = 2
+theme = ExtResource("4_56q1u")
+text = "\"Input Prompts\" asset pack"
+horizontal_alignment = 1
+
+[node name="Playtesters" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Playtesters"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
+text = "PLAYTESTERS"
+horizontal_alignment = 1
+
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Playtesters"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
+text = "nico"
+horizontal_alignment = 1
+
+[node name="Content2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Playtesters"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
+text = "jinta"
+horizontal_alignment = 1
+
+[node name="Content3" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Playtesters"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
+text = "garhulos"
+horizontal_alignment = 1
+
+[node name="SpecialThanks" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/SpecialThanks"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
 text = "SPECIAL THANKS"
 horizontal_alignment = 1
 
-[node name="ContentLabel1" type="Label" parent="Special"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -22.0
-offset_right = 128.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 24
-text = "to my partner for being"
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/SpecialThanks"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
+text = "to my partner-in-crime for being"
 horizontal_alignment = 1
 
-[node name="ContentLabel2" type="Label" parent="Special"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = 10.0
-offset_right = 128.0
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 24
+[node name="Content2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/SpecialThanks"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
 text = "my #1 fan as always :)"
 horizontal_alignment = 1
 
-[node name="Programming7" type="ColorRect" parent="."]
-offset_left = 464.0
-offset_top = 440.0
-offset_right = 816.0
-offset_bottom = 600.0
-color = Color(0.0235294, 0.172549, 0.239216, 1)
+[node name="GameJam" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
 
-[node name="ContributionLabel1" type="Label" parent="Programming7"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -120.0
-offset_top = 49.0
-offset_right = 121.0
-offset_bottom = 84.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_udukd")
-theme_override_font_sizes/font_size = 24
-text = "20 Games Challenge"
+[node name="Content1" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GameJam"]
+layout_mode = 2
+theme = ExtResource("3_56q1u")
+text = "This game was made for the"
 horizontal_alignment = 1
 
-[node name="ContributionLabel2" type="Label" parent="Programming7"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -120.0
-offset_top = 78.0
-offset_right = 121.0
-offset_bottom = 113.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_udukd")
-theme_override_font_sizes/font_size = 24
-text = "Summer Jam!"
+[node name="Content2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GameJam"]
+layout_mode = 2
+theme = ExtResource("2_de1vr")
+text = "20 Games Challenge - Summer Jam!"
 horizontal_alignment = 1
 
-[node name="ContentLabel1" type="Label" parent="Programming7"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -127.0
-offset_top = 8.0
-offset_right = 129.0
-offset_bottom = 43.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 24
-text = "This game was made for"
-horizontal_alignment = 1
+[node name="Engine" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="ContentLabel2" type="Label" parent="Programming7"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = 42.0
-offset_right = 68.0
-offset_bottom = 66.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_n867l")
-theme_override_font_sizes/font_size = 16
-text = "Aug - Sep 2025"
-horizontal_alignment = 1
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Engine"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_56q1u")
+text = "This game was made with"
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Engine"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_33gsg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_v68ex")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("3_rl7hp")
+text = "BACK"
+button_type = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
