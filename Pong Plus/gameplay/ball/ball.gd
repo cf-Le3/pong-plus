@@ -6,7 +6,7 @@ var init_dir: float
 var texture: Texture
 var _can_collide_with_other_balls := true
 
-const _INIT_SPEED := 200.0
+const _INIT_SPEED := 250.0
 const _ACCELERATION_BY_PADDLE := Vector2(10.0, 10.0)
 const _ACCELERATION_BY_BALL := Vector2(5.0, 5.0)
 
